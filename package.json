@@ -1,0 +1,32 @@
+{
+  "name": "jariomilitar",
+  "version": "1.0.0",
+  "description": "JA Rio Militar websystem made by WiseCorp.",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.19.0",
+    "connect": "^3.7.0",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^8.1.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-session": "^1.16.1",
+    "mysql": "^2.17.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tijariomilitar/jariomilitar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tijariomilitar/jariomilitar/issues"
+  },
+  "homepage": "https://github.com/tijariomilitar/jariomilitar#readme"
+}
