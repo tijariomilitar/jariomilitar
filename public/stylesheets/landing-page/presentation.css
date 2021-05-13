@@ -4,6 +4,15 @@
 	--theme-background-color: #f0f0f0;
 }
 
+.noSelect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .a2c { margin-left: 25%; width: 50%; }
 
 .btn-google {
