@@ -12,6 +12,6 @@ router.use("/admin", require("./admin"));
 router.use("/user", require("./user"));
 router.use("/product", require("./product"));
 router.use("/landing-page", require("./landing-page"));
-router.use("/catalog", require("./catalog"));
+router.use("/catalogo", require("./catalog"));
 
 module.exports = router;
