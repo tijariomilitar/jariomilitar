@@ -13,8 +13,6 @@ if(Product.controller.catalog.filter){
 			price_category_id: 3
 		};
 
-		console.log(product);
-
 		document.getElementById('ajax-loader').style.visibility = 'visible';
 		let response = await Product.catalog.filter(product);
 		document.getElementById('ajax-loader').style.visibility = 'hidden';

@@ -1,6 +1,17 @@
 <html>
 	<head>
         <% include ./partials/head %>
+        <meta name="description" content="JA Rio Militar, melhor custo benefício em equipamentos militares. Conheça nossos produtos e seja representante em sua cidade da marca que mais cresce no Brasil. Produção 100% nacional.">
+
+        <style type="text/css">
+			.carousel-btn-1 {
+				transition: all 0.7s ease 0s;
+			}
+
+			.carousel-btn-1:hover {
+				transition: all 0.3s ease 0s;
+			}
+		</style>
 	</head>
 	<body>
 		<header>
@@ -34,7 +45,11 @@
 				
 				<div id="product-catalog-filter-box">
 					<div id="product-catalog-container" class="container"></div>
-	        		<% include ./partials/carousel %>
+					<div name="carousel-navigation" class="box one container padding-10 margin-top-10 center">
+						<button name="carousel-previous" class="mobile-box b3 noborder" disabled><img class="height-50 icon pointer" src="/images/icon/prev.png"></button>
+					    <div name="carousel-page" class="mobile-box b3 em15 avant-grande center" style="color: #323232"></div>
+					    <button name="carousel-next" class="mobile-box b3 noborder" disabled><img class="height-50 icon pointer" src="/images/icon/next.png"></button>
+					</div>
 				</div>
 				<div id="product-catalog-filter-table" class="box one container" style="display:none"></div>
 			</div>
