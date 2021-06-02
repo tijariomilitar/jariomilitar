@@ -70,7 +70,7 @@ const productController = {
 		product.price = price[0].price;
 		
 		try{
-			res.render('product/show', { product });
+			res.render('catalog/show', { product });
 		} catch (err) {
 			console.log(err);
 			res.send({ msg: "Ocorreu um erro ao realizar requisição." });
@@ -322,7 +322,7 @@ const productController = {
 			package.products = lib.sort(package.products, "code");
 			
 			try{
-				res.render('product/show', { product: package });
+				res.render('catalog/show', { product: package });
 			} catch (err) {
 				console.log(err);
 				res.send({ msg: "Ocorreu um erro ao realizar requisição." });

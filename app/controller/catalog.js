@@ -5,7 +5,7 @@ const Product = require('../model/product');
 const catalogController = {
 	index: async (req, res) => {
 		const productColors = await Product.colorList();
-		res.render('catalog', { productColors: productColors });
+		res.render('catalog/index', { productColors: productColors });
 	}
 };
 
