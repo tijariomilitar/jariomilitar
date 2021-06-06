@@ -10,8 +10,9 @@ router.get("/logout", homeController.logout);
 
 router.use("/admin", require("./admin"));
 router.use("/user", require("./user"));
+router.use("/lead", require("./lead"));
 router.use("/product", require("./product"));
-router.use("/landing-page", require("./landing-page"));
+router.use("/landing-page", require("./landing_page"));
 router.use("/catalogo", require("./catalog"));
 
 module.exports = router;

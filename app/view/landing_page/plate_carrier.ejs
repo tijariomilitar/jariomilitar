@@ -45,10 +45,10 @@
 	</section>
 	<div class="container" style="background-color:#141414;background-image: url('/images/background/bg2.png');color:#c8c8c8">
 		<div class="box a1 container" style="background-color:#000">
-			<form id="customer-capture-form" class="box a1 container padding-10">
+			<form id="lead-save-form" class="box a1 container padding-10">
 				<span class="box b1 underline-explicit em12 center margin-top-5 bold" style="color:#fff;">Resgate seu cupom de 10% de desconto</span>
-				<input type="text" name="Nome" class="box b3 avant-garde em11 padding-10 radius-5 border margin-top-5 center" style="background-color:#f0f0f0;" placeholder="Nome">
-				<input type="text" name="Nome" class="box b3 avant-garde em11 padding-10 radius-5 border margin-top-5 center" style="background-color:#f0f0f0;" placeholder="E-mail">
+				<input type="text" name="name" class="box b3 avant-garde em11 padding-10 radius-5 border margin-top-5 center" style="background-color:#f0f0f0;" placeholder="Nome" autocomplete="off">
+				<input type="text" name="email" class="box b3 avant-garde em11 padding-10 radius-5 border margin-top-5 center" style="background-color:#f0f0f0;" placeholder="E-mail" autocomplete="off">
 				<input type="submit" name="submit" class="box b3 btn-google gray em13 radius-5 margin-top-5 pointer center" value="Resgatar">
 			</form>
 		</div>
@@ -110,7 +110,7 @@
 			Endereço Rua Correa Seára, 100, LJ 01, Magalhães Bastos, Rio de Janeiro - RJ. CEP: 21750-320
 		</div>
 		<div class="box b4 font-08 avant-garde margin-top-10 padding-10">
-			Os valores ofertados neste anúncio tem prazo e pode não ser reativado no futuro. <br>O cupom tem validade apenas no site oficial da marca JA Rio Militar: https://www.jariomilitar.com.br
+			Os valores ofertados neste anúncio tem prazo e podem não ser reativados no futuro. <br>O cupom tem validade apenas no site oficial da marca JA Rio Militar: https://www.jariomilitar.com.br
 		</div>
 		<div class="box b4 container margin-top-10 center">
 			<div class="box b1 avant-garde center">Formas de pagamento</div>
@@ -131,5 +131,6 @@
 </body>
 <footer>
 	<% include ./../partials/footer %>
+	<script src="/javascripts/scripts/landing-page/plate_carrier.js"></script>
 </footer>
 </html>

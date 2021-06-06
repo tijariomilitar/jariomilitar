@@ -2,7 +2,7 @@ const User = require('../model/user');
 const userController = require('./user');
 
 const landingPageController = {
-	presentation: async (req, res) => { return res.render('landing-page/presentation', { user: req.user }); }
+	plateCarrier: async (req, res) => { return res.render('landing_page/plate_carrier', { user: req.user }); }
 };
 
 module.exports = landingPageController;
