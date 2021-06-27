@@ -18,7 +18,7 @@ if(Product.controller.catalog.filter){
 		document.getElementById('ajax-loader').style.visibility = 'hidden';
 		if(!response){ return false };
 
-		let catalog_products = [ ...response.products];
+		let catalog_products = [...response.products];
 
 		for(let i in response.packages){
 			response.packages[i].pack = true;
