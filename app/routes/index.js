@@ -11,7 +11,7 @@ const lib = require('../../config/lib');
 
 const homeController = require("../controller/home");
 
-router.get("/", redirectToHttps, homeController.index);
+router.get("/", homeController.index);
 
 router.get("/login", homeController.login);
 router.get("/signup", homeController.signup);
