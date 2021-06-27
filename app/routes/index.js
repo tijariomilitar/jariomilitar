@@ -1,11 +1,17 @@
 const router = require("express").Router();
 const lib = require('../../config/lib');
 
+function redirectToHttps(req, res, next) => {
+	if ((req.headers["x-forwarded-proto"] || "").endsWith("http")){
+		res.redirect(`https://${req.headers.host}${req.url}`); 
+	} else {
+    	next();
+	}
+};
+
 const homeController = require("../controller/home");
 
-console.log(lib.redirectToHttps);
-
-router.get("/", lib.redirectToHttps, homeController.index);
+router.get("/", redirectToHttps, homeController.index);
 
 router.get("/login", homeController.login);
 router.get("/signup", homeController.signup);
