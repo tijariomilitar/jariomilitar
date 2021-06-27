@@ -343,5 +343,12 @@ module.exports = {
 		return arr = arr.sort((a, b) => {
 			return a[key] - b[key];
 		}); 
+	},
+	redirectToHttps: (req, res, next) => {
+		if ((req.headers["x-forwarded-proto"] || "").endsWith("http")){
+			res.redirect(`https://${req.headers.host}${req.url}`); 
+		} else {
+	    	next();
+		}
 	}
 };
