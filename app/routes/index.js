@@ -3,6 +3,7 @@ const router = require("express").Router();
 function redirectToHttps(req, res, next) {
 	console.log(req.headers["x-forwarded-proto"]);
 	if ((req.headers["x-forwarded-proto"] || "").endsWith("http") || req.headers["x-forwarded-proto"] == undefined || req.headers["x-forwarded-proto"] == null || req.headers["x-forwarded-proto"] == ""){
+		console.log(`https://${req.headers.host}${req.url}`);
 		res.redirect(`https://${req.headers.host}${req.url}`); 
 	} else {
     	next();
