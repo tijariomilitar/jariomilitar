@@ -4,26 +4,47 @@
 	</head>
 	<header>
 		<img class="width-150 opacity-hover-08 pointer" onclick="window.location.href='/catalogo'" src="/images/favicon/favicon-black.png">
+		<style>
+			.zoom {
+				background-position: 50% 50%;
+				position: relative;
+				overflow: hidden;
+				cursor: zoom-in;
+			}
+
+			.zoom img:hover {
+				opacity: 0;
+			}
+
+			.zoom img {
+				transition: opacity 0.5s;
+				display: block;
+			}
+		</style>
 	</header>
 	<body>
 		<section>
 			<div class="container">
 				<div class="box b1 container ground margin-top-10 shadow">
 
-					<div class="box b3 container center">
+					<div class="box b2 container center">
 						<% if(!product.images.length){ %>
-						<figure data-js="product-carousel" class="box b1 ground margin-top-15 center display-none display-block" style="background-image: url(/images/product/no-product.png)">
+						<div data-js="product-carousel" class="box b1 ground margin-top-15 center display-none display-block" style="background-image: url(/images/product/no-product.png)">
 		                    <img class="image-fit" src="/images/product/no-product.png">
-		                </figure>
+		                </div>
 						<% } else { %>
-						<figure data-js="product-carousel" class="box b1 ground margin-top-15 center display-none display-block zoom" style="background-image: url(<%= product.images[0].url %>)" onmousemove="lib.image.zoom(event)">
-		                    <img class="image-fit center" src="<%= product.images[0].url %>">
-		                </figure>
+						<div data-js="product-carousel" class="box b1 ground margin-top-15 center display-none display-block">
+							<div class="width-400 center zoom" style="background-image: url(<%= product.images[0].url %>)" onmousemove="lib.image.zoom(event)">
+			                    <img class="image-fit center" src="<%= product.images[0].url %>">
+			                </div>
+						</div>
 						<% for(i in product.images){ %>
 							<% if(i > 0){ %>
-							<figure data-js="product-carousel" class="box b1 ground margin-top-15 center display-none zoom" style="background-image: url(<%= product.images[i].url %>)" onmousemove="lib.image.zoom(event)">
-			                    <img class="image-fit center" src="<%= product.images[i].url %>">
-			                </figure>
+							<div data-js="product-carousel" class="box b1 ground margin-top-15 center display-none">
+								<div class="width-400 center zoom" style="background-image: url(<%= product.images[i].url %>)" onmousemove="lib.image.zoom(event)">
+				                    <img class="image-fit center" src="<%= product.images[i].url %>">
+				                </div>
+							</div>
 							<% } %>
 						<% } %>
 						<div id="product-carousel-navigation" class="box b1 ground container padding-10 center">
@@ -35,7 +56,7 @@
 						<% } %>
 					</div>
 
-					<div class="box b2-3 container margin-bottom-15">
+					<div class="box b2 container margin-bottom-15">
 						<div class="box b1 avant-garde em40 center padding-10 bold"><%= product.name %> - <%= product.color %></div>
 						<div class="box b1 avant-garde em25 italic center padding-10 bold" style="color:#467846;">R$<%= product.price %></div>
 
