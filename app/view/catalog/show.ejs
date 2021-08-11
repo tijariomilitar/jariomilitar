@@ -34,14 +34,14 @@
 		                </div>
 						<% } else { %>
 						<div data-js="product-carousel" class="box b1 ground margin-top-15 center display-none display-block">
-							<div class="width-400 center zoom" style="background-image: url(<%= product.images[0].url %>)" onmousemove="lib.image.zoom(event)">
+							<div class="width-300 center zoom" style="background-image: url(<%= product.images[0].url %>)" onmousemove="lib.image.zoom(event)">
 			                    <img class="image-fit center" src="<%= product.images[0].url %>">
 			                </div>
 						</div>
 						<% for(i in product.images){ %>
 							<% if(i > 0){ %>
 							<div data-js="product-carousel" class="box b1 ground margin-top-15 center display-none">
-								<div class="width-400 center zoom" style="background-image: url(<%= product.images[i].url %>)" onmousemove="lib.image.zoom(event)">
+								<div class="width-300 center zoom" style="background-image: url(<%= product.images[i].url %>)" onmousemove="lib.image.zoom(event)">
 				                    <img class="image-fit center" src="<%= product.images[i].url %>">
 				                </div>
 							</div>
