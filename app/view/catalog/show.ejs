@@ -4,29 +4,46 @@
 	</head>
 	<header>
 		<img class="width-150 opacity-hover-08 pointer" onclick="window.location.href='/catalogo'" src="/images/favicon/favicon-black.png">
+		<style>
+			figure.zoom {
+				background-position: 50% 50%;
+				position: relative;
+				overflow: hidden;
+				cursor: zoom-in;
+			}
+
+			figure.zoom img:hover {
+				opacity: 0;
+			}
+
+			figure.zoom img {
+				transition: opacity 0.5s;
+				display: block;
+			}
+		</style>
 	</header>
 	<body>
 		<section>
 			<div class="container">
-				<div class="box one container ground margin-top-10 shadow">
+				<div class="box b1 container ground margin-top-10 shadow">
 
-					<div class="box b2 container center">
+					<div class="box b3 container center">
 						<% if(!product.images.length){ %>
-						<div data-js="product-carousel" class="box one ground margin-top-15 padding-10 center display-none display-block">
-		                    <img class="catalog-image" src="/images/product/no-product.png">
-		                </div>
+						<figure data-js="product-carousel" class="box b1 ground margin-top-15 center display-none display-block" style="background-image: url(/images/product/no-product.png)">
+		                    <img class="image-fit" src="/images/product/no-product.png">
+		                </figure>
 						<% } else { %>
-						<div data-js="product-carousel" class="box one ground margin-top-15 padding-10 center display-none display-block">
-		                    <img class="catalog-image" src="<%= product.images[0].url %>">
-		                </div>
+						<figure data-js="product-carousel" class="box b1 ground margin-top-15 center display-none display-block zoom" style="background-image: url(<%= product.images[0].url %>)" onmousemove="lib.image.zoom(event)">
+		                    <img class="image-fit center" src="<%= product.images[0].url %>">
+		                </figure>
 						<% for(i in product.images){ %>
 							<% if(i > 0){ %>
-							<div data-js="product-carousel" class="box one ground margin-top-15 padding-10 center display-none">
-			                    <img class="catalog-image" src="<%= product.images[i].url %>">
-			                </div>
+							<figure data-js="product-carousel" class="box b1 ground margin-top-15 center display-none zoom" style="background-image: url(<%= product.images[i].url %>)" onmousemove="lib.image.zoom(event)">
+			                    <img class="image-fit center" src="<%= product.images[i].url %>">
+			                </figure>
 							<% } %>
 						<% } %>
-						<div id="product-carousel-navigation" class="box one ground container padding-10 center">
+						<div id="product-carousel-navigation" class="box b1 ground container padding-10 center">
 		                    <div class="mobile-box b5"></div>
 		                    <button data-js="product-carousel-prev" name="carousel-prev" class="mobile-box b5 noborder"><img class="height-40 icon pointer" src="/images/icon/prev.png"></button>
 		                    <div class="mobile-box b5"></div>
@@ -35,23 +52,9 @@
 						<% } %>
 					</div>
 
-					<div class="box b2 container margin-bottom-15">
+					<div class="box b2-3 container margin-bottom-15">
 						<div class="box b1 avant-garde em40 center padding-10 bold"><%= product.name %> - <%= product.color %></div>
 						<div class="box b1 avant-garde em25 italic center padding-10 bold" style="color:#467846;">R$<%= product.price %></div>
-						<!-- <div class="box b1 container padding-10 bold">
-							<div class="mobile-box b3 container center">
-								<div class="box b1 avant-garde em10 italic">30 Dias</div>
-								<div class="box b1 avant-garde em18 italic" style="color:#467846;">$<%= (product.price * 1.06).toFixed(2) %></div>
-							</div>
-							<div class="mobile-box b3 container border-left center">
-								<div class="box b1 avant-garde em10 italic">60 Dias</div>
-								<div class="box b1 avant-garde em18 italic" style="color:#467846;">$<%= (product.price * 1.09).toFixed(2) %></div>
-							</div>
-							<div class="mobile-box b3 container border-left center">
-								<div class="box b1 avant-garde em10 italic">90 Dias</div>
-								<div class="box b1 avant-garde em18 italic" style="color:#467846;">$<%= (product.price * 1.12).toFixed(2) %></div>
-							</div>
-						</div> -->
 
 						<div class="box b1 container">
 							<% if(product.products) { %>
@@ -79,7 +82,7 @@
         <% include ./../partials/footer %>
         <% include ./partial %>
         <script>
-        	lib.carousel.render("product-carousel")
+        	lib.carousel.render("product-carousel");
         </script>
 	</footer>
 </html>
