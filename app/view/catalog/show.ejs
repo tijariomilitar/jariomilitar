@@ -10,6 +10,13 @@
 			    overflow: hidden;
 			    width: 100%;
 			}
+
+			.img-zoom-lens {
+			  position: absolute;
+			  border: 1px solid #d4d4d4;
+			  width: 150px;
+			  height: 150px;
+			}
 		</style>
 	</header>
 	<body>
@@ -20,20 +27,16 @@
 					<div class="box b2 container center">
 						<% if(!product.images.length){ %>
 						<div data-js="product-carousel" class="box b1 ground margin-top-15 center display-none display-block" style="background-image: url(/images/product/no-product.png)">
-		                    <img class="image-fit" src="/images/product/no-product.png">
+		                    <img class="catalog-image" src="/images/product/no-product.png">
 		                </div>
 						<% } else { %>
-						<div data-js="product-carousel" class="box b1 ground margin-top-15 center display-none display-block">
-							<div class="width-300 center zoom scroll-x scroll-y" style="background-image: url(<%= product.images[0].url %>);" onmousemove="lib.image.zoom(event)" ontouchstart="lib.image.zoom(event);lib.lockScroll();" ontouchmove="lib.image.zoom(event);lib.lockScroll();" ontouchend="lib.unlockScroll();">
-			                    <img class="image-fit center" src="<%= product.images[0].url %>">
-			                </div>
+						<div data-js="product-carousel" class="box b1 ground margin-top-15 display-none display-block">
+							<div class="center relative"><img class="catalog-image" src="<%= product.images[0].url %>"></div>
 						</div>
 						<% for(i in product.images){ %>
 							<% if(i > 0){ %>
-							<div data-js="product-carousel" class="box b1 ground margin-top-15 center display-none">
-								<div class="width-300 center zoom scroll-x scroll-y" style="background-image: url(<%= product.images[i].url %>)" onmousemove="lib.image.zoom(event)" ontouchstart="lib.image.zoom(event);lib.lockScroll();" ontouchmove="lib.image.zoom(event);lib.lockScroll();" ontouchend="lib.unlockScroll();">
-				                    <img class="image-fit center" src="<%= product.images[i].url %>">
-				                </div>
+							<div data-js="product-carousel" class="box b1 ground margin-top-15 display-none">
+			                    <div class="center relative"><img class="catalog-image center" src="<%= product.images[i].url %>"></div>
 							</div>
 							<% } %>
 						<% } %>
@@ -46,7 +49,7 @@
 						<% } %>
 					</div>
 
-					<div class="box b2 container margin-bottom-15">
+					<div id="product-info-box" class="box b2 container margin-bottom-15">
 						<div class="box b1 avant-garde em40 center padding-10 bold"><%= product.name %> - <%= product.color %></div>
 						<div class="box b1 avant-garde em25 italic center padding-10 bold" style="color:#467846;">R$<%= product.price %></div>
 
@@ -78,13 +81,73 @@
         <script>
         	lib.carousel.render("product-carousel");
 
-        	lib.lockScroll = () => {
-        		document.body.classList.add("lock-screen");
-        	};
+   //      	lib.image = {
+			// 	zoom: (e) => {
+			// 	    if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel'){
+			// 	    	let touch = e.touches[0] || e.changedTouches[0];
+			// 	    	let bcr = e.target.getBoundingClientRect();
+			// 			let offsetX = touch.clientX - bcr.left;
+			// 			let offsetY = touch.clientY - bcr.top;
+						
+			// 			let zoomer = e.currentTarget;
+			// 			x = offsetX/zoomer.offsetWidth*100;
+			// 			y = offsetY/zoomer.offsetHeight*100;
+			// 			zoomer.style.backgroundPosition = x + '% ' + y + '%';
+			// 	    } else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover'|| e.type=='mouseout' || e.type=='mouseenter' || e.type=='mouseleave') {
+			// 			let zoomer = e.currentTarget;
+			// 			e.offsetX ? offsetX = e.offsetX : offsetX = e.touches[0].pageX;
+			// 			e.offsetY ? offsetY = e.offsetY : offsetY = e.touches[0].pageY;
+			// 			x = offsetX/zoomer.offsetWidth*100;
+			// 			y = offsetY/zoomer.offsetHeight*100;
+			// 			zoomer.style.backgroundPosition = x + '% ' + y + '%';
+			// 	    }
+			// 	}
+			// };
 
-        	lib.unlockScroll = () => {
-        		document.body.classList.remove("lock-screen");
-        	};
+   //      	lib.image = {
+			// 	zoom: (imageElement, resultElement, lens, hideElement) => {
+			// 		let img, result, cx, cy;
+			// 		img = imageElement;
+			// 		result = resultElement;
+			// 		cx = result.offsetWidth / lens.offsetWidth;
+			// 		cy = result.offsetHeight / lens.offsetHeight;
+
+			// 		if(hideElement){ hideElement.style.display = "none"; }
+
+			// 		result.style.backgroundImage = "url('" + img.src + "')";
+			// 		result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+			// 		lens.addEventListener("mousemove", moveLens);
+			// 		img.addEventListener("mousemove", moveLens);
+			// 		lens.addEventListener("touchmove", moveLens);
+			// 		img.addEventListener("touchmove", moveLens);
+
+			// 		function getCursorPos (e) {
+			// 			let a, x = 0, y = 0;
+			// 			e = e || window.event;
+			// 			a = img.getBoundingClientRect();
+			// 			x = e.pageX - a.left;
+			// 			y = e.pageY - a.top;
+			// 			x = x - window.pageXOffset;
+			// 			y = y - window.pageYOffset;
+			// 			return {x : x, y : y};
+			// 		};
+
+			// 		function moveLens (e) {
+			// 			let pos, x, y;
+			// 			e.preventDefault();
+			// 			pos = getCursorPos(e);
+			// 			x = pos.x - (lens.offsetWidth / 2);
+			// 			y = pos.y - (lens.offsetHeight / 2);
+			// 			if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+			// 			if (x < 0) {x = 0;}
+			// 			if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+			// 			if (y < 0) {y = 0;}
+			// 			lens.style.left = x + "px";
+			// 			lens.style.top = y + "px";
+			// 			result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+			// 		};
+			// 	}
+			// };
         </script>
 	</footer>
 </html>
