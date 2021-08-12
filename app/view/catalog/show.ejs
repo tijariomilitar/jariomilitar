@@ -78,30 +78,6 @@
         <script>
         	lib.carousel.render("product-carousel");
 
-        	lib.image = {
-				zoom: (e) => {
-				    if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel'){
-				    	let touch = e.touches[0] || e.changedTouches[0];
-				    	let bcr = e.target.getBoundingClientRect();
-						let offsetX = touch.clientX - bcr.left;
-        				let offsetY = touch.clientY - bcr.top;
-
-						let zoomer = e.currentTarget;
-						x = offsetX/zoomer.offsetWidth*100;
-						y = offsetY/zoomer.offsetHeight*100;
-						zoomer.style.backgroundPosition = x + '% ' + y + '%';
-				    } else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover'|| e.type=='mouseout' || e.type=='mouseenter' || e.type=='mouseleave') {
-						let zoomer = e.currentTarget;
-						e.offsetX ? offsetX = e.offsetX : offsetX = e.touches[0].pageX;
-						e.offsetY ? offsetY = e.offsetY : offsetY = e.touches[0].pageY;
-						x = offsetX/zoomer.offsetWidth*100;
-						y = offsetY/zoomer.offsetHeight*100;
-						zoomer.style.backgroundPosition = x + '% ' + y + '%';
-				    }
-
-				}
-			};
-
         	lib.lockScroll = () => {
         		document.body.classList.add("lock-screen");
         	};
