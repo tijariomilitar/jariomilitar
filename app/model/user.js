@@ -17,7 +17,6 @@ User.save = (user) => {
         +user.name+"', '"
         +user.email+"', '"
         +user.password+"')";
-    console.log(query);
     return db(query);
 };
 

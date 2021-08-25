@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const lib = require('../../config/lib');
+const lib = require('jarmlib');
 
 const homeController = require("../controller/home");
 
-router.get("/", lib.routeToHttps, homeController.index);
+router.get("/", lib.route.toHttps, homeController.index);
 
 router.get("/login", homeController.login);
 router.get("/signup", homeController.signup);
