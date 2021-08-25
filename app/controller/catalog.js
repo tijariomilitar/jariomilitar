@@ -9,6 +9,22 @@ const catalogController = {
 		const productColors = await Product.colorList();
 		res.render('catalog/index', { productColors: productColors });
 	},
+	retail: async (req, res) => {
+		const productColors = await Product.colorList();
+		res.render('catalog/retail', { productColors: productColors });
+	},
+	wholesale: async (req, res) => {
+		const productColors = await Product.colorList();
+		res.render('catalog/wholesale', { productColors: productColors });
+	},
+	agent: async (req, res) => {
+		const productColors = await Product.colorList();
+		res.render('catalog/agent', { productColors: productColors });
+	},
+	upsell: async (req, res) => {
+		const productColors = await Product.colorList();
+		res.render('catalog/upsell', { productColors: productColors });
+	},
 	filter: async (req, res) => {
 		// if(!await userController.verifyAccess(req, res, ['adm','adm-man','adm-ass','adm-aud','pro-man','log-pac','COR-GER'])){
 		// 	return res.send({ unauthorized: "Você não tem permissão para acessar!" });
