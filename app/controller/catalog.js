@@ -34,6 +34,7 @@ const catalogController = {
 		product.code = req.body.product.code;
 		product.name = req.body.product.name;
 		product.color = req.body.product.color;
+		product.brand = req.body.product.brand;
 		product.price_category_id = req.body.product.price_category_id;
 
 		let product_props = ["product.id","product.code","product.name","product.color","product.size","product.image"];
@@ -45,6 +46,7 @@ const catalogController = {
 		lib.Query.fillParam("product.code", product.code, product_params);
 		lib.Query.fillParam("product.name", product.name, product_params);
 		lib.Query.fillParam("product.color", product.color, product_strict_params);
+		lib.Query.fillParam("product.brand", product.brand, product_params);
 		lib.Query.fillParam("product.status", "Disponível", product_strict_params);
 
 		let package_props = ["product_package.id","product_package.code","product_package.name","product_package.color","product_package.image"];
@@ -56,6 +58,7 @@ const catalogController = {
 		lib.Query.fillParam("product_package.code", product.code, package_params);
 		lib.Query.fillParam("product_package.name", product.name, package_params);
 		lib.Query.fillParam("product_package.color", product.color, package_strict_params);
+		lib.Query.fillParam("product_package.brand", product.brand, package_params);
 		lib.Query.fillParam("product_package.status", "Disponível", package_strict_params);
 		
 		if(product.price_category_id && product.price_category_id > 0){

@@ -9,6 +9,7 @@ if(Catalog.controller.filter){
 			code: event.target.elements.namedItem("code").value,
 			name: event.target.elements.namedItem("name").value,
 			color: event.target.elements.namedItem("color").value,
+			brand: "J.A Rio Militar",
 			price_category_id: event.target.elements.namedItem("price-category-id").value
 		};
 
