@@ -3,15 +3,6 @@ const lib = require("jarmlib");
 
 const catalogController = require('../controller/catalog');
 
-lib.route.toHttps = function(req, res, next) {
-	if ((req.headers["x-forwarded-proto"] || "").endsWith("http")){
-		console.log(`https://${req.hostname}${req.originalUrl}`);
-        res.redirect(`https://${req.hostname}${req.originalUrl}`);
-    } else {
-        next();
-    }
-};
-
 router.get("/", lib.route.toHttps, catalogController.index);
 router.get("/varejo", lib.route.toHttps, catalogController.retail);
 router.get("/atacado", lib.route.toHttps, catalogController.wholesale);
