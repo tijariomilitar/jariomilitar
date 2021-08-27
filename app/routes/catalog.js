@@ -5,8 +5,8 @@ const catalogController = require('../controller/catalog');
 
 lib.route.toHttps = function(req, res, next) {
 	if ((req.headers["x-forwarded-proto"] || "").endsWith("http")){
-		console.log(req);
-        res.redirect(`https://${req.hostname}${req.url}`);
+		console.log(`https://${req.hostname}${req.originalUrl}`);
+        res.redirect(`https://${req.hostname}${req.originalUrl}`);
     } else {
         next();
     }
