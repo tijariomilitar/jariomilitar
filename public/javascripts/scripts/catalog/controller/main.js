@@ -27,7 +27,7 @@ if(Catalog.controller.filter){
 
 		document.getElementById("catalog-product-show-box").style.display = "none";
 
-		const pagination = { pageSize: 21, page: 0};
+		const pagination = { pageSize: 30, page: 0};
 		(function(){ lib.carousel.execute("catalog-filter-box", Catalog.view.filter, catalog_products, pagination); }());
 
 		closeNav();

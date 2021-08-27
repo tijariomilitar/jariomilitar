@@ -4,6 +4,16 @@
         <meta name="description" content="JA Rio Militar, melhor custo benefício em equipamentos militares. Conheça nossos produtos e seja representante em sua cidade da marca que mais cresce no Brasil. Produção 100% nacional.">
 
         <style type="text/css">
+        	:root {
+				--title-soft: FreesiaUPC;
+				--theme-explicit-color: "#96a28b";
+				--theme-background-color: #f5f5f5;
+			}
+
+			.theme-header {
+				background-color: #fff;
+			}
+
 			.carousel-btn-1 {
 				transition: all 0.7s ease 0s;
 			}
@@ -14,26 +24,40 @@
 		</style>
 	</head>
 	<body>
-		<header>
-			<img class="width-150 opacity-hover-08 pointer" onclick="window.location.href='/catalogo/representantes'" src="/images/favicon/favicon-black.png">
+		<header class="theme-header container">
+			<div class="mobile-box b3">
+				<img class="width-100 opacity-out-08 pointer" onclick="window.location.href='/catalogo/representantes'" src="/images/favicon/favicon-black.png">
+			</div>
+			<div class="mobile-box b2-3 container center">
+				<div class="right container">
+					<div class="mobile-box georgia em08 bold center padding-5 margin-left-15 opacity-out-07 pointer">Login</div>
+					<div class="mobile-box padding-5 margin-left-15">
+						<img class="right width-30 opacity-out-07 pointer" onclick="lib.openExternalLink('instagram.com/jariomilitar')" src="/images/icon/bw-instagram.png">
+					</div>
+					<div class="mobile-box padding-5 margin-left-15 margin-right-10">
+						<img class='right width-30 opacity-out-07 pointer' src='/images/icon/menu.png' onclick="openNav()">
+					</div>
+				</div>
+			</div>
 		</header>
+
+
         <% include ./../partials/nav %>
 		<section>
 			</div>
 			<div class="container">
-                <div class="box b1 ground padding-10 margin-top-10 shadow">
-                	<div class="box b1 underline font-12 avant-garde center bold">Catálogo de produtos</div>
-					<form id="catalog-filter-form" class="box b1 container">
-						<input type="text" name="code" class="mobile-box b6 input-generic margin-top-5 center bold" placeholder="Cód" autocomplete="off">
-						<input type="text" name="name" class="mobile-box b2 input-generic margin-top-5 center bold" placeholder="Nome" autocomplete="off">
-						<select name="color" class="mobile-box b6 input-generic margin-top-5 center bold" style="color:#3c3c3c;" name="color">
+                <div class="box b1 ground padding-10 margin-top-10 border">
+					<form id="catalog-filter-form" class="box b1 container h-center">
+						<input type="text" name="code" class="mobile-box b6 input-generic margin-top-5 center bold" style="display:none;" placeholder="Cód" autocomplete="off">
+						<input type="text" name="name" class="mobile-box b2 georgia border-bottom height-30 margin-top-5 center bold" placeholder="O que você produra?" autocomplete="off">
+						<select name="color" class="mobile-box b6 georgia border-bottom height-30 margin-top-5 center bold" style="color:#3c3c3c;" name="color">
 							<option value="">Cor</option>
 							<% for(i in productColors){ %>
 								<option value="<%= productColors[i].shortcut %>"><%= productColors[i].name %></option>
 							<% } %>
 						</select>
 						<input type="number" name="price-category-id" value='3' hidden>
-						<input type="submit" name="submit" class="mobile-box b6 submit-generic margin-top-5 bold" style="color:#3c3c3c;" value="Filtrar">
+						<button type="submit" name="submit" class="mobile-box noborder"><img src="/images/icon/search.png" class="size-30 opacity-out-08 pointer"></button>
 					</form>
 				</div>
 				
