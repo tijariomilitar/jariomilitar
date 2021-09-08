@@ -6,16 +6,16 @@ Catalog.package.view.show = (package) => {
 	html += "<div class='box b1 container'>";
 	if(!package.images.length){
 		html += "<div data-js='package-carousel' class='box b1 ground margin-top-15 center display-none display-block' style='background-image: url(/images/product/no-product.png)'>";
-			html += "<img class='catalog-image' src='/images/product/no-product.png'>";		
+			html += "<img class='image-box' src='/images/product/no-product.png'>";		
 		html += "</div>";
 	} else {
 		html += "<div data-js='package-carousel' class='box b1 ground margin-top-15 display-none display-block'>";
-			html += "<div class='center relative'><img class='catalog-image' src='"+package.images[0].url+"'></div>";
+			html += "<div class='center relative'><img class='image-box' src='"+package.images[0].url+"'></div>";
 		html += "</div>";
 		for(let i in package.images){
 			if(i > 0){
 				html += "<div data-js='package-carousel' class='box b1 ground margin-top-15 display-none'>";
-					html += "<div class='center relative'><img class='catalog-image center' src='"+package.images[i].url+"'></div>";
+					html += "<div class='center relative'><img class='image-box center' src='"+package.images[i].url+"'></div>";
 				html += "</div>";
 			}
 		}

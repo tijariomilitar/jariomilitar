@@ -6,16 +6,16 @@ Catalog.product.view.show = (product) => {
 	html += "<div class='box b1 container'>";
 	if(!product.images.length){
 		html += "<div data-js='product-carousel' class='box b1 ground margin-top-15 center display-none display-block' style='background-image: url(/images/product/no-product.png)'>";
-			html += "<img class='catalog-image' src='/images/product/no-product.png'>";		
+			html += "<img class='image-box' src='/images/product/no-product.png'>";		
 		html += "</div>";
 	} else {
 		html += "<div data-js='product-carousel' class='box b1 ground margin-top-15 display-none display-block'>";
-			html += "<div class='center relative'><img class='catalog-image' src='"+product.images[0].url+"'></div>";
+			html += "<div class='center relative'><img class='image-box' src='"+product.images[0].url+"'></div>";
 		html += "</div>";
 		for(let i in product.images){
 			if(i > 0){
 				html += "<div data-js='product-carousel' class='box b1 ground margin-top-15 display-none'>";
-					html += "<div class='center relative'><img class='catalog-image center' src='"+product.images[i].url+"'></div>";
+					html += "<div class='center relative'><img class='image-box center' src='"+product.images[i].url+"'></div>";
 				html += "</div>";
 			}
 		}
