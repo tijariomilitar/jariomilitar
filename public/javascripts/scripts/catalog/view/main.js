@@ -5,9 +5,9 @@ Catalog.view.filter = (products, pagination) => {
 	if(products.length){
 		for (let i = pagination.page * pagination.pageSize; i < products.length && i < (pagination.page + 1) * pagination.pageSize; i++){
 			if(!products[i].pack){
-				html += "<div class='box b5 container ground margin-top-10 padding-10 pointer opacity-out-09' onclick='Catalog.product.controller.show(`"+products[i].id+"`, `"+products[i].category_id+"`)'>";
+				html += "<div class='box b5 container ground margin-top-10 padding-10 pointer shadow-2-hover' onclick='Catalog.product.controller.show(`"+products[i].id+"`, `"+products[i].category_id+"`)'>";
 			} else {
-				html += "<div class='box b5 container ground margin-top-10 padding-10 pointer opacity-out-09' onclick='Catalog.package.controller.show(`"+products[i].id+"`, `"+products[i].category_id+"`)'>";
+				html += "<div class='box b5 container ground margin-top-10 padding-10 pointer shadow-2-hover' onclick='Catalog.package.controller.show(`"+products[i].id+"`, `"+products[i].category_id+"`)'>";
 			};
 			if(products[i].image){
 				html += "<div class='box b1'><img class='image-card' src='"+products[i].image+"' alt=''/></div>";

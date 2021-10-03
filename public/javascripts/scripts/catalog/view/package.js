@@ -10,13 +10,19 @@ Catalog.package.view.show = (package) => {
 		html += "</div>";
 	} else {
 		html += "<div data-js='package-carousel' class='box b1 ground margin-top-15 display-none display-block'>";
-			html += "<div class='center relative'><img class='image-box' src='"+package.images[0].url+"'></div>";
+			// html += "<div class='center relative'><img class='image-box' src='"+package.images[0].url+"'></div>";
+			html += "<figure class='box b2 zoom center relative' onmousemove='lib.image.zoom(event)' style='background-image: url("+package.images[0].url+")'>";
+			  html += "<img class='image-fit center' src='"+package.images[0].url+"' />";
+			html += "</figure>";
 		html += "</div>";
 		for(let i in package.images){
 			if(i > 0){
 				html += "<div data-js='package-carousel' class='box b1 ground margin-top-15 display-none'>";
-					html += "<div class='center relative'><img class='image-box center' src='"+package.images[i].url+"'></div>";
-				html += "</div>";
+					// html += "<div class='center relative'><img class='image-box center' src='"+package.images[i].url+"'></div>";
+					html += "<figure class='box b2 zoom center relative' onmousemove='lib.image.zoom(event)' style='background-image: url("+package.images[i].url+")'>";
+					  html += "<img class='image-fit center' src='"+package.images[i].url+"' />";
+					html += "</figure>";
+				html += '</div>';
 			}
 		}
 		html += "<div id='package-carousel-navigation' class='box b1 ground container padding-10 center'>";
@@ -28,6 +34,7 @@ Catalog.package.view.show = (package) => {
 	}
 	html += "</div>";
 
+
 	document.getElementById("catalog-product-show-div").innerHTML = html;
 	document.getElementById("catalog-product-show-box").style.display = "";
 
@@ -36,6 +43,10 @@ Catalog.package.view.show = (package) => {
 	if(package.price){
 		html += "<div class='box b1 avant-garde em25 italic center padding-10 bold' style='color:#467846;'>R$"+package.price+"</div>";
 	}
+
+	if(package.products){
+		package.products = lib.sort(package.products, 'code');
+	};
 
 	html += "<div class='box b1 container'>";
 	if(package.products){
