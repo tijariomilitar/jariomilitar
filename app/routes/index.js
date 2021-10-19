@@ -4,6 +4,7 @@ const lib = require('jarmlib');
 const homeController = require("../controller/home");
 
 router.get("/", lib.route.toHttps, homeController.index);
+router.get("/info", lib.route.toHttps, homeController.info);
 
 router.get("/login", homeController.login);
 router.get("/signup", homeController.signup);
