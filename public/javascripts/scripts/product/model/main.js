@@ -42,3 +42,14 @@ Product.delete = async (id) => {
 	
 	return true;
 };
+
+Product.color = {};
+
+Product.color.list = async () => {
+	let response = await fetch("/product/colorList");
+	response = await response.json();
+	
+	if(API.verifyResponse(response)){ return false };
+	
+	return response.colors;
+};

@@ -198,13 +198,9 @@ const productController = {
 		}
 	},
 	colorList: async (req, res) => {
-		// if(!await userController.verifyAccess(req, res, ['adm','man','n/a'])){
-		// 	return res.send({ unauthorized: "Você não tem permissão para realizar esta ação!" });
-		// };
-	
 		try {
 			const colors = await Product.colorList();
-			res.send(colors);
+			res.send({colors});
 		} catch (err) {
 			console.log(err);
 			res.send({ msg: "Ocorreu um erro ao listar as cores, favor contatar o suporte." });
