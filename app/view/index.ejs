@@ -1,279 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>JA Rio Militar</title>
+	<title>Esquenta Blackout J.A Rio Militar</title>
+	<link rel="icon" href="https://images.tcdn.com.br/img/img_prod/698194/1632754311_favicon.ico?617bdd2ab7355" type="image/x-icon">
+	<style type="text/css">
+		.margin-5 { margin: 5px; }		
+		.margin-10 { margin: 10px; }
+
+		.b3tob2 { width: 32.33%; margin-left: 0.5%; margin-right: 0.5%; }
+		@media (max-width: 800px) {
+			.b3tob2 { width: 49%; margin-left: 0.5%; margin-right: 0.5%; }
+		}
+	</style>
 </head>
-<body>
+<body style="background-color: #0b0a08">
 	<% include ./partials/head %>
-	<header class="container">
-		<div class="mobile-box a6">
-			<img class="width-150 opacity-hover-08 pointer" onclick="window.location.href='/'" src="/images/favicon/favicon-black.png">
-		</div>
-	</header>
+	<section class="container">
+		<div class="mobile-box a1 center"><img class="box a1" src="images/blackout/logo3.png"></div>
+	</section>
+
+	<section class="container radius-5 padding-10 margin-10" style="background-color:#ffff">
+		<div class="box b1 center"><img class="size-40" src="images/blackout/calendar.png"></div>
+		<p class="bold margin-top-5 center">Dos dias 29 a 31 de outubro, teremos as promoções e ofertas do ESQUENTA BLACKOUT! Não perca!</p>
+	</section>
+	<p class="box a1 padding-11 margin-bottom-10 center" style="color:white">Se liga nas ofertas 👇</p>
+
+	<section id="catalog-products" class="container"></section>
 
 	<div class="box a1 container center" style="background-color: #0b0a08">
-		<div class="box a1 center"><img class="size-500" src="images/blackout/logo3.png"></div>
-		<!-- <p class="box a1 padding-10 em11" style="color:white">Dos dias 27 a 31 de outubro, aproveite as promoções do ESQUENTA BLACKOUT!</p> -->
-		<div class="box a1 container center padding-10">
-			<div class="box b1 padding-10 radius-5" style="background-color:#ffff">
-				<img class="size-40" src="images/blackout/calendar.png">
-				<p class="bold margin-top-5">Dos dias 29 a 31 de outubro, teremos as promoções e ofertas do ESQUENTA BLACKOUT! Não perca!</p>
-			</div>
-		</div>
-		<p class="box a1 padding-11 margin-bottom-10" style="color:white">Se liga nas ofertas 👇</p>
-		<!-- produto 1 -->
-		<div class="mobile-box b2 container center padding-10 radius-5" style="background-color: white">
-			<div class="box a1 container">
-				<div class="container right">
-					<img class="center size-25" src="images/blackout/discount.png">
-					<p class="center bold padding-5" style="color:#029e4c">75% OFF</p>
-				</div>
-				<div class="box a1 container"><img class="box a1 size-300 center" src="image/product/bandoleira.png"></div>
-			</div>
-			<div class="box b1 padding-10 radius-5">
-				<p class="em09 bold margin-top-5" style="color:black">Bandoleira 1 ponta</p>
-				<p class="em08 margin-top-5" style="color:black">Parcele em até 12x s/ juros</p>
-				<p class="bold border padding-5 margin-top-5 em12">R$12,49</p>
-				<div class="box b1 container radius-5 height-40 pointer margin-top-5" style="background-color:#029e4c">
-					<p class="center" style="color:white">Compre agora!</p>
-				</div>
-			</div>
-		</div>
-		<!-- produto 2 -->
-		<div class="mobile-box b2 container center padding-10 radius-5" style="background-color: white">
-			<div class="box a1 container">
-				<div class="container right">
-					<img class="center size-25" src="images/blackout/discount.png">
-					<p class="center bold padding-5" style="color:#029e4c">70% OFF</p>
-				</div>
-				<div class="box a1 container"><img class="box a1 size-300 center" src="image/product/bornal.png"></div>
-			</div>
-			<div class="box b1 padding-10 radius-5">
-				<p class="em09 bold margin-top-5" style="color:black">Bornal Tático + Carr PST</p>
-				<p class="em08 margin-top-5" style="color:black">Parcele em até 12x s/ juros</p>
-				<p class="bold border padding-5 margin-top-5 em12">R$14,99</p>
-				<div class="box b1 container radius-5 height-40 pointer margin-top-5" style="background-color:#029e4c">
-					<p class="center" style="color:white">Compre agora!</p>
-				</div>
-			</div>
-		</div>
-		<!-- produto 3 -->
-		<div class="mobile-box b2 container center padding-10 radius-5 margin-top-10" style="background-color: white">
-			<div class="box a1 container">
-				<div class="container right">
-					<img class="center size-25" src="images/blackout/discount.png">
-					<p class="center bold padding-5 em09" style="color:#029e4c">70% OFF</p>
-				</div>
-				<div class="box a1 container"><img class="box a1" src="image/product/cinto.png"></div>
-			</div>
-			<div class="box b1 padding-10 radius-5">
-				<p class="em09 bold margin-top-5" style="color:black">Cinto Modular</p>
-				<p class="em08 margin-top-5" style="color:black">Parcele em até 12x s/ juros</p>
-				<p class="bold border padding-5 margin-top-5 em12">R$23,99</p>
-				<div class="box b1 container radius-5 height-40 pointer margin-top-5" style="background-color:#029e4c">
-					<p class="center" style="color:white">Compre agora!</p>
-				</div>
-			</div>
-		</div>
-		<!-- produto 4 -->
-		<div class="mobile-box b2 container center padding-10 radius-5 margin-top-10" style="background-color: white">
-			<div class="box a1 container">
-				<div class="container right">
-					<img class="center size-25" src="images/blackout/discount.png">
-					<p class="center bold padding-5 em09" style="color:#029e4c">70% OFF</p>
-				</div>
-				<div class="box a1 container"><img class="box a1" src="image/product/dropmagp.png"></div>
-			</div>
-			<div class="box b1 padding-10 radius-5">
-				<p class="em09 bold margin-top-5" style="color:black">Drop Mag Modular</p>
-				<p class="em08 margin-top-5" style="color:black">Parcele em até 12x s/ juros</p>
-				<p class="bold border padding-5 margin-top-5 em12">R$17,99</p>
-				<div class="box b1 container radius-5 height-40 pointer margin-top-5" style="background-color:#029e4c">
-					<p class="center" style="color:white">Compre agora!</p>
-				</div>
-			</div>
-		</div>
-		<!-- produto 5 -->
-		<div class="mobile-box b2 container center padding-10 radius-5 margin-top-10" style="background-color: white">
-			<div class="box a1 container">
-				<div class="container right">
-					<img class="center size-25" src="images/blackout/discount.png">
-					<p class="center bold padding-5 em09" style="color:#029e4c">70% OFF</p>
-				</div>
-				<div class="box a1 container"><img class="box a1" src="image/product/cinto1.png"></div>
-			</div>
-			<div class="box b1 padding-10 radius-5">
-				<p class="em09 bold margin-top-5" style="color:black">Cinto Tático</p>
-				<p class="em08 margin-top-5" style="color:black">Parcele em até 12x s/ juros</p>
-				<p class="bold border padding-5 margin-top-5 em12">R$11,99</p>
-				<div class="box b1 container radius-5 height-40 pointer margin-top-5" style="background-color:#029e4c">
-					<p class="center" style="color:white">Compre agora!</p>
-				</div>
-			</div>
-		</div>
-		<!-- produto 6 -->
-		<div class="mobile-box b2 container center padding-10 radius-5 margin-top-10" style="background-color: white">
-			<div class="box a1 container">
-				<p class="center bold em09" style="color:#d75413">LANÇAMENTO</p>
-				<div class="container right">
-					<img class="center size-25" src="images/blackout/discount.png">
-					<p class="center bold padding-5 em09" style="color:#029e4c">70% OFF</p>
-				</div>
-				<div class="box a1 container"><img class="box a1" src="image/product/coldre cueca.png"></div>
-			</div>
-			<div class="box b1 padding-10 radius-5">
-				<p class="em09 bold margin-top-5" style="color:black">Coldre Cueca</p>
-				<p class="em08 margin-top-5" style="color:black">Parcele em até 12x s/ juros</p>
-				<p class="bold border padding-5 margin-top-5 em12">R$7,50</p>
-				<div class="box b1 container radius-5 height-40 pointer margin-top-5" style="background-color:#029e4c">
-					<p class="center" style="color:white">Compre agora!</p>
-				</div>
-			</div>
-		</div>
-		<!-- produto 7 -->
-		<div class="mobile-box b2 container center padding-10 radius-5 margin-top-10" style="background-color: white">
-			<div class="box a1 container">
-				<div class="container right">
-					<img class="center size-25" src="images/blackout/discount.png">
-					<p class="center bold padding-5 em09" style="color:#029e4c">70% OFF</p>
-				</div>
-				<div class="box a1 container"><img class="box a1" src="image/product/bornal1.png"></div>
-			</div>
-			<div class="box b1 padding-10 radius-5">
-				<p class="em09 bold margin-top-5" style="color:black">Bornal 3 PST</p>
-				<p class="em08 margin-top-5" style="color:black">Parcele em até 12x s/ juros</p>
-				<p class="bold border padding-5 margin-top-5 em12">R$14,99</p>
-				<div class="box b1 container radius-5 height-40 pointer margin-top-5" style="background-color:#029e4c">
-					<p class="center" style="color:white">Compre agora!</p>
-				</div>
-			</div>
-		</div>
-		<!-- produto 8 -->
-		<div class="mobile-box b2 container center padding-10 radius-5 margin-top-10" style="background-color: white">
-			<div class="box a1 container">
-				<div class="container right">
-					<img class="center size-25" src="images/blackout/discount.png">
-					<p class="center bold padding-5 em09" style="color:#029e4c">70% OFF</p>
-				</div>
-				<div class="box a1 container"><img class="box a1" src="image/product/bornal2.png"></div>
-			</div>
-			<div class="box b1 padding-10 radius-5">
-				<p class="em09 bold margin-top-5" style="color:black">Bornal Modular</p>
-				<p class="em08 margin-top-5" style="color:black">Parcele em até 12x s/ juros</p>
-				<p class="bold border padding-5 margin-top-5 em12">R$20,99</p>
-				<div class="box b1 container radius-5 height-40 pointer margin-top-5" style="background-color:#029e4c">
-					<p class="center" style="color:white">Compre agora!</p>
-				</div>
-			</div>
-		</div>
-		<!-- produto 9 -->
-		<div class="mobile-box b2 container center padding-10 radius-5 margin-top-10" style="background-color: white">
-			<div class="box a1 container">
-				<div class="container right">
-					<img class="center size-25" src="images/blackout/discount.png">
-					<p class="center bold padding-5 em09" style="color:#029e4c">50% OFF</p>
-				</div>
-				<div class="box a1 container"><img class="box a1" src="image/product/coldre1.png"></div>
-			</div>
-			<div class="box b1 padding-10 radius-5">
-				<p class="em09 bold margin-top-5" style="color:black">Coldre Robocop</p>
-				<p class="em08 margin-top-5" style="color:black">Parcele em até 12x s/ juros</p>
-				<p class="bold border padding-5 margin-top-5 em12">R$11,99</p>
-				<div class="box b1 container radius-5 height-40 pointer margin-top-5" style="background-color:#029e4c">
-					<p class="center" style="color:white">Compre agora!</p>
-				</div>
-			</div>
-		</div>
-		<!-- produto 10 -->
-		<div class="mobile-box b2 container center padding-10 radius-5 margin-top-10" style="background-color: white">
-			<div class="box a1 container">
-				<div class="container right">
-					<img class="center size-25" src="images/blackout/discount.png">
-					<p class="center bold padding-5 em09" style="color:#029e4c">80% OFF</p>
-				</div>
-				<div class="box a1 container"><img class="box a1" src="image/product/minicoldre.png"></div>
-			</div>
-			<div class="box b1 padding-10 radius-5">
-				<p class="em09 bold margin-top-5" style="color:black">Mini Coldre</p>
-				<p class="em08 margin-top-5" style="color:black">Parcele em até 12x s/ juros</p>
-				<p class="bold border padding-5 margin-top-5 em12">R$16,99</p>
-				<div class="box b1 container radius-5 height-40 pointer margin-top-5" style="background-color:#029e4c">
-					<p class="center" style="color:white">Compre agora!</p>
-				</div>
-			</div>
-		</div>
-		<!-- produto 11 -->
-		<div class="mobile-box b2 container center padding-10 radius-5 margin-top-10" style="background-color: white">
-			<div class="box a1 container">
-				<div class="container right">
-					<img class="center size-25" src="images/blackout/discount.png">
-					<p class="center bold padding-5 em09" style="color:#029e4c">70% OFF</p>
-				</div>
-				<div class="box a1 container"><img class="box a1" src="image/product/coldreuni.png"></div>
-			</div>
-			<div class="box b1 padding-10 radius-5">
-				<p class="em09 bold margin-top-5" style="color:black">Coldre Universal</p>
-				<p class="em08 margin-top-5" style="color:black">Parcele em até 12x s/ juros</p>
-				<p class="bold border padding-5 margin-top-5 em12">R$11,99</p>
-				<div class="box b1 container radius-5 height-40 pointer margin-top-5" style="background-color:#029e4c">
-					<p class="center" style="color:white">Compre agora!</p>
-				</div>
-			</div>
-		</div>
-		<!-- produto 12 -->
-		<div class="mobile-box b2 container center padding-10 radius-5 margin-top-10" style="background-color: white">
-			<div class="box a1 container">
-				<div class="container right">
-					<img class="center size-25" src="images/blackout/discount.png">
-					<p class="center bold padding-5 em09" style="color:#029e4c">70% OFF</p>
-				</div>
-				<div class="box a1 container"><img class="box a1" src="image/product/coldremodular.png"></div>
-			</div>
-			<div class="box b1 padding-10 radius-5">
-				<p class="em09 bold margin-top-5" style="color:black">Coldre Modular</p>
-				<p class="em08 margin-top-5" style="color:black">Parcele em até 12x s/ juros</p>
-				<p class="bold border padding-5 margin-top-5 em12">R$7,50</p>
-				<div class="box b1 container radius-5 height-40 pointer margin-top-5" style="background-color:#029e4c">
-					<p class="center" style="color:white">Compre agora!</p>
-				</div>
-			</div>
-		</div>
-		<!-- produto 13 -->
-		<div class="mobile-box b2 container center padding-10 radius-5 margin-top-10" style="background-color: white">
-			<div class="box a1 container">
-				<div class="container right">
-					<img class="center size-25" src="images/blackout/discount.png">
-					<p class="center bold padding-5 em09" style="color:#029e4c">70% OFF</p>
-				</div>
-				<div class="box a1 container"><img class="box a1" src="image/product/bolsap.png"></div>
-			</div>
-			<div class="box b1 padding-10 radius-5">
-				<p class="em09 bold margin-top-5" style="color:black">Bolsa Pequena Modular</p>
-				<p class="em08 margin-top-5" style="color:black">Parcele em até 12x s/ juros</p>
-				<p class="bold border padding-5 margin-top-5 em12">R$7,50</p>
-				<div class="box b1 container radius-5 height-40 pointer margin-top-5" style="background-color:#029e4c">
-					<p class="center" style="color:white">Compre agora!</p>
-				</div>
-			</div>
-		</div>
-		<!-- produto 14 -->
-		<div class="mobile-box b2 container center padding-10 radius-5 margin-top-10" style="background-color: white">
-			<div class="box a1 container">
-				<div class="container right">
-					<img class="center size-25" src="images/blackout/discount.png">
-					<p class="center bold padding-5 em09" style="color:#029e4c">60% OFF</p>
-				</div>
-				<div class="box a1 container"><img class="box a1" src="image/product/radio.png"></div>
-			</div>
-			<div class="box b1 padding-10 radius-5">
-				<p class="em09 bold margin-top-5" style="color:black">Porta Rádio Modular</p>
-				<p class="em08 margin-top-5" style="color:black">Parcele em até 12x s/ juros</p>
-				<p class="bold border padding-5 margin-top-5 em12">R$7,99</p>
-				<div class="box b1 container radius-5 height-40 pointer margin-top-5" style="background-color:#029e4c">
-					<p class="center" style="color:white">Compre agora!</p>
-				</div>
-			</div>
-		</div>
 		<!-- frete grátis -->
 		<div class="mobile-box a1 container center margin-top-10">
 			<div class="box a1 container padding-10" style="background-color:#029e4c;color:#ffff">
@@ -298,19 +52,60 @@
 				<p class="bold margin-top-5">Confira tudo sobre o Blackout no nosso Instagram!</p>
 			</div>
 		</div>
-		<!-- Regras do esquenta blackout -->
-		<div class="box a1 container em08 padding-10" style="color:#f4f3f4; text-align:left">
+	</div>
+</div>
+	<footer>
+		<div class="box a1 container em08 padding-10" style="background-color:#0b0a08;color:#f4f3f4; text-align:left">
 			<b>Regras e informações do Esquenta Blackout 2021:</b>
 			<p>As promoções antecedentes ao mês da Black Friday (novembro) estarão ativas a partir dia 29/10/2021 até o dia 31/10/2021.</p>
 			<p>As promoções serão ofertadas em links disponibilizados pela J.A Rio Militar, não sendo possível a compra com os valores visíveis nesta página em plataformas diferentes.</p>
-		</div>
-		<!-- Rodapé -->
+			<p>Não serão aceitas compras em atacado e/ou para revenda.</p>
+			<p>Todos os anúncios acima se referem a apenas UMA unidade do produto indicado na foto.</p>
+			<p>Promoções válidas enquanto durarem estoques.</p>
 		<p class="box b1 center padding-10" style="color:white">J.A Rio Militar 2021® Todos os direitos reservados</p>
-	</div>
+		</div>
+	</footer>
+	</body>
 
-</body>
-<footer>
-	
-</footer>
-  <% include ./partials/footer %>
+	<% include ./partials/footer %>
+
+	<script type="text/javascript">
+		// Parcele em até 12x s/ juros
+		const products = [
+			{ name: "Bandoleira 1 ponta", img: "https://http2.mlstatic.com/D_NQ_NP_894724-MLB48054397909_102021-O.webp", price: "12,49", discount: "75", link: "https://produto.mercadolivre.com.br/MLB-2070829693-bandoleira-tatica-1-ponto-ja-rio-militar-_JM" },
+			{ name: "Bornal Tático Porta carr. Fuzil", img: "https://http2.mlstatic.com/D_NQ_NP_2X_943558-MLB47060045647_082021-F.webp	", price: "14,99", discount: "70", link: "https://produto.mercadolivre.com.br/MLB-2070720386-bornal-tatico-com-porta-carregador-de-fuzil-ja-rio-militar-_JM" },
+			{ name: "Cinto Modular", img: "https://http2.mlstatic.com/D_NQ_NP_836058-MLB47121010849_082021-O.webp", price: "23,99", discount: "70", link: "https://produto.mercadolivre.com.br/MLB-2070780481-cinto-tatico-modular-operacional-airsoft-j-a-rio-militar-_JM" },
+			{ name: "Drop Mag Modular", img: "https://http2.mlstatic.com/D_NQ_NP_2X_820949-MLB47078307578_082021-F.webp", price: "17,99", discount: "70", link: "https://produto.mercadolivre.com.br/MLB-2070805256-drop-mag-modular-ja-rio-militar-_JM" },
+			{ name: "Cinto Tático", img: "https://http2.mlstatic.com/D_NQ_NP_2X_747721-MLB47148802770_082021-F.webp", price: "11,99", discount: "70", link: "https://produto.mercadolivre.com.br/MLB-2066692634-cinto-tatico-fivela-de-polimero-ja-rio-militar-_JM" },
+			{ name: "Coldre Cueca", img: "https://http2.mlstatic.com/D_NQ_NP_719150-MLB40375369703_012020-O.webp", price: "7,50", discount: "70", link: "https://produto.mercadolivre.com.br/MLB-2070832337-coldre-cueca-ja-rio-militar-_JM" },
+			{ name: "Bornal 3 PST", img: "https://http2.mlstatic.com/D_NQ_NP_2X_609721-MLB47007425769_082021-F.webp", price: "14,99", discount: "70", link: "https://produto.mercadolivre.com.br/MLB-2070839763-bornal-com-porta-carr-de-pistola-triplo-ja-rio-militar-_JM" },
+			{ name: "Bornal Modular", img: "https://http2.mlstatic.com/D_NQ_NP_2X_852351-MLB47092707315_082021-F.webp", price: "20,99", discount: "70", link: "https://produto.mercadolivre.com.br/MLB-2070805637-bornal-tatico-modular-de-perna-operacional-ja-rio-militar-_JM" },
+			{ name: "Coldre Robocop", img: "https://http2.mlstatic.com/D_NQ_NP_2X_758745-MLB46989780823_082021-F.webp", price: "11,99", discount: "70", link: "https://produto.mercadolivre.com.br/MLB-2070771970-coldre-de-perna-robocop-ja-rio-militar-_JM" },
+			{ name: "Mini Coldre", img: "https://http2.mlstatic.com/coldre-de-cinto-ja-rio-militar-D_NQ_NP_809649-MLB32782258915_112019-F.webp", price: "16,99", discount: "80", link: "https://produto.mercadolivre.com.br/MLB-2070795847-coldre-para-cinto-ja-rio-militar-_JM" },
+			{ name: "Coldre Universal de Perna", img: "https://http2.mlstatic.com/D_NQ_NP_673365-MLB47409975620_092021-O.webp", price: "11,99", discount: "70", link: "https://produto.mercadolivre.com.br/MLB-2070789822-coldre-de-perna-universal-ja-rio-militar-_JM" },
+			{ name: "Coldre Universal Modular", img: "https://http2.mlstatic.com/D_NQ_NP_672223-MLB48052335524_102021-O.webp", price: "7,50", discount: "70", link: "https://produto.mercadolivre.com.br/MLB-2070843234-coldre-modular-universal-ja-rio-militar-_JM" },
+			{ name: "Bolsa Pequena Modular", img: "https://http2.mlstatic.com/D_NQ_NP_2X_985600-MLB48052164815_102021-F.webp", price: "7,50", discount: "70", link: "https://produto.mercadolivre.com.br/MLB-2070791720-bolsa-pequena-modular-ja-rio-militar-_JM" },
+			{ name: "Porta Rádio Modular", img: "https://http2.mlstatic.com/D_NQ_NP_709518-MLB48052283429_102021-O.webp", price: "7,99", discount: "60", link: "https://produto.mercadolivre.com.br/MLB-2070784971-porta-radio-porta-ht-modular-_JM" }
+		];
+
+		let html = "";
+		for(let i = 0; i < products.length; i++){
+			html += "<div class='mobile-box b3tob2 container center padding-10 radius-5 margin-top-10' style='background-color: white'>";
+				html += "<div class='container right'>";
+					html += "<img class='center size-25' src='images/blackout/discount.png'>";
+					html += "<p class='center bold padding-5' style='color:#029e4c'>"+products[i].discount+"% OFF</p>";
+				html += "</div>";
+				html += "<div class='box a1 container'><img class='image-card' src='"+products[i].img+"' alt='"+products[i].name+"'></div>";
+				html += "<div class='box b1 padding-10 radius-5'>";
+					html += "<p class='em09 bold margin-top-5' style='color:black'>"+products[i].name+"</p>";
+					html += "<p class='em08 margin-top-5' style='color:black'>Parcele em até 12x s/ juros</p>";
+					html += "<p class='bold border padding-5 margin-top-5 em12'>R$"+products[i].price+"</p>";
+					html += "<div class='box b1 container radius-5 height-40 pointer margin-top-5' style='background-color:#029e4c' onClick='lib.openExternalLink(`"+products[i].link+"`)'>";
+						html += "<p class='center' style='color:white'>Compre agora!</p>";
+					html += "</div>";
+				html += "</div>";
+			html += "</div>";
+		};
+		document.getElementById("catalog-products").innerHTML = html;
+	</script>
 </html>
