@@ -66,23 +66,25 @@
 	</footer>
 	</body>
 
+	<% include ./../partials/footer %>
+
 	<script type="text/javascript">
 		// Parcele em até 12x s/ juros
 		const products = [
-			{ name: "Bandoleira 1 ponta", img: "https://http2.mlstatic.com/D_NQ_NP_894724-MLB48054397909_102021-O.webp", price: "12,49", discount: "75" },
-			{ name: "Bornal Tático + Carr PST", img: "https://http2.mlstatic.com/D_NQ_NP_2X_943558-MLB47060045647_082021-F.webp	", price: "14,99", discount: "70" },
-			{ name: "Cinto Modular", img: "https://http2.mlstatic.com/D_NQ_NP_836058-MLB47121010849_082021-O.webp", price: "23,99", discount: "70" },
-			{ name: "Drop Mag Modular", img: "https://http2.mlstatic.com/D_NQ_NP_2X_820949-MLB47078307578_082021-F.webp", price: "17,99", discount: "70" },
-			{ name: "Cinto Tático", img: "https://http2.mlstatic.com/D_NQ_NP_2X_747721-MLB47148802770_082021-F.webp", price: "11,99", discount: "70" },
-			{ name: "Coldre Cueca", img: "https://http2.mlstatic.com/D_NQ_NP_719150-MLB40375369703_012020-O.webp", price: "7,50", discount: "70" },
-			{ name: "Bornal 3 PST", img: "https://http2.mlstatic.com/D_NQ_NP_2X_609721-MLB47007425769_082021-F.webp", price: "14,99", discount: "70" },
-			{ name: "Bornal Modular", img: "https://http2.mlstatic.com/D_NQ_NP_2X_852351-MLB47092707315_082021-F.webp", price: "20,99", discount: "70" },
-			{ name: "Coldre Robocop", img: "https://http2.mlstatic.com/D_NQ_NP_2X_758745-MLB46989780823_082021-F.webp", price: "11,99", discount: "70" },
+			{ name: "Bandoleira 1 ponta", img: "https://http2.mlstatic.com/D_NQ_NP_894724-MLB48054397909_102021-O.webp", price: "12,49", discount: "75", link: "" },
+			{ name: "Bornal Tático + Carr PST", img: "https://http2.mlstatic.com/D_NQ_NP_2X_943558-MLB47060045647_082021-F.webp	", price: "14,99", discount: "70", link: "" },
+			{ name: "Cinto Modular", img: "https://http2.mlstatic.com/D_NQ_NP_836058-MLB47121010849_082021-O.webp", price: "23,99", discount: "70", link: "" },
+			{ name: "Drop Mag Modular", img: "https://http2.mlstatic.com/D_NQ_NP_2X_820949-MLB47078307578_082021-F.webp", price: "17,99", discount: "70", link: "" },
+			{ name: "Cinto Tático", img: "https://http2.mlstatic.com/D_NQ_NP_2X_747721-MLB47148802770_082021-F.webp", price: "11,99", discount: "70", link: "https://produto.mercadolivre.com.br/MLB-2066692634-cinto-tatico-fivela-de-polimero-ja-rio-militar-_JM" },
+			{ name: "Coldre Cueca", img: "https://http2.mlstatic.com/D_NQ_NP_719150-MLB40375369703_012020-O.webp", price: "7,50", discount: "70", link: "" },
+			{ name: "Bornal 3 PST", img: "https://http2.mlstatic.com/D_NQ_NP_2X_609721-MLB47007425769_082021-F.webp", price: "14,99", discount: "70", link: "" },
+			{ name: "Bornal Modular", img: "https://http2.mlstatic.com/D_NQ_NP_2X_852351-MLB47092707315_082021-F.webp", price: "20,99", discount: "70", link: "" },
+			{ name: "Coldre Robocop", img: "https://http2.mlstatic.com/D_NQ_NP_2X_758745-MLB46989780823_082021-F.webp", price: "11,99", discount: "70", link: "" },
 			{ name: "Mini Coldre", img: "https://http2.mlstatic.com/coldre-de-cinto-ja-rio-militar-D_NQ_NP_809649-MLB32782258915_112019-F.webp", price: "16,99", discount: "80" },
-			{ name: "Coldre Universal de Perna", img: "https://http2.mlstatic.com/D_NQ_NP_673365-MLB47409975620_092021-O.webp", price: "11,99", discount: "70" },
-			{ name: "Coldre Universal Modular", img: "https://http2.mlstatic.com/D_NQ_NP_672223-MLB48052335524_102021-O.webp", price: "7,50", discount: "70" },
-			{ name: "Bolsa Pequena Modular", img: "https://http2.mlstatic.com/D_NQ_NP_2X_985600-MLB48052164815_102021-F.webp", price: "7,50", discount: "70" },
-			{ name: "Porta Rádio Modular", img: "https://http2.mlstatic.com/D_NQ_NP_709518-MLB48052283429_102021-O.webp", price: "7,99", discount: "60" }
+			{ name: "Coldre Universal de Perna", img: "https://http2.mlstatic.com/D_NQ_NP_673365-MLB47409975620_092021-O.webp", price: "11,99", discount: "70", link: "" },
+			{ name: "Coldre Universal Modular", img: "https://http2.mlstatic.com/D_NQ_NP_672223-MLB48052335524_102021-O.webp", price: "7,50", discount: "70", link: "" },
+			{ name: "Bolsa Pequena Modular", img: "https://http2.mlstatic.com/D_NQ_NP_2X_985600-MLB48052164815_102021-F.webp", price: "7,50", discount: "70", link: "" },
+			{ name: "Porta Rádio Modular", img: "https://http2.mlstatic.com/D_NQ_NP_709518-MLB48052283429_102021-O.webp", price: "7,99", discount: "60", link: "" }
 		];
 
 		let html = "";
@@ -97,7 +99,7 @@
 					html += "<p class='em09 bold margin-top-5' style='color:black'>"+products[i].name+"</p>";
 					html += "<p class='em08 margin-top-5' style='color:black'>Parcele em até 12x s/ juros</p>";
 					html += "<p class='bold border padding-5 margin-top-5 em12'>R$"+products[i].price+"</p>";
-					html += "<div class='box b1 container radius-5 height-40 pointer margin-top-5' style='background-color:#029e4c'>";
+					html += "<div class='box b1 container radius-5 height-40 pointer margin-top-5' style='background-color:#029e4c' onClick='lib.openExternalLink(`"+products[i].link+"`)'>";
 						html += "<p class='center' style='color:white'>Compre agora!</p>";
 					html += "</div>";
 				html += "</div>";
