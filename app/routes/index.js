@@ -6,6 +6,7 @@ const landingPageController = require('../controller/landing_page');
 
 router.get("/", lib.route.toHttps, homeController.index);
 router.get("/info", lib.route.toHttps, homeController.info);
+router.get("/colete-numero-1", landingPageController.number_1);
 
 // router.get("/blackout", lib.route.toHttps, landingPageController.blackout);
 router.get("/lancamento-da-semana", lib.route.toHttps, landingPageController.lancamento_da_semana);

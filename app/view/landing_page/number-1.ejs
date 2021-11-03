@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Modelo de Design</title>
+	<link rel="stylesheet" type="text/css" href="https://jaframework.herokuapp.com/front-end/stylesheets/main.css">
+	<link rel="stylesheet" type="text/css" href="https://jaframework.herokuapp.com/front-end/stylesheets/elements.css">
+	<link rel="stylesheet" type="text/css" href="https://jaframework.herokuapp.com/front-end/stylesheets/visual.css">
+	<link rel="stylesheet" type="text/css" href="https://jaframework.herokuapp.com/front-end/stylesheets/dropdown.css">
+	<link rel="stylesheet" type="text/css" href="https://jaframework.herokuapp.com/front-end/stylesheets/sidenav.css">
+	<link rel="stylesheet" type="text/css" href="https://jaframework.herokuapp.com/front-end/stylesheets/actions.css">
+	<link rel="stylesheet" type="text/css" href="https://jaframework.herokuapp.com/front-end/stylesheets/size.css">
+	<link rel="stylesheet" type="text/css" href="https://jaframework.herokuapp.com/front-end/stylesheets/position.css">
+	<link rel="stylesheet" type="text/css" href="https://jaframework.herokuapp.com/front-end/stylesheets/image.css">
+	<link rel="stylesheet" type="text/css" href="https://jaframework.herokuapp.com/front-end/stylesheets/box.css">
+	<link rel="stylesheet" type="text/css" href="https://jaframework.herokuapp.com/front-end/stylesheets/responsivity.css">
+
+	<link rel="stylesheet" type="text/css" href="https://jaframework.herokuapp.com/front-end/stylesheets/fonts.css">
+
+	<link rel="stylesheet" type="text/css" href="css/style.css"> 
+</head>
+<body>
+	<% for(let i in products){ %>
+		<div class="box b1 container padding-5 border">
+			<div class="mobile-box b5"><%= products[i].id %></div>
+			<div class="mobile-box b2"><%= products[i].name %></div>
+			<div class="mobile-box b5"><%= products[i].color %></div>
+			<div class="mobile-box b5"><%= products[i].size %></div>
+		</div>
+	<% } %>
+</body>
+<footer>
+</footer>
+</html>
