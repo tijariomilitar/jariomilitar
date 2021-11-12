@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Modelo de Design</title>
+	<title>Esquenta Blackout</title>
+	<link rel="icon" href="https://images.tcdn.com.br/img/img_prod/698194/1632754311_favicon.ico?617bdd2ab7355" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="https://jaframework.herokuapp.com/front-end/stylesheets/main.css">
 	<link rel="stylesheet" type="text/css" href="https://jaframework.herokuapp.com/front-end/stylesheets/elements.css">
 	<link rel="stylesheet" type="text/css" href="https://jaframework.herokuapp.com/front-end/stylesheets/visual.css">
@@ -16,107 +17,121 @@
 
 	<link rel="stylesheet" type="text/css" href="https://jaframework.herokuapp.com/front-end/stylesheets/fonts.css">
 
-	<link rel="stylesheet" type="text/css" href="css/style.css"> 
+	<style>
+		.mySlides {display:none;}
+	</style>
 </head>
 <body>
-	<!-- cabeçalho -->
-   <div class="container"> 
-     	<div class="box a1 container height-100 header">
-     	<img class="box a1 center img-logo" src="/images/jariomilitar.png"> 
-        </div>
-   </div>
-
-<!-- banner -->
-<div class="container">
-	<img class="box a1" src="/images/SemTítulo-4.png">
-</div>
-
-<!-- régua de informações -->
-	<div class="container">
-		<div class="box b5 container margin-top-10">
-			<img class="box b4 center size-60" src="/images/24-hour-service.png">
-			<div class="box b3-4 container">
-				<div class="box b1 em13 impact padding-5">Atendimento 24h</div>
-				<div class="box b1 padding-5">Ligue agora mesmo</div>
+	<div class="box a1 container center" style="background-color:#0b0a08">
+		<!-- banner -->
+		<div class="box a1 center"><img class="size-500" src="images/icon/banner.jpg"></div>
+		<!-- Countdown -->
+		<div class="box a1 container center padding-10">
+			<div class="box b1 padding-10 radius-5" style="background-color:#f1472a">
+				<p class="bold em12" style="color:#fff">Tempo até o lançamento:</p>
+				<p class="bold em15 margin-top-5" style="color:#fff" id="demo"></p>
 			</div>
 		</div>
-
-		<div class="box b5 container margin-top-10">
-			<img class="box b4 center size-60" src="/images/dollar-paper-bills.png">
-			<div class="box b3-4 container">
-				<div class="box b1 em13 impact padding-5">Formas Pagamento</div>
-				<div class="box b1 padding-5">Conheça agora</div>
+		<!-- info -->
+		<div class="box a1 container center padding-10">
+			<div class="box b1 padding-10 radius-5" style="background-color:#ffff">
+				<img class="size-40" src="images/icon/calendar.png">
+				<p class="bold margin-top-5">Lançamento da semana: CASE TÁTICA MODULAR</p>
 			</div>
 		</div>
-
-		<div class="box b5 container margin-top-10">
-			<img class="box b4 center size-60" src="/images/hanging-calendar.png">
-			<div class="box b3-4 container">
-				<div class="box b1 em13 impact padding-5">Entrega Rápida</div>
-				<div class="box b1 padding-5">Via Correios</div>
-			</div>
-		</div>
-
-		<div class="box b5 container margin-top-10">
-			<img class="box b4 center size-60" src="/images/open.png">
-			<div class="box b3-4 container">
-				<div class="box b1 em13 impact padding-5">Loja Física</div>
-				<div class="box b1 padding-5">Rio de Janeiro</div>
-			</div>
-		</div>
-
-		<div class="box b5 container margin-top-10">
-			<img class="box b4 center size-60" src="/images/present-box.png">
-			<div class="box b3-4 container">
-				<div class="box b1 em13 impact padding-5">Presentes</div>
-				<div class="box b1 padding-5">Para você</div>
-			</div>
-		</div>
-<!-- produtos -->
-		<div class="box b4 container border-explicit padding-10 radius-5 shadow2-hover margin-top-15">
-			<img class="box b1 center border-explicit width-200" src="/images/_MG_7780.jpg">
-			<div class="box b1 container">
-				<div class="box b1 em13 impact center padding-5">Colete Tático</div>
-				<div class="box b1 center padding-5">Colete Tático Modular Marrom + 8 Acessórios</div>
-				<div class="box b1 em13 impact center padding-5">R$289,97</div>
-				<button class="box b1 padding-10 border radius-5 shadow-hover btn-buy" onclick="lib.openExternalLink('https://www.jariomilitar.com.br/coletes-taticos/colete-tatico-modular-plate-carrier-8-pecas-marrom-bahia')">COMPRAR AGORA</button>
-			</div>
-        </div>
+		<p class="box a1 padding-11 bold margin-bottom-10" style="color:white">Se liga nas fotos e vídeos 📷 👇</p>
 		
-		<div class="box b4 container border-explicit padding-10 radius-5 shadow2-hover margin-top-15">
-			<img class="box b1 center border-explicit width-200" src="/images/SemTítulo-5.png">
-			<div class="box b1 container">
-				<div class="box b1 em13 impact center padding-5">Colete Tático</div>
-				<div class="box b1 center padding-5">Colete Tático Modular Preto + 8 Acessórios</div>
-				<div class="box b1 em13 impact center padding-5">R$289,97</div>
-				<button class="box b1 padding-10 border radius-5 shadow-hover btn-buy" onclick="lib.openExternalLink('https://www.jariomilitar.com.br/coletes-taticos/colete-tatico-modular-plate-carrier-8-pecas-preto')">COMPRAR AGORA</button>
+		<!-- carousel -->
+		<div class="box a1 container h-center margin-top-10">
+			<div class="box a2-3 container">
+			  <img class="box a1 mySlides" src="images/product/2.jpg" style="width:100%">
+			  <img class="box a1 mySlides" src="images/product/1.jpg" style="width:100%">
+			  <img class="box a1 mySlides" src="images/product/3.jpg" style="width:100%">
+			  <img class="box a1 mySlides" src="images/product/4.jpg" style="width:100%">
+			  <img class="box a1 mySlides" src="images/product/5.jpg" style="width:100%">
+			  <img class="box a1 mySlides" src="images/product/6.jpg" style="width:100%">
+			  <img class="box a1 mySlides" src="images/product/7.jpg" style="width:100%">
 			</div>
 		</div>
+		<!-- description -->
+		<div class="box a1 container h-center">
+			<div class="mobile-box a3-4 container center" style="color:#fff">
+				<p class="box a1 margin-top-10">Lançamento J.A Rio Militar</p>
+				<p class="box a1 em13 bold margin-top-5">CASE TÁTICA MODULAR</p>
 
-		<div class="box b4 container border-explicit padding-10 radius-5 shadow2-hover margin-top-15">
-			<img class="box b1 center border-explicit width-200" src="/images/_MG_7780.jpg">
-			<div class="box b1 container">
-				<div class="box b1 em13 impact center padding-5">Colete Tático</div>
-				<div class="box b1 center padding-5">Colete Tático Modular Marrom + 8 Acessórios</div>
-				<div class="box b1 em13 impact center padding-5">R$289,97</div>
-				<button class="box b1 padding-10 border radius-5 shadow-hover btn-buy" onclick="lib.openExternalLink('https://www.jariomilitar.com.br/coletes-taticos/colete-tatico-modular-plate-carrier-8-pecas-marrom-bahia')">COMPRAR AGORA</button>
+				<p class="box a1 margin-top-5">Não tenha problemas para guardar, proteger e transportar os seus equipamentos táticos com a case modular!</p>
+				<p class="box a1 margin-top-5">Esta peça é confeccionada em tecido Cordurex e fitas de nylon/polipropileno, e conta com um acolchoado interno para evitar arranhões ou danos nos seus equipamentos.</p>
+				<p class="box a1 margin-top-5">A case tática contém sistema de regulagens internos para acoplar armas reais ou fictícias, firmando-a na peça. Possui também bolsos internos cobrindo toda a sua estrutura com fechamento em zíperes.</p>
+				<p class="box a1 margin-top-5">Para facilitar o transporte da sua case tática, ela disponibiliza duas formas de ser carregada: através de 2 alças laterais; através de 2 alças traseiras (cumprindo disposição de mochila).</p>
+				<p class="box a1 margin-top-5">Além de possuir bolsos internos, dispõe também do sistema modular: um sistema internacional de acoplamento de peças. Desse modo, é possível inserir na case qualquer peça modular, facilitando o transporte de diversos acessórios junto à case tática.</p>
 			</div>
 		</div>
-        
-        <div class="box b4 container border-explicit padding-10 radius-5 shadow2-hover margin-top-15">
-			<img class="box b1 center border-explicit width-200" src="/images/_MG_7780.jpg">
-			<div class="box b1 container">
-				<div class="box b1 em13 impact center padding-5">Colete Tático</div>
-				<div class="box b1 center padding-5">Colete Tático Modular Marrom + 8 Acessórios</div>
-				<div class="box b1 em13 impact center padding-5">R$289,97</div>
-				<button class="box b1 padding-10 border radius-5 shadow-hover btn-buy" onclick="lib.openExternalLink('https://www.jariomilitar.com.br/coletes-taticos/colete-tatico-modular-plate-carrier-8-pecas-marrom-bahia')">COMPRAR AGORA</button>
-			</div>
+		<!-- video -->
+		<div class="box a1 container h-center margin-top-10">
+			<iframe class="box a2-3 container" width="560" height="315" src="https://www.youtube.com/embed/5aTfSyMgsUQ" title="Lançamento Case Tática Modular J.A Rio Militar" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe>
 		</div>
-
+		<!-- buy -->	
+		<div class="box b1 container radius-5 height-60 pointer margin-top-15" style="background-color:#029e4c">
+			<p class="center em15 bold" style="color:white">Reserve a sua case tática agora!</p>
+		</div>
+		<!-- rodape -->
+		<p class="box b1 center padding-10 margin-top-10" style="color:white">J.A Rio Militar 2021® Todos os direitos reservados</p>
 	</div>
 </body>
-<footer>
-	<script src="https://jaframework.herokuapp.com/front-end/javascripts/essentials/lib.js"></script>
-	<script src="https://jaframework.herokuapp.com/front-end/javascripts/essentials/api.js"></script>
-</footer>
+
+<script>
+	// CAROUSEL
+	var slideIndex = 1;
+	showDivs(slideIndex);
+
+	function plusDivs(n) {
+	  showDivs(slideIndex += n);
+	}
+
+	function showDivs(n) {
+	  var i;
+	  var x = document.getElementsByClassName("mySlides");
+	  if (n > x.length) {slideIndex = 1}
+	  if (n < 1) {slideIndex = x.length}
+	  for (i = 0; i < x.length; i++) {
+	    x[i].style.display = "none";  
+	  }
+	  x[slideIndex-1].style.display = "block";  
+	}
+
+	setInterval(() => {
+		plusDivs(1);
+	}, 3000)
+
+	// COUNTDOWN
+	// Set the date we're counting down to
+	var countDownDate = new Date("Nov 12, 2021 12:00:00").getTime();
+
+	// Update the count down every 1 second
+	var x = setInterval(function() {
+
+	// Get today's date and time
+	var now = new Date().getTime();
+
+	// Find the distance between now and the count down date
+	var distance = countDownDate - now;
+
+	// Time calculations for days, hours, minutes and seconds
+	var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+	var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+	// Display the result in the element with id="demo"
+	document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+	+ minutes + "m " + seconds + "s ";
+
+	// If the count down is finished, write some text
+	if (distance < 0) {
+	clearInterval(x);
+		document.getElementById("demo").innerHTML = "PRODUTO À VENDA";
+		}
+	}, 1000);
+</script>
 </html>
