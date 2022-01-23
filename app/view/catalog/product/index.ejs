@@ -38,8 +38,13 @@
 				<div class="box b2 container margin-top-10">
 					<div class="box b1 em15 lucida-grande bold center padding-5"><%= product.name %></div>
 					<div class="box b1 em11 lucida-grande bold center padding-5"><%= product.color %></div>
-					<div class="box b1 em14 lucida-grande bold center padding-5">R$<%= product.price %></div>
-					<div class="box b1 em09 lucida-grande bold padding-5 margin-top-20">Também disponível nas cores:</div>
+					<% if(product.price) { %>
+						<div class="box b1 em14 lucida-grande bold center padding-5">R$<%= product.price %></div>
+					<% } %>
+
+					<% if(similarProducts.length){ %>
+						<div class="box b1 em09 lucida-grande bold margin-top-20">Disponível também nas cores:</div>
+					<% } %>
 					<% for(let i in similarProducts){ %>
 						<% if(similarProducts[i].color != product.color){ %>
 						<div class="mobile-box b3 container border shadow-st-hover transition-02-03 padding-5 margin-top-5 radius-5 pointer" onclick="Catalog.product.controller.show(<%= similarProducts[i].id %>, <%= catalog.id %>)">
@@ -49,7 +54,7 @@
 						<% } %>
 					<% } %>
 
-					<% if(similarPackages.length){ %>
+					<% if(similarPackages.length > 1){ %>
 						<div class="box b1 em09 lucida-grande bold padding-5 margin-top-20">E nos pacotes:</div>
 					<% } %>
 					<% for(let i in similarPackages){ %>

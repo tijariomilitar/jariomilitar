@@ -38,9 +38,11 @@
 				<div class="box b2 container margin-top-10">
 					<div class="box b1 em15 lucida-grande bold center padding-5"><%= package.name %></div>
 					<div class="box b1 em11 lucida-grande bold center padding-5"><%= package.color %></div>
-					<div class="box b1 em14 lucida-grande bold center padding-5">R$<%= package.price %></div>
+					<% if(package.price) { %>
+					<div class="box b1 em14 lucida-grande bold center padding-5"><%= package.price%></div>
+					<% } %>
 
-					<% if(similarPackages.length){ %>
+					<% if(similarPackages.length > 1){ %>
 						<div class="box b1 em09 lucida-grande bold margin-top-20">Disponível também nas cores:</div>
 					<% } %>
 					<% for(let i in similarPackages){ %>
