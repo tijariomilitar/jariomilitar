@@ -54,7 +54,9 @@
 						<% } %>
 					<% } %>
 
-					<div class="box b1 em09 lucida-grande bold margin-top-20">Itens do Pacote</div>
+					<% if(package.products.length){ %>
+						<div class="box b1 em09 lucida-grande bold margin-top-20">Itens do Pacote</div>
+					<% } %>
 					<div class="box b1 container border padding-5 radius-5">
 						<% if(package.products) { %>
 							<% for(let i in package.products){ %>

@@ -42,7 +42,7 @@
 						<div class="box b1 em14 lucida-grande bold center padding-5">R$<%= product.price %></div>
 					<% } %>
 
-					<% if(similarProducts.length){ %>
+					<% if(similarProducts.length > 1){ %>
 						<div class="box b1 em09 lucida-grande bold margin-top-20">Disponível também nas cores:</div>
 					<% } %>
 					<% for(let i in similarProducts){ %>
@@ -54,7 +54,7 @@
 						<% } %>
 					<% } %>
 
-					<% if(similarPackages.length > 1){ %>
+					<% if(similarPackages.length){ %>
 						<div class="box b1 em09 lucida-grande bold padding-5 margin-top-20">E nos pacotes:</div>
 					<% } %>
 					<% for(let i in similarPackages){ %>
