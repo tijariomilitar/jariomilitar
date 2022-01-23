@@ -1,35 +1,25 @@
-const User = require("../model/user");
-const userController = require("./user");
 const Product = require("../model/product");
+const Catalog = require("../model/catalog");
 
 const lib = require("jarmlib");
 
 const catalogController = {
 	index: async (req, res) => {
 		const productColors = await Product.colorList();
-		res.render('catalog/index', { productColors: productColors });
+		res.render('catalog/index', { productColors: productColors, catalog: { id: 0, name: "" } });
 	},
-	retail: async (req, res) => {
+	find: async (req, res) => {
 		const productColors = await Product.colorList();
-		res.render('catalog/retail', { productColors: productColors });
-	},
-	wholesale: async (req, res) => {
-		const productColors = await Product.colorList();
-		res.render('catalog/wholesale', { productColors: productColors });
-	},
-	agent: async (req, res) => {
-		const productColors = await Product.colorList();
-		res.render('catalog/agent', { productColors: productColors });
-	},
-	upsell: async (req, res) => {
-		const productColors = await Product.colorList();
-		res.render('catalog/upsell', { productColors: productColors });
-	},
+
+		//get catalog information and prices by name
+		let catalogStrictParams = { keys: [], values: [] };
+		lib.Query.fillParam("catalog.path", `/${req.params.path}`, catalogStrictParams);
+		let catalog = await Catalog.filter([], [], [], catalogStrictParams, []);
+		catalog = { ...catalog[0] };
+
+		res.render('catalog/index', { productColors: productColors, catalog });
+	}, 
 	filter: async (req, res) => {
-		// if(!await userController.verifyAccess(req, res, ['adm','adm-man','adm-ass','adm-aud','pro-man','log-pac','COR-GER'])){
-		// 	return res.send({ unauthorized: "Você não tem permissão para acessar!" });
-		// };
-		
 		let product = new Product();
 		product.code = req.body.product.code;
 		product.name = req.body.product.name;
@@ -43,32 +33,30 @@ const catalogController = {
 		let product_params = { keys: [], values: [] };
 		let product_strict_params = { keys: [], values: [] };
 
-		lib.Query.fillParam("product.code", product.code, product_params);
 		lib.Query.fillParam("product.name", product.name, product_params);
 		lib.Query.fillParam("product.color", product.color, product_strict_params);
 		lib.Query.fillParam("product.brand", product.brand, product_params);
 		lib.Query.fillParam("product.status", "Disponível", product_strict_params);
 
-		let package_props = ["product_package.id","product_package.code","product_package.name","product_package.color","product_package.image"];
+		let package_props = ["package.id","package.code","package.name","package.color","package.image"];
 		let package_inners = [];
 
 		let package_params = { keys: [], values: [] };
 		let package_strict_params = { keys: [], values: [] };
 		
-		lib.Query.fillParam("product_package.code", product.code, package_params);
-		lib.Query.fillParam("product_package.name", product.name, package_params);
-		lib.Query.fillParam("product_package.color", product.color, package_strict_params);
-		lib.Query.fillParam("product_package.brand", product.brand, package_params);
-		lib.Query.fillParam("product_package.status", "Disponível", package_strict_params);
+		lib.Query.fillParam("package.name", product.name, package_params);
+		lib.Query.fillParam("package.color", product.color, package_strict_params);
+		lib.Query.fillParam("package.brand", product.brand, package_params);
+		lib.Query.fillParam("package.status", "Disponível", package_strict_params);
 		
 		if(product.price_category_id && product.price_category_id > 0){
 			product_props.push("product_price.price","product_price.category_id");
 			product_inners.push(["cms_wt_erp.product_price product_price","product_price.product_id","product.id"]);
 			lib.Query.fillParam("product_price.category_id", product.price_category_id, product_strict_params);
 			
-			package_props.push("product_package_price.price","product_package_price.category_id");
-			package_inners.push(["cms_wt_erp.product_package_price product_package_price","product_package_price.package_id","product_package.id"]);
-			lib.Query.fillParam("product_package_price.category_id", product.price_category_id, package_strict_params);
+			package_props.push("package_price.price","package_price.category_id");
+			package_inners.push(["cms_wt_erp.product_package_price package_price","package_price.package_id","package.id"]);
+			lib.Query.fillParam("package_price.category_id", product.price_category_id, package_strict_params);
 		}
 
 		let order_params = [ ["code","ASC"] ];
@@ -87,18 +75,18 @@ const catalogController = {
 catalogController.product = {
 	find: async (req, res) => {
 		let product = new Product();
-		product.id = req.body.product.id;
-		product.price_category_id = req.body.product.price_category_id;
+		product.id = req.params.product_id;
+		product.price_category_id = req.params.catalog_id;
 
-		let props = ["product.id","product.code","product.name","product.color","product.size","product.image"];
+		let props = ["product.*"];
 		let inners = [];
 
 		let strict_params = { keys: [], values: [] };
-		
+
 		lib.Query.fillParam("product.id", product.id, strict_params);
 
 		if(product.price_category_id && product.price_category_id > 0){
-			props.push("product_price.price","product_price.category_id");
+			props.push("product_price.price");
 			inners.push(["cms_wt_erp.product_price product_price","product_price.product_id","product.id"]);
 			lib.Query.fillParam("product_price.category_id", product.price_category_id, strict_params);
 		}
@@ -109,33 +97,55 @@ catalogController.product = {
 	
 			product.images = await Product.image.list(product.id);
 
-			res.send({ product });
+			//get other colors Similar Products
+			let similarProductStrictParams = { keys: [], values: [] };
+			lib.Query.fillParam("product.name", product.name, similarProductStrictParams);
+			lib.Query.fillParam("product.status", "Disponível", similarProductStrictParams);
+
+			let similarProducts = await Product.filter([], [], [], similarProductStrictParams, []);
+
+			//get other colors Similar Packages
+			let similarPackageParams = { keys: [], values: [] };
+			let similarPackageStrictParams = { keys: [], values: [] };
+			lib.Query.fillParam("package.name", product.name, similarPackageParams);
+			lib.Query.fillParam("package.color", product.color, similarPackageStrictParams);
+			lib.Query.fillParam("package.status", "Disponível", similarPackageStrictParams);
+
+			let similarPackages = await Product.package.filter([], [], similarPackageParams, similarPackageStrictParams, []);
+
+			//get catalog information and prices by name
+			let catalogStrictParams = { keys: [], values: [] };
+			lib.Query.fillParam("catalog.id", req.params.catalog_id, catalogStrictParams);
+			let catalog = await Catalog.filter([], [], [], catalogStrictParams, []);
+			catalog = { ...catalog[0] };
+
+			res.render("catalog/product/index", { product, similarProducts, similarPackages, catalog });
 		} catch (err) {
 			console.log(err);
 			res.send({ msg: "Ocorreu um erro ao realizar requisição." });
 		};
 	}
-}
+};
 
 catalogController.package = {
 	find: async (req, res) => {
 		let package = new Product.package();
-		package.id = req.body.package.id;
-		package.price_category_id = req.body.package.price_category_id;
+		package.id = req.params.package_id;
+		package.price_category_id = req.params.catalog_id;
 
-		let props = ["product_package.id","product_package.code","product_package.name","product_package.color","product_package.image"];
+		let props = ["package.*"];
 		let inners = [];
 
 		let strict_params = { keys: [], values: [] };
 		
-		lib.Query.fillParam("product_package.id", package.id, strict_params);
+		lib.Query.fillParam("package.id", package.id, strict_params);
 
 		if(package.price_category_id && package.price_category_id > 0){
-			props.push("product_package_price.price","product_package_price.category_id");
-			inners.push(["cms_wt_erp.product_package_price product_package_price","product_package_price.package_id","product_package.id"]);
-			lib.Query.fillParam("product_package_price.category_id", package.price_category_id, strict_params);
+			props.push("package_price.price");
+			inners.push(["cms_wt_erp.product_package_price package_price","package_price.package_id","package.id"]);
+			lib.Query.fillParam("package_price.category_id", package.price_category_id, strict_params);
 		}
-		
+
 		try{
 			package = await Product.package.filter(props, inners, [], strict_params, []);
 			package = { ...package[0] };
@@ -145,16 +155,27 @@ catalogController.package = {
 			let package_product_props = ["product.id","product.code","product.name","product.color","product.image","product_package_product.amount"];
 			let package_product_inners = [ ["cms_wt_erp.product product","product_package_product.product_id","product.id"] ];
 
-			let package_product_params = { keys: [], values: [] };
 			let package_product_strict_params = { keys: [], values: [] };
 
 			lib.Query.fillParam("product_package_product.package_id", package.id, package_product_strict_params);
 
 			let order_params = [ ["product.code","ASC"] ];
 
-			package.products = await Product.package.product.filter(package_product_props, package_product_inners, package_product_params, package_product_strict_params, []);
+			package.products = await Product.package.product.filter(package_product_props, package_product_inners, [], package_product_strict_params, order_params);
 
-			res.send({ package });
+			//get other colors Similar Packages
+			let similarPackageStrictParams = { keys: [], values: [] };
+			lib.Query.fillParam("package.name", package.name, similarPackageStrictParams);
+			lib.Query.fillParam("package.status", "Disponível", similarPackageStrictParams);
+			let similarPackages = await Product.package.filter([], [], [], similarPackageStrictParams, []);
+
+			//get catalog information and prices by name
+			let catalogStrictParams = { keys: [], values: [] };
+			lib.Query.fillParam("catalog.id", req.params.catalog_id, catalogStrictParams);
+			let catalog = await Catalog.filter([], [], [], catalogStrictParams, []);
+			catalog = { ...catalog[0] };
+
+			res.render("catalog/package/index", { package, similarPackages, catalog });
 		} catch (err) {
 			console.log(err);
 			res.send({ msg: "Ocorreu um erro ao realizar requisição." });

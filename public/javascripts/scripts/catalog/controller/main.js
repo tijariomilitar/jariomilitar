@@ -6,7 +6,6 @@ if(Catalog.controller.filter){
 		event.preventDefault();
 
 		let product = {
-			code: event.target.elements.namedItem("code").value,
 			name: event.target.elements.namedItem("name").value,
 			color: event.target.elements.namedItem("color").value,
 			brand: "J.A Rio Militar",
@@ -25,11 +24,29 @@ if(Catalog.controller.filter){
 
 		catalog_products = lib.sort(catalog_products, "code");
 
-		document.getElementById("catalog-product-show-box").style.display = "none";
-
 		const pagination = { pageSize: 30, page: 0};
 		(function(){ lib.carousel.execute("catalog-filter-box", Catalog.view.filter, catalog_products, pagination); }());
 
 		closeNav();
 	});
 }
+
+Catalog.controller.category = {};
+
+if(Catalog.controller.filter){
+	Catalog.controller.category.select = Catalog.controller.filter.elements.namedItem("category");
+	if(Catalog.controller.category.select){
+		Catalog.controller.category.select.addEventListener("change", e => {
+			document.getElementById("catalog-filter-form").elements.namedItem("name").value = e.target.value;
+		});
+	}
+}
+
+Catalog.controller.nav = {};
+
+Catalog.controller.nav.filter = (option) => {
+	document.getElementById("catalog-filter-form").elements.namedItem("name").value = option.value;
+	document.getElementById("catalog-filter-form").elements.namedItem("category").value = "";
+	Catalog.controller.filter.submit.click();
+	option.parentNode.value = "";
+};

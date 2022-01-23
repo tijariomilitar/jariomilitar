@@ -12,14 +12,6 @@ router.get("/meu-produto", landingPageController.myProduct);
 router.get("/blackout", lib.route.toHttps, landingPageController.blackout);
 router.get("/lancamento-da-semana", lib.route.toHttps, landingPageController.lancamento_da_semana);
 
-router.get("/login", homeController.login);
-router.get("/signup", homeController.signup);
-router.get("/logout", homeController.logout);
-
-router.use("/admin", require("./admin"));
-router.use("/user", require("./user"));
-router.use("/lead", require("./lead"));
-router.use("/product", require("./product"));
 router.use("/landing-page", require("./landing_page"));
 router.use("/catalogo", require("./catalog"));
 
