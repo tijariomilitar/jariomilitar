@@ -46,7 +46,7 @@ Catalog.controller.nav = {};
 
 Catalog.controller.nav.filter = (option) => {
 	document.getElementById("catalog-filter-form").elements.namedItem("name").value = option.value;
-	document.getElementById("catalog-filter-form").elements.namedItem("category").value = "";
+	// document.getElementById("catalog-filter-form").elements.namedItem("category").value = "";
 	Catalog.controller.filter.submit.click();
 	option.parentNode.value = "";
 };
