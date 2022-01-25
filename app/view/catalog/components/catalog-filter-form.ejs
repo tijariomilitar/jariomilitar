@@ -1,21 +1,12 @@
 <form id="catalog-filter-form" class="box b3-4 container ground padding-10 radius-5 shadow-hover transition-04-04 border">
 	<input type="number" name="price-category-id" value='<%= catalog.id %>' hidden>
 	<input type="text" name="name" class="mobile-box b4-10 em11 lucida-grande bold padding-10 border-lg-st transition-04-04 nofocus center radius-5" style="color:#3c3c3c;" placeholder="Nome do Produto" autocomplete="off">
-	<!-- <select name="category" class="mobile-box b4-10 em11 lucida-grande bold padding-10 border-lg-st transition-04-04 nofocus center radius-5 pointer" style="color:#3c3c3c;">
-		<option class="bold lucida-grande" value="">Todos os Produtos</option>
-		<option class="bold lucida-grande" value="colete">Coletes</option>
-		<option class="bold lucida-grande" value="modular">Modulares</option>
-		<option class="bold lucida-grande" value="Bornal">Bornais</option>
-		<option class="bold lucida-grande" value="Coldre">Coldres</option>
-		<option class="bold lucida-grande" value="Cinto">Cintos</option>
-		<option class="bold lucida-grande" value="Bandoleira">Bandoleiras</option>
-	</select> -->
 	<select name="color" class="mobile-box b4-10 em11 lucida-grande bold padding-10 border-lg-st transition-04-04 nofocus center radius-5 pointer" style="color:#3c3c3c;">
 		<option class="bold lucida-grande" value="">Todas as Cores</option>
 		<% for(i in productColors){ %>
 			<option class="bold lucida-grande margin-top-10" value="<%= productColors[i].shortcut %>"><%= productColors[i].name %></option>
 		<% } %>
 	</select>
-	<div class="mobile-box b10 noborder center noselect"><img class='size-35 pointer' src='/images/icon/filter-black.png' onclick="openNav()"></div>
+	<div class="mobile-box b10 noborder center noselect"><img class='size-35 pointer opacity-out-08 transition-04-04' src='/images/icon/filter-black.png' onclick="openNav()"></div>
 	<button type="submit" name="submit" class="mobile-box b10 noborder center noselect"><img src="/images/icon/search.png" class="size-35 opacity-out-08 pointer"></button>
 </form>
