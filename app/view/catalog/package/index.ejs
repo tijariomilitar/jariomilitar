@@ -61,7 +61,11 @@
 						<% if(package.products) { %>
 							<% for(let i in package.products){ %>
 								<div class="mobile-box b3 container border shadow-st-hover transition-02-03 padding-5 margin-top-5 margin-bottom-5 radius-5 pointer" onclick="Catalog.product.controller.show(<%= package.products[i].id %>, <%= catalog.id %>)">
-									<img class="mobile-box b1 image-card max-height-100 center" src="<%= package.products[i].image %>">
+									<% if(package.products) { %>
+										<img class="mobile-box b1 image-card max-height-100 center" src="<%= package.products[i].image %>">
+									<% } else { %>
+										<img class="mobile-box b1 image-card max-height-100 center" src="/images/product/no-product.png">
+									<% } %>
 									<div class="mobile-box b1 lucida-grande em08 center margin-top-10 bold"><%= package.products[i].amount %>un - <%= package.products[i].name %> | <%= package.products[i].color %></div>
 								</div>
 							<% } %>
