@@ -18,7 +18,7 @@ const catalogController = {
 		catalog = { ...catalog[0] };
 
 		res.render('catalog/index', { productColors: productColors, catalog });
-	}, 
+	},
 	filter: async (req, res) => {
 		let product = new Product();
 		product.code = req.body.product.code;
