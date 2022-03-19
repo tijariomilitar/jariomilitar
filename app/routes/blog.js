@@ -5,6 +5,8 @@ const blogController = require('../controller/blog/index');
 const articleController = require('../controller/blog/article');
 
 router.get("/", lib.route.toHttps, blogController.index);
+router.get("/artigo/:id", lib.route.toHttps, blogController.article);
+
 router.get("/novo-artigo", lib.route.toHttps, articleController.index);
 router.get("/gerir-artigos", lib.route.toHttps, articleController.manage);
 router.post("/article/create", lib.route.toHttps, articleController.create);

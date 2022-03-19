@@ -31,7 +31,6 @@ articleController.create = async(req, res) => {
 		} else {
 			let updatedArticle = await article.update();
 			if(updatedArticle.err) { return res.send({ msg: updatedArticle.err }); }
-			article.id = updatedArticle.insertId;
 
 			res.send({ done: "Artigo atualizado com sucesso!", article });
 		}
@@ -81,17 +80,23 @@ articleController.content = {};
 
 articleController.content.create = async(req, res) => {
 	const content = new Article.content();
+	content.id = req.body.id;
 	content.article_id = req.body.article_id;
 	content.tag_name = req.body.tag_name;
 	content.tag_style = req.body.tag_style;
 	content.content = req.body.content;
 
 	try	{
-		let savedContent = await content.create();
-		if(savedContent.err) { return res.send({ msg: savedContent.err }); }
-		content.id = savedContent.insertId;
-
-		res.send({ done: "Conteúdo adicionado com sucesso!", content });
+		if(!content.id) {
+			let savedContent = await content.create();
+			if(savedContent.err) { return res.send({ msg: savedContent.err }); }
+			content.id = savedContent.insertId;
+			res.send({ done: "Conteúdo adicionado com sucesso!", content });
+		} else {
+			let updatedContent = await content.update();
+			if(updatedContent.err) { return res.send({ msg: updatedContent.err }); }
+			res.send({ done: "Conteúdo atualizado com sucesso!", content });
+		}
 	} catch (err) {
 		if(err.code == "ER_DUP_ENTRY") { return res.send({ msg: "Duplicidade para: "+err.sqlMessage.split("'")[1] }); } 
 		console.log(err);

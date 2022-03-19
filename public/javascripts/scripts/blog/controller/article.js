@@ -22,6 +22,7 @@ if(Article.controller.create) {
 		Article.view.preview(article);
 
 		e.target.elements.namedItem("id").value = response.article.id;
+
 		Article.content.controller.create.elements.namedItem("article-id").value = response.article.id;
 	});
 };
@@ -57,6 +58,8 @@ Article.controller.edit = async (article_id) => {
 	let contents = await API.response(Article.content.list, { article_id });
 	if( !contents ) { return false; }
 
+	console.log(article);
+
 	article.contents = contents;
 
 	lib.display("article-filter-box", "none");
@@ -64,10 +67,12 @@ Article.controller.edit = async (article_id) => {
 	lib.display("article-create-box", "");
 	lib.display("article-content-box", "");
 	lib.display("article-content-div", "");
+	lib.display("article-content-form", "");
+
+	Article.content.controller.create.elements.namedItem("article-id").value = article.id;
 
 	Article.view.preview(article);
 	Article.view.edit(article);
-
 	Article.content.view.list(article.contents);
 };
 
@@ -173,27 +178,14 @@ Article.content.controller.list = async (article_id) => {
 };
 
 Article.content.controller.edit = async (content_id) => {
+	console.log(Article.content.controller.create.elements.namedItem("id").value);
+	if(Article.content.controller.create.elements.namedItem("content").value) {
+		let r = confirm("Atenção: \n \n Existe um conteúdo sem cadastrado, tem certeza que deseja continuar? \n \n O conteúdo perdido não pode ser recuperado!")
+		if(!r) { return; }
+	}
+
 	let content = await API.response(Article.content.findById, content_id);
 	if (!content) { return false; }
 
-	lib.display("content-id-"+content.id, "none");
-	lib.display("content-box-"+content.id, "");
-
 	Article.content.view.edit(content);
-};
-
-Article.content.controller.update = async content_id => {
-	let content_form = document.getElementById("content-form-"+content_id);
-
-	let content = {
-		id: content_form.elements.namedItem("id").value,
-		tag_name: content_form.elements.namedItem("tag-name").value,
-		tag_style: content_form.elements.namedItem("tag-style").value,
-		content: content_form.elements.namedItem("content").value
-	};
-
-	console.log(content);
-
-	// let response = await API.response(Article.content.update, content_id);
-	// if( !response ) { return false; }
 };

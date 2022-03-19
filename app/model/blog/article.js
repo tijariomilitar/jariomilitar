@@ -68,6 +68,17 @@ Article.content = function(){
 
         return db(query);
 	};
+
+	this.update = () => {
+		if(!this.id) { return { err: "Não é possível atualizar esse artigo" } };
+        if(!this.tag_name) { return { err: "É necessário incluir uma imagem de capa ao artigo" } };
+        if(!this.content) { return { err: "É necessário selecionar a categoria do artigo" } };
+
+        let obj = lib.convertTo.object(this);
+		let query = lib.Query.update(obj, 'cms_wt_erp.blog_article_content', "id");
+
+        return db(query);
+	};
 };
 
 Article.content.list = (article_id) => {
@@ -79,43 +90,5 @@ Article.content.findById = (content_id) => {
 	let query = "SELECT * FROM cms_wt_erp.blog_article_content WHERE id="+content_id+";";
 	return db(query);
 };
-
-// Prospect.update = prospect => {
-// 	let query = lib.Query.update(prospect, 'cms_wt_erp.customer_lead', 'id');
-// 	return db(query);
-// };
-
-// Prospect.filter = (props, inners, period, params, strictParams, orderParams, limit) => {
-// 	let query = new lib.Query().select().props(props).table("cms_wt_erp.customer_lead customer_lead")
-// 		.inners(inners).period(period).params(params).strictParams(strictParams).order(orderParams).limit(limit).build().query;
-// 	return db(query);
-// };
-
-// Prospect.findByIdAndUserId = (prospect_id, user_id) => {
-// 	let query = "SELECT * FROM cms_wt_erp.customer_lead WHERE id="+prospect_id+" AND user_id="+user_id+";";
-// 	return db(query);
-// };
-
-// Prospect.log = function() {
-// 	this.id;
-// 	this.datetime;
-// 	this.lead_id;
-// 	this.from;
-// 	this.to;
-// 	this.comment;
-// 	this.user_id;
-
-// 	this.save = () => {
-//         let obj = lib.convertTo.object(this);
-
-// 		let query = lib.Query.save(obj, 'cms_wt_erp.customer_lead_log');
-// 	    return db(query);
-// 	};
-// };
-
-// Prospect.log.list = (lead_id) => {
-// 	let query = "SELECT * FROM cms_wt_erp.customer_lead_log WHERE lead_id="+lead_id+";";
-// 	return db(query);
-// };
 
 module.exports = Article;

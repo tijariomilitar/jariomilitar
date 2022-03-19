@@ -93,67 +93,21 @@ Article.content.view.list = (contents) => {
 	let content_div = document.getElementById("article-content-div");
 	content_div.innerHTML = "";
 
+	let content_element;
+
 	for(let i in contents) {
-		let content_box = lib.element.create("div", { id: 'content-box-'+contents[i].id, class: "box b11-12 container", style: "display: none;" });
-		
-		let content = lib.element.create("div", { id: 'content-'+contents[i].id, class: "box b11-12 container" });
-		let content_element = lib.element.create(contents[i].tag_name, { id: 'content-id-'+contents[i].id, class: contents[i].tag_style }, contents[i].content);
-		content.appendChild(content_element);
-
-		content_div.appendChild(content);
-		content_div.appendChild(content_box);
-
-		content_div.appendChild(lib.element.icon('b12', 20, "/images/icon/edit.png", "Article.content.controller.edit("+contents[i].id+")"));
+		if(contents[i].tag_name == "img") {
+			content_element = lib.element.create(contents[i].tag_name, { id: 'content-id-'+contents[i].id, src: contents[i].content , class: contents[i].tag_style + " box-hover pointer", onclick: "Article.content.controller.edit("+contents[i].id+")" });
+		} else {
+			content_element = lib.element.create(contents[i].tag_name, { id: 'content-id-'+contents[i].id, class: contents[i].tag_style + " box-hover pointer", onclick: "Article.content.controller.edit("+contents[i].id+")" }, contents[i].content);
+		}
+		content_div.appendChild(content_element);
 	};
 };
 
 Article.content.view.edit = (content) => {
-	let content_box = document.getElementById("content-box-"+content.id);
-	content_box.innerHTML = "";
-
-	let content_form = lib.element.create("form", { id: "content-form-"+content.id, class: "box b1 container ground border padding-10 margin-top-10 radius-5" });
-	
-	let tag_select = lib.element.create("select", { name: "tag-name", class: "mobile-box b6 input-generic margin-top-5 radius-5 center hide-disabled" });
-	content.tag_name == "div" && tag_select.appendChild(lib.element.create("option", { value: "div", selected: "on" }, "div"));
-	content.tag_name == "h1" && tag_select.appendChild(lib.element.create("option", { value: "h1", selected: "on" }, "h1"));
-	content.tag_name == "h3" && tag_select.appendChild(lib.element.create("option", { value: "h3", selected: "on" }, "h3"));
-	content.tag_name == "p" && tag_select.appendChild(lib.element.create("option", { value: "p", selected: "on" }, "p"));
-	content.tag_name == "img" && tag_select.appendChild(lib.element.create("option", { value: "img", selected: "on" }, "img"));
-	
-	content.tag_name != "div" && tag_select.appendChild(lib.element.create("option", { value: "div" }, "div"));
-	content.tag_name != "h1" && tag_select.appendChild(lib.element.create("option", { value: "h1" }, "h1"));
-	content.tag_name != "h3" && tag_select.appendChild(lib.element.create("option", { value: "h3" }, "h3"));
-	content.tag_name != "p" && tag_select.appendChild(lib.element.create("option", { value: "p" }, "p"));
-	content.tag_name != "img" && tag_select.appendChild(lib.element.create("option", { value: "img" }, "img"));
-	
-	content_form.appendChild(lib.element.create("input", { name: "id", type: "hidden", value: content.id }));
-	content_form.appendChild(tag_select);
-	content_form.appendChild(lib.element.create("input", { name: "tag-style", class: "mobile-box b3-4 input-generic margin-top-5 radius-5 center", value: content.tag_name, placeholder: "Estilos CSS3", autocomplete: "off" }));
-	content_form.appendChild(lib.element.create("textarea", { name: "content", class: "box b11-12 height-100 avant-garde margin-top-5 padding-5 radius-5" }, content.content));
-	content_form.appendChild(lib.element.icon('b12', 25, "https://spaces.jariomilitar.com/erp-images/icon/increase.png", `Article.content.controller.update(${content.id})`));
-	
-	content_box.appendChild(content_form);
+	Article.content.controller.create.elements.namedItem("id").value = content.id;
+	Article.content.controller.create.elements.namedItem("tag-name").value = content.tag_name;
+	Article.content.controller.create.elements.namedItem("tag-style").value = content.tag_style;
+	Article.content.controller.create.elements.namedItem("content").value = content.content;
 };
-
-{/*<form id="article-content-form" class="box b2-3 container ground border padding-10 margin-top-10 radius-5 margin-bottom-300">
-	<input type="hidden" name="id" value="">
-	<input type="hidden" name="article-id" value="">
-	<select name="tag-name" class="mobile-box b6 input-generic margin-top-5 radius-5 center hide-disabled">
-		<option value="" selected disabled>Tag</option>
-		<option value="div">div</option>
-		<option value="h1">h1</option>
-		<option value="h3">h3</option>
-		<option value="p">p</option>
-		<option value="img">img</option>
-	</select>
-	<input type="text" name="tag-style" class="mobile-box b3-4 input-generic margin-top-5 radius-5 center" placeholder="Estilos CSS3" autocomplete="off">
-	<textarea name="content" class="box b11-12 height-100 avant-garde margin-top-5 padding-5 radius-5"></textarea>
-	<button type="submit" name="submit" class="box b12 container height-100 noborder margin-top-5 center"><img class='size-20 icon center pointer' src="https://spaces.jariomilitar.com/erp-images/icon/increase.png"></button>
-</form>*/}
-
-// soldado
-// sargento
-// capitão
-// coronéu
-// General
-// Marechal
