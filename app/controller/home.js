@@ -10,6 +10,12 @@ const homeController = {
 			return res.render('home', { user: req.user });
 		};
 		res.render('info');
+	},
+	presentation: async (req, res) => {
+		if(req.user){
+			return res.render('home', { user: req.user });
+		};
+		res.render('presentation');
 	}
 };
 
