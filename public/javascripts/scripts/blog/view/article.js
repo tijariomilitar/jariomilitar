@@ -99,7 +99,8 @@ Article.content.view.list = (contents) => {
 		if(contents[i].tag_name == "img") {
 			content_element = lib.element.create(contents[i].tag_name, { id: 'content-id-'+contents[i].id, src: contents[i].content , class: contents[i].tag_style + " box-hover pointer", onclick: "Article.content.controller.edit("+contents[i].id+")" });
 		} else {
-			content_element = lib.element.create(contents[i].tag_name, { id: 'content-id-'+contents[i].id, class: contents[i].tag_style + " box-hover pointer", onclick: "Article.content.controller.edit("+contents[i].id+")" }, contents[i].content);
+			content_element = lib.element.create(contents[i].tag_name, { id: 'content-id-'+contents[i].id, class: contents[i].tag_style + " box-hover border pointer relative", onclick: "Article.content.controller.edit("+contents[i].id+")" }, contents[i].content);
+			content_element.appendChild(lib.element.create("img", { src: "", style: "position: absolute;top:1%;right:1%;" }, ''));
 		}
 		content_div.appendChild(content_element);
 	};
