@@ -80,7 +80,7 @@ articleController.findById = async(req, res) => {
 
 articleController.archive = async(req, res) => {
 	try	{
-		let article = await Article.archive(req.params.id);	
+		await Article.archive(req.params.id);	
 		res.send({ done: "O artigo foi arquivado com sucesso!" });
 	} catch (err) {
 		console.log(err);
@@ -90,7 +90,7 @@ articleController.archive = async(req, res) => {
 
 articleController.unarchive = async(req, res) => {
 	try	{
-		let article = await Article.unarchive(req.params.id);	
+		await Article.unarchive(req.params.id);	
 		res.send({ done: "O artigo foi desarquivado com sucesso!" });
 	} catch (err) {
 		console.log(err);
@@ -100,7 +100,8 @@ articleController.unarchive = async(req, res) => {
 
 articleController.delete = async(req, res) => {
 	try	{
-		let content = await Article.delete(req.params.id);	
+		await Article.delete(req.params.id);
+		await Article.content.deleteByArticleId(req.params.id);
 		res.send({ done: "Artigo excluído com sucesso" });
 	} catch (err) {
 		console.log(err);

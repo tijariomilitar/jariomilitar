@@ -111,4 +111,9 @@ Article.content.delete = (content_id) => {
 	return db(query);
 };
 
+Article.content.deleteByArticleId = (article_id) => {
+	let query = "DELETE FROM cms_wt_erp.blog_article_content WHERE article_id='"+article_id+"';";
+	return db(query);
+};
+
 module.exports = Article;
