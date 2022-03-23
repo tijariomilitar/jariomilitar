@@ -36,6 +36,36 @@ Article.findById = async (article_id) => {
 	return response[0];
 };
 
+Article.archive = async (id) => {
+	let response = await fetch("/portal-do-lojista/article/archive/"+id, { method: 'PUT' });
+	response = await response.json();
+
+	if(API.verifyResponse(response)){ return false };
+	alert(response.done);
+	
+	return true;
+};
+
+Article.unarchive = async (id) => {
+	let response = await fetch("/portal-do-lojista/article/unarchive/"+id, { method: 'PUT' });
+	response = await response.json();
+
+	if(API.verifyResponse(response)){ return false };
+	alert(response.done);
+	
+	return true;
+};
+
+Article.delete = async (id) => {
+	let response = await fetch("/portal-do-lojista/article/delete/"+id, { method: 'DELETE' });
+	response = await response.json();
+
+	if(API.verifyResponse(response)){ return false };
+	alert(response.done);
+	
+	return true;
+};
+
 Article.content = {};
 
 Article.content.create = async article => {
@@ -71,4 +101,14 @@ Article.content.list = async article => {
 	if(API.verifyResponse(response)){ return false };
 
 	return response;
+};
+
+Article.content.delete = async (id) => {
+	let response = await fetch("/portal-do-lojista/article/content/delete/"+id, { method: 'DELETE' });
+	response = await response.json();
+
+	if(API.verifyResponse(response)){ return false };
+	alert(response.done);
+	
+	return true;
 };

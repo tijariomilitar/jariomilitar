@@ -8,7 +8,8 @@ if(Blog.article.controller.filter){
 
 		let article = {
 			title: e.target.elements.namedItem("title").value,
-			category: e.target.elements.namedItem("category").value
+			category: e.target.elements.namedItem("category").value,
+			status: 'up'
 		};
 
 		let articles = await API.response(Article.filter, article);

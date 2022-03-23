@@ -64,10 +64,15 @@ Article.view.filter = (articles, pagination) => {
 			article_box.appendChild(category_div);
 			article_box.appendChild(text_div);
 
-			let menu_div = lib.element.create("div", { class: "box b1 container" });
-			menu_div.appendChild(lib.element.create("div", { class: "mobile-box b3 border-lg-st center padding-5 radius-5", onclick: "Article.controller.edit('"+articles[i].id+"')" }, "Arquivar" ));
-			menu_div.appendChild(lib.element.create("div", { class: "mobile-box b3 border-lg-st center padding-5 radius-5", onclick: "Article.controller.edit('"+articles[i].id+"')" }, "Editar" ));
-			menu_div.appendChild(lib.element.create("div", { class: "mobile-box b3 border-lg-st center padding-5 radius-5", onclick: "Article.controller.edit('"+articles[i].id+"')" }, "Excluir" ));
+			let menu_div = lib.element.create("div", { class: "box b1 container margin-bottom-10" });
+			
+			if(articles[i].status == 'up') {
+				menu_div.appendChild(lib.element.icon('b3', 30, "https://spaces.jariomilitar.com/erp-images/icon/archive.png", "Article.controller.archive("+articles[i].id+", this)"));
+			} else {
+				menu_div.appendChild(lib.element.icon('b3', 30, "https://spaces.jariomilitar.com/erp-images/icon/unarchive.png", "Article.controller.unarchive("+articles[i].id+", this)"));
+			};
+			menu_div.appendChild(lib.element.icon('b3', 30, "https://spaces.jariomilitar.com/erp-images/icon/edit.png", "Article.controller.edit('"+articles[i].id+"')"));
+			menu_div.appendChild(lib.element.icon('b3', 30, "https://spaces.jariomilitar.com/erp-images/icon/trash.png", "Article.controller.delete("+articles[i].id+")"));
 
 			article_box.appendChild(menu_div);
 
@@ -99,8 +104,9 @@ Article.content.view.list = (contents) => {
 		if(contents[i].tag_name == "img") {
 			content_element = lib.element.create(contents[i].tag_name, { id: 'content-id-'+contents[i].id, src: contents[i].content , class: contents[i].tag_style + " box-hover pointer", onclick: "Article.content.controller.edit("+contents[i].id+")" });
 		} else {
-			content_element = lib.element.create(contents[i].tag_name, { id: 'content-id-'+contents[i].id, class: contents[i].tag_style + " box-hover pointer relative", onclick: "Article.content.controller.edit("+contents[i].id+")" }, contents[i].content);
-			content_element.appendChild(lib.element.create("img", { src: "", style: "position: absolute;top:1%;right:1%;" }, ''));
+			content_element = lib.element.create(contents[i].tag_name, { id: 'content-id-'+contents[i].id, class: contents[i].tag_style + " shadow-hover pointer relative" }, contents[i].content);
+			content_element.appendChild(lib.element.create("img", { src: "https://spaces.jariomilitar.com/erp-images/icon/edit.png", class: "size-15 icon", style: "position: absolute;top:1%;right:20px;", onclick: "Article.content.controller.edit("+contents[i].id+")" }));
+			content_element.appendChild(lib.element.create("img", { src: "https://spaces.jariomilitar.com/erp-images/icon/trash.png", class: "size-15 icon", style: "position: absolute;top:1%;right:1px;", onclick: "Article.content.controller.delete("+contents[i].id+")" }));
 		}
 		content_div.appendChild(content_element);
 	};

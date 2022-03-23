@@ -58,8 +58,6 @@ Article.controller.edit = async (article_id) => {
 	let contents = await API.response(Article.content.list, { article_id });
 	if( !contents ) { return false; }
 
-	console.log(article);
-
 	article.contents = contents;
 
 	lib.display("article-filter-box", "none");
@@ -74,6 +72,42 @@ Article.controller.edit = async (article_id) => {
 	Article.view.preview(article);
 	Article.view.edit(article);
 	Article.content.view.list(article.contents);
+};
+
+Article.controller.archive = async (article_id, icon) => {
+	let r = confirm("Deseja arquivar o artigo?");
+	if(!r) { return; }
+
+	let response = await API.response(Article.archive, article_id);
+	if (!response) { return false; }
+
+	icon.src = "https://spaces.jariomilitar.com/erp-images/icon/unarchive.png";
+	icon.onclick = () => {
+		Article.controller.unarchive(article_id, icon);
+	};
+};
+
+Article.controller.unarchive = async (article_id, icon) => {
+	let r = confirm("Deseja desarquivar o artigo?")
+	if(!r) { return; }
+
+	let response = await API.response(Article.unarchive, article_id);
+	if (!response) { return false; }
+
+	icon.src = "https://spaces.jariomilitar.com/erp-images/icon/archive.png";
+	icon.onclick = () => {
+		Article.controller.archive(article_id, icon);
+	};
+};
+
+Article.controller.delete = async (article_id) => {
+	let r = confirm("Deseja excluir o conteúdo? Essa ação não pode ser revertida.")
+	if(!r) { return; }
+
+	let response = await API.response(Article.delete, article_id);
+	if (!response) { return false; }
+
+	Article.controller.filter.submit.click();
 };
 
 Article.flow.next = () => {
@@ -178,7 +212,6 @@ Article.content.controller.list = async (article_id) => {
 };
 
 Article.content.controller.edit = async (content_id) => {
-	console.log(Article.content.controller.create.elements.namedItem("id").value);
 	if(Article.content.controller.create.elements.namedItem("content").value) {
 		let r = confirm("Atenção: \n \n Existe um conteúdo sem cadastrado, tem certeza que deseja continuar? \n \n O conteúdo perdido não pode ser recuperado!")
 		if(!r) { return; }
@@ -188,4 +221,21 @@ Article.content.controller.edit = async (content_id) => {
 	if (!content) { return false; }
 
 	Article.content.view.edit(content);
+};
+
+Article.content.controller.delete = async (content_id) => {
+	let r = confirm("Deseja excluir o conteúdo? Essa ação não pode ser revertida.")
+	if(!r) { return; }
+
+	let content = await API.response(Article.content.delete, content_id);
+	if (!content) { return false; }
+
+	document.getElementById("content-id-"+content_id).remove();
+
+	if(content_id == Article.content.controller.create.elements.namedItem("id").value){
+		Article.content.controller.create.elements.namedItem("id").value = "";
+		Article.content.controller.create.elements.namedItem("tag-name").value = "";
+		Article.content.controller.create.elements.namedItem("tag-style").value = "";
+		Article.content.controller.create.elements.namedItem("content").value = "";
+	}
 };

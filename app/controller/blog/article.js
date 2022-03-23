@@ -45,7 +45,8 @@ articleController.filter = async(req, res) => {
 	let article = {
 		title: req.body.title,
 		subtitle: req.body.subtitle,
-		category: req.body.category
+		category: req.body.category,
+		status: req.body.status
 	};
 
 	let params = { keys: [], values: [] };
@@ -54,6 +55,7 @@ articleController.filter = async(req, res) => {
 	lib.Query.fillParam("article.title", article.title, params);
 	lib.Query.fillParam("article.subtitle", article.subtitle, params);
 	lib.Query.fillParam("article.category", article.category, strict_params);
+	lib.Query.fillParam("article.status", article.status, strict_params);
 
 	let order_params = [ ['id','DESC'] ];
 
@@ -70,6 +72,36 @@ articleController.findById = async(req, res) => {
 	try	{
 		let article = await Article.findById(req.params.id);	
 		res.send(article);
+	} catch (err) {
+		console.log(err);
+		res.send({ msg: "Ocorreu um erro ao encontrar o Conteúdo do artigo, favor contate o suporte!" });
+	};
+};
+
+articleController.archive = async(req, res) => {
+	try	{
+		let article = await Article.archive(req.params.id);	
+		res.send({ done: "O artigo foi arquivado com sucesso!" });
+	} catch (err) {
+		console.log(err);
+		res.send({ msg: "Ocorreu um erro ao encontrar o Conteúdo do artigo, favor contate o suporte!" });
+	};
+};
+
+articleController.unarchive = async(req, res) => {
+	try	{
+		let article = await Article.unarchive(req.params.id);	
+		res.send({ done: "O artigo foi desarquivado com sucesso!" });
+	} catch (err) {
+		console.log(err);
+		res.send({ msg: "Ocorreu um erro ao encontrar o Conteúdo do artigo, favor contate o suporte!" });
+	};
+};
+
+articleController.delete = async(req, res) => {
+	try	{
+		let content = await Article.delete(req.params.id);	
+		res.send({ done: "Artigo excluído com sucesso" });
 	} catch (err) {
 		console.log(err);
 		res.send({ msg: "Ocorreu um erro ao encontrar o Conteúdo do artigo, favor contate o suporte!" });
@@ -118,6 +150,16 @@ articleController.content.findById = async(req, res) => {
 	try	{
 		let content = await Article.content.findById(req.params.id);	
 		res.send(content);
+	} catch (err) {
+		console.log(err);
+		res.send({ msg: "Ocorreu um erro ao encontrar o Conteúdo do artigo, favor contate o suporte!" });
+	};
+};
+
+articleController.content.delete = async(req, res) => {
+	try	{
+		let content = await Article.content.delete(req.params.id);	
+		res.send({ done: "Conteúdo excluído com sucesso" });
 	} catch (err) {
 		console.log(err);
 		res.send({ msg: "Ocorreu um erro ao encontrar o Conteúdo do artigo, favor contate o suporte!" });

@@ -51,6 +51,21 @@ Article.findById = (article_id) => {
 	return db(query);
 };
 
+Article.archive = (article_id) => {
+	let query = "UPDATE cms_wt_erp.blog_article SET status='down' WHERE id="+article_id+";";
+	return db(query);
+};
+
+Article.unarchive = (article_id) => {
+	let query = "UPDATE cms_wt_erp.blog_article SET status='up' WHERE id="+article_id+";";
+	return db(query);
+};
+
+Article.delete = (article_id) => {
+	let query = "DELETE FROM cms_wt_erp.blog_article WHERE id='"+article_id+"';";
+	return db(query);
+};
+
 Article.content = function(){
 	this.id;
 	this.article_id;
@@ -88,6 +103,11 @@ Article.content.list = (article_id) => {
 
 Article.content.findById = (content_id) => {
 	let query = "SELECT * FROM cms_wt_erp.blog_article_content WHERE id="+content_id+";";
+	return db(query);
+};
+
+Article.content.delete = (content_id) => {
+	let query = "DELETE FROM cms_wt_erp.blog_article_content WHERE id='"+content_id+"';";
 	return db(query);
 };
 
