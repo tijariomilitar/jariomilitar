@@ -22,6 +22,11 @@ if(Blog.article.controller.filter){
 	});
 }
 
+Blog.article.controller.filterByCategory = (category_name) => {
+	Blog.article.controller.filter.elements.namedItem('category').value = category_name;
+	Blog.article.controller.filter.submit.click();
+};
+
 Blog.article.content.controller = {};
 
 Blog.article.content.controller.list = async (article_id) => {
