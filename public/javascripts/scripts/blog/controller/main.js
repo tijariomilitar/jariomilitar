@@ -25,6 +25,7 @@ if(Blog.article.controller.filter){
 Blog.article.controller.filterByCategory = (category_name) => {
 	Blog.article.controller.filter.elements.namedItem('category').value = category_name;
 	Blog.article.controller.filter.submit.click();
+	Blog.article.controller.filter.elements.namedItem('category').value = "";
 };
 
 Blog.article.content.controller = {};
