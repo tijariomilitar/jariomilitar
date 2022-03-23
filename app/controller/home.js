@@ -15,7 +15,7 @@ const homeController = {
 		if(req.user){
 			return res.render('home', { user: req.user });
 		};
-		res.render('presentation');
+		res.render('presentation/index');
 	}
 };
 
