@@ -42,6 +42,10 @@ passport.use(
         try {
             let customer = await Customer.findBy.cnpj(req.body.cnpj);
 
+            if(!customer.length) {
+                customer = await Customer.findBy.cpf(req.body.cnpj);
+            };
+
             if (!customer.length){
                 return done(null, false, req.flash('loginMessage', 'Usuário não encontrado.'));
             };

@@ -46,18 +46,13 @@ customerController.home = async (req, res) => {
 		};
 	};
 
-	console.log(saleStatistics);
-
 	for(let i in Rank) {
 		if(saleStatistics.totalValue > Rank[i].min_value && saleStatistics.totalValue < Rank[i].max_value) {
 			customer.rank = Rank[i];
-			console.log(customer.rank);
 		};
 	};
 
-	console.log(customer);
-
-	res.render('customer/home', { customer, sales, saleStatistics });
+	res.render('customer/home', { customer, sales, saleStatistics, Rank });
 };
 
 customerController.login = async (req, res) => {
