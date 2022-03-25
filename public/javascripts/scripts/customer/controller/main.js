@@ -14,6 +14,8 @@ if(Customer.controller.recover) {
 
 		lib.display("customer-recover-response", "");
 
+		Customer.controller.recover.remove();
+
 		Customer.view.recover(response.done);
 	});
 };
