@@ -5,12 +5,18 @@
     <body>
         <% include ./../partials/header %>
         <section class="container h-center margin-top-50 lucida-grande">
+
             <form action="/lojista/login" method="post" class="box b3 container ground border margin-top-15 padding-10">
+                <% if (message.length > 0) { %>
+                    <div class="box b1 center margin-top-10 padding-5 radius-5" style="background-color: #F08080; color:#fff;"><%= message %></div>
+                <% } %>
+                
                 <div class="box b1 underline georgia margin-top-10 center noselect">Acessar central do Lojista!</div>
                 
-                <input type="text" name="cnpj" class="box b1 em11 georgia border-bottom padding-10 margin-top-5" maxlength="60" autocomplete="off" placeholder="Nome da empresa ou E-mail">
+                <input type="text" name="access" class="box b1 em11 georgia border-bottom padding-10 margin-top-5" maxlength="60" autocomplete="off" placeholder="Nome da empresa ou E-mail">
                 <input type="password" name="password" class="box b1 em11 georgia border-bottom padding-10 margin-top-5" maxlength="45" autocomplete="off" placeholder="Senha">
-                <input type="submit" class="box b1 submit-generic border-bottom margin-top-10 noselect pointer" value="Acessar meu Cotalogo">
+                <input type="submit" class="box b1 submit-generic border-bottom margin-top-10 noselect pointer" value="Acessar minha conta">
+                <div class="em09 right underline-link pointer margin-top-10" onclick="window.location.href='/lojista/recuperar-senha'">Esqueci minha senha</div>
             </form>
         </section>
     </body>

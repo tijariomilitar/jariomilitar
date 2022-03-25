@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <% include ./../partials/head %>
+    </head>
+    <body>
+        <% include ./../partials/header %>
+        <section class="container h-center margin-top-50 lucida-grande">
+            <form id="customer-recover-form" class="box b3 container ground border margin-top-15 padding-10">
+                <div class="box b1 underline georgia margin-top-10 center noselect">Informe seus dados de acesso</div>
+                
+                <input type="text" name="access" class="box b1 em11 georgia border-bottom padding-10 margin-top-5" maxlength="60" autocomplete="off" placeholder="CNPJ ou CPF" required>
+                <input type="submit" class="box b1 submit-generic border-bottom margin-top-10 noselect pointer" value="Recuperar senha">
+            </form>
+        </section>
+        <section id="customer-recover-response" class="container h-center lucida-grande margin-top-10" style="display:none;"></section>
+        <% include ./../partials/loader %>
+    </body>
+    <footer>
+        <% include ./../partials/footer %>
+        <% include ./partial %>
+    </footer>
+</html>

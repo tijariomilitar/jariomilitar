@@ -34,29 +34,30 @@ passport.use(
 passport.use(
     'local-login',
     new LocalStrategy({
-        usernameField : 'cnpj',
+        usernameField : 'access',
         passwordField : 'password',
         passReqToCallback : true
     },
-    async (req, cnpj, password, done) => {
+    async (req, access, password, done) => {
+        if(!access) { return done(null, false, req.flash('loginMessage', 'É necessário preencher o CNPJ ou CPF.')); }
+        if(!password) { return done(null, false, req.flash('loginMessage', 'É necessário preencher o Password.')); }
+
         try {
-            let customer = await Customer.findBy.cnpj(req.body.cnpj);
+            let customer = await Customer.findBy.cnpj(access);
 
             if(!customer.length) {
-                customer = await Customer.findBy.cpf(req.body.cnpj);
+                customer = await Customer.findBy.cpf(access);
             };
 
             if (!customer.length){
                 return done(null, false, req.flash('loginMessage', 'Usuário não encontrado.'));
             };
 
-            customer[0].password = '$2a$10$0YS2Tf4F1cbsMFWjX5X9/.Eo/UcfMiMHMUF0XLi6.WILoMRFMNcIu';
-
             if(customer.length){
                 if (!bcrypt.compareSync(password, customer[0].password)){
                     return done(null, false, req.flash('loginMessage', 'Senha inválida.'));
                 };
-                return done(null, { id: customer[0].id, business: customer[0].brand });
+                return done(null, { id: customer[0].id, access: customer[0].access });
             };
         } catch (err) {
             console.log(err);
