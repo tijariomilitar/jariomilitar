@@ -1,23 +1,24 @@
 <div class="box b1 lucida-grande bold center margin-top-5 underline">Conheça todas as patentes e seus benefícios</div>
 
 <div class="mobile-box b12 container center"><img data-js="rank-carousel-prev" src="https://spaces.jariomilitar.com/erp-images/icon/previous-icon.png" class="size-30 icon center noselect pointer"></div>
+
 <% for(let i in Rank) { %>
 	<% if(i == 0) { %>
-	<div data-js="rank-carousel" class="mobile-box a5-6 container center padding-5 radius-5">
+	<div data-js="rank-carousel" class="mobile-box a5-6 container padding-5 radius-5">
 	<% } else { %>
-	<div data-js="rank-carousel" class="mobile-box a5-6 container center padding-5 radius-5" style="display: none;">
+	<div data-js="rank-carousel" class="mobile-box a5-6 container padding-5 radius-5" style="display: none;">
 	<% } %>
-	    <div class="box b2 container center">
+	    <div class="box b2 container center padding-10">
 	        <img class="max-height-80 image-prop center noselect" src="<%= Rank[i].image %>">
 	    </div>
-	    <div class="box b2 container center">
+	    <div class="box b2 container center padding-10">
 	        <h3 class="em13 lucida-grande center"><%= Rank[i].name %></h3>
-	        <p class="box a1 em09 bold lucida-grande center">R$<%= Rank[i].min_value.toFixed(2) %> à R$<%= Rank[i].max_value.toFixed(2) %></p>
+	        <p class="box a1 em09 bold lucida-grande center">Acima de R$<%= Rank[i].min_value.toFixed(2) %></p>
 	    </div>
-	    <div class="box b1 container margin-top-10 center">
-	        <div class="box b1 container border">
+	    <div class="box b1 container margin-top-10">
+	        <div class="box b1 container">
 		        <% for(let j in Rank[i].benefits) { %>
-					<div class="mobile-box b3 em08 padding-5 bold" style="color:#060">
+					<div class="mobile-box b1 lucida-grande bold padding-5 bold" style="color:#060">
 						<%= Rank[i].benefits[j].description %>
 					</div>
 				<% } %>
@@ -25,6 +26,7 @@
 	    </div>
 	</div>
 <% } %>
+
 <div class="mobile-box b12 container center"><img data-js="rank-carousel-next" src="https://spaces.jariomilitar.com/erp-images/icon/next-icon.png" class="size-30 icon center noselect pointer"></div>
 
 <script>

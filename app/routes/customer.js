@@ -4,11 +4,15 @@ const lib = require("jarmlib");
 const passport = require('../../config/passport');
 
 const customerController = require('../controller/customer/index');
+const saleController = require('../controller/customer/sale');
 
 router.get("/", lib.route.toHttps, customerController.index);
 
 router.get("/login", lib.route.toHttps, customerController.login);
 router.get("/home", lib.route.toHttps, customerController.home);
+
+router.get("/meus-pedidos", lib.route.toHttps, saleController.index);
+router.post("/sale/filter", lib.route.toHttps, saleController.filter);
 
 router.get("/recuperar-senha", lib.route.toHttps, customerController.recover.index);
 router.get("/recover/:access", lib.route.toHttps, customerController.recover.sendMail);
