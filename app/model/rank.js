@@ -26,7 +26,8 @@ const sargento = {
 		{ description: "Suporte personalizado dos consultores" },
 		{ description: "Acesso ao Portal do Lojista" },
 		{ description: "Acesso à promoções recorrentes" },
-		{ description: "Acesso antecipado aos lançamentos" }
+		{ description: "Acesso antecipado aos lançamentos" },
+		{ description: "Desconto de 1% nas compras à vista" }
 	]
 };
 
@@ -43,7 +44,7 @@ const capitao = {
 		{ description: "Acesso ao Portal do Lojista" },
 		{ description: "Acesso à promoções recorrentes" },
 		{ description: "Acesso antecipado aos lançamentos" },
-		{ description: "Desconto de 1% nas compras à vista" },
+		{ description: "Desconto de 2% nas compras à vista" },
 		{ description: "Produção de produtos na marca do comprador (mediante taxa)" }
 	]
 };
@@ -61,7 +62,7 @@ const coronel = {
 		{ description: "Acesso ao Portal do Lojista" },
 		{ description: "Acesso à promoções recorrentes" },
 		{ description: "Acesso antecipado aos lançamentos" },
-		{ description: "Desconto de 2% nas compras à vista" },
+		{ description: "Desconto de 3% nas compras à vista" },
 		{ description: "Opção de comprar parcelado no boleto (mediante critérios e taxas)" },
 		{ description: "Compras parceladas no cartão de crédito sem taxa" },
 		{ description: "Produção de produtos na marca do comprador (mediante taxa)" }
@@ -82,7 +83,7 @@ const general = {
 		{ description: "Acesso à promoções recorrentes" },
 		{ description: "Acesso antecipado aos lançamentos" },
 		{ description: "Compra parcelada no cartão de crédito sem taxa" },
-		{ description: "Desconto de 3% nas compras à vista" },
+		{ description: "Desconto de 4% nas compras à vista" },
 		{ description: "Produção de produtos na marca do comprador (sem taxa)" },
 		{ description: "Compra parcelada no boleto sem taxa" },
 		{ description: "Kit de material publicitário J.A Rio Militar®" }
