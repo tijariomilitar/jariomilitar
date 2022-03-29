@@ -8,4 +8,24 @@ Sale.filter = (props, inners, period, params, strict_params, order_params, limit
 	return db(query);
 };
 
+Sale.product = {
+	list: async (sale_id) => {
+		let query = "SELECT * FROM cms_wt_erp.sale_product WHERE sale_id='"+sale_id+"';";
+		return db(query);		
+	}
+};
+
+Sale.package = {
+	list: async (sale_id) => {
+		let query = "SELECT * FROM cms_wt_erp.sale_package WHERE sale_id='"+sale_id+"';";
+		return db(query);
+	},
+	product: {
+		list: async (sale_id, package_id) => {
+			let query = "SELECT * FROM cms_wt_erp.sale_package_product WHERE sale_id='"+sale_id+"' AND package_id='"+package_id+"';";
+			return db(query);
+		}
+	}
+};
+
 module.exports = Sale;

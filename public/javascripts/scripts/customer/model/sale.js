@@ -12,3 +12,12 @@ Sale.filter = async (sale) => {
 
 	return response;
 };
+
+Sale.findById = async (sale_id) => {
+	let response = await fetch("/lojista/sale/findById/"+sale_id);
+	response = await response.json();
+	
+	if(API.verifyResponse(response)){ return false };
+
+	return response;
+};

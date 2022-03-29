@@ -5,7 +5,7 @@
     <body>
         <% include ./components/header %>
         <section class="container">
-            <div class="box b1 container ground border padding-10 margin-top-10 radius-5">
+            <div id="sale-filter-container" class="box b1 container ground border padding-10 margin-top-10 radius-5">
                 <div class="box a2-3 container">
                     <% include ./components/sale-filter-form %>
                 </div>
@@ -14,6 +14,8 @@
                     <div id="sale-filter-statistics" class="box b1 container"></div>
                 </div>
             </div>
+
+            <div id="sale-show-box" class="box b1 container ground margin-top-10 padding-5 radius-5 border-st relative" style="display:none;"></div>
         </section>
         <% include ./../blog/components/footer %>
         <% include ./../partials/loader %>
@@ -23,5 +25,9 @@
         <script src="/javascripts/scripts/customer/model/sale.js"></script>
         <script src="/javascripts/scripts/customer/controller/sale.js"></script>
         <script src="/javascripts/scripts/customer/view/sale.js"></script>
+
+        <script type="text/javascript">
+            Sale.controller.filter.submit.click();
+        </script>
     </footer>
 </html>

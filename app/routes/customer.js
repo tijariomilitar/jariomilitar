@@ -13,6 +13,7 @@ router.get("/home", lib.route.toHttps, customerController.home);
 
 router.get("/meus-pedidos", lib.route.toHttps, saleController.index);
 router.post("/sale/filter", lib.route.toHttps, saleController.filter);
+router.get("/sale/findById/:id", lib.route.toHttps, saleController.findById);
 
 router.get("/recuperar-senha", lib.route.toHttps, customerController.recover.index);
 router.get("/recover/:access", lib.route.toHttps, customerController.recover.sendMail);

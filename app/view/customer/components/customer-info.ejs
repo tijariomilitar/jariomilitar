@@ -1,16 +1,16 @@
 <div class="box b1 container">
 	<div class="box b1 container padding-2">
 		<div class="box a1 em07 bold"><%= customer.brand && 'Empresa' || customer.name && 'Nome' %></div>
-		<div class="box a1"><%= customer.brand || customer.name %></div>
+		<div class="box a1 em09"><%= customer.brand || customer.name %></div>
 	</div>
 	<div class="box b1 container padding-2">
 		<div class="box a1 em07 bold"><%= customer.cnpj && 'CNPJ' || customer.cpf && 'CPF' %></div>
-		<div class="box a1"><%= customer.cnpj || customer.cpf %></div>
+		<div class="box a1 em09"><%= customer.cnpj || customer.cpf %></div>
 	</div>
 	<% if(customer.email) { %>
 		<div class="box b1 container padding-2">
 			<div class="box a1 em07 bold">E-mail</div>
-			<div class="box a1"><%= customer.email %></div>
+			<div class="box a1 em09"><%= customer.email %></div>
 		</div>
 	<% } %>
 </div>

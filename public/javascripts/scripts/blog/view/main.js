@@ -17,6 +17,7 @@ Blog.article.view.filter = (articles, pagination) => {
 			if(articles[i].category == "Lançamento") { articles[i].categoryColor = "gold" };
 			if(articles[i].category == "Revenda JA®") { articles[i].categoryColor = "#808080" };
 			if(articles[i].category == "Tendências") { articles[i].categoryColor = "orange" };
+			if(articles[i].category == "Promoção") { articles[i].categoryColor = "995599" };
 			let category_div = lib.element.create("div", { class: "container category-article height-30 width-150 radius-15 center", style: "background-color:"+articles[i].categoryColor+";" });
 			category_div.appendChild(lib.element.create("p", { class: "center em08 lucida-grande bold" }, articles[i].category))
 
@@ -56,6 +57,7 @@ Blog.article.view.filter = (articles, pagination) => {
 			if(articles[i].category == "Lançamento") { articles[i].categoryColor = "gold" };
 			if(articles[i].category == "Revenda JA®") { articles[i].categoryColor = "#808080" };
 			if(articles[i].category == "Tendências") { articles[i].categoryColor = "orange" };
+			if(articles[i].category == "Promoção") { articles[i].categoryColor = "995599" };
 			let category_div = lib.element.create("div", { class: "container category-article height-30 width-150 radius-15 center", style: "background-color:"+articles[i].categoryColor+";" });
 			category_div.appendChild(lib.element.create("p", { class: "center em08 lucida-grande bold" }, articles[i].category))
 
