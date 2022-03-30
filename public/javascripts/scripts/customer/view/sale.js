@@ -82,9 +82,10 @@ Sale.view.show = (sale) => {
 	let sale_info_div = lib.element.create("div", { class: "box b2 container padding-5 margin-top-5" });
 	sale_info_div.appendChild(lib.element.create("div", { class: "box b1 lucida-grande bold underline center" }, "Informações da venda"));
 	sale_info_div.appendChild(lib.element.info("b3-7 lucida-grande em09", "Data da venda", `${lib.timestampToDate(sale.sale_date)}` ));
-	sale.nf.length < 20 &&sale_info_div.appendChild(lib.element.info("b4-7 em09", "Status", `${sale.status}` ));
-	sale.nf.length > 20 &&sale_info_div.appendChild(lib.element.info("b3-7 em09", "Status", `${sale.status}` ));
-	sale.nf.length > 20 && sale_info_div.appendChild(lib.element.icon('b7', 30, "https://spaces.jariomilitar.com/erp-images/icon/nf-e.png", "lib.openExternalLink('"+sale.nf+"')"));
+	!sale.nf && sale_info_div.appendChild(lib.element.info("b4-7 em09", "Status", `${sale.status}` ));
+	sale.nf && sale.nf.length < 20 && sale_info_div.appendChild(lib.element.info("b4-7 em09", "Status", `${sale.status}` ));
+	sale.nf && sale.nf.length > 20 && sale_info_div.appendChild(lib.element.info("b3-7 em09", "Status", `${sale.status}` ));
+	sale.nf && sale.nf.length > 20 && sale_info_div.appendChild(lib.element.icon('b7', 30, "https://spaces.jariomilitar.com/erp-images/icon/nf-e.png", "lib.openExternalLink('"+sale.nf+"')"));
 	sale_info_div.appendChild(lib.element.info("b2 em09", "Método de pagamento", `${sale.payment_method || ''}` ));
 	sale_info_div.appendChild(lib.element.info("b2 em09", "Prazo de pagamento", `${sale.payment_period || ''}` ));
 	sale_info_div.appendChild(lib.element.info("b1 em09", "Vendedor(a)", `${sale.user_name}` ));
@@ -93,7 +94,7 @@ Sale.view.show = (sale) => {
 	sale_info_div.appendChild(lib.element.info("b1 em09", "Método de envio", `${sale.shipment_method}` ));
 	sale.payment_confirmation_date && sale_info_div.appendChild(lib.element.info("b1 em09", "Confirmação do pagamento", `${lib.convertDatetime(lib.timestampToDatetime(sale.payment_confirmation_date)) || ''}` ));
 	sale.packment_confirmation_date && sale_info_div.appendChild(lib.element.info("b3-4 em09", "Data do embalo", `${lib.convertDatetime(lib.timestampToDatetime(sale.packment_confirmation_date)) || ''}` ));
-	sale.packment_confirmation_date && sale_info_div.appendChild(lib.element.info("b4 em09", "Volumes", `${sale.box_amount || ''}` ));
+	sale.box_amount && sale_info_div.appendChild(lib.element.info("b4 em09", "Volumes", `${sale.box_amount || ''}` ));
 	sale.shipment_confirmation_date && sale_info_div.appendChild(lib.element.info("b1 em09", "Data do envio", `${lib.convertDatetime(lib.timestampToDatetime(sale.shipment_confirmation_date)) || ''}` ));
 	sale_box.appendChild(sale_info_div);
 
