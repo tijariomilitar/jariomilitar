@@ -50,6 +50,15 @@ customerController.home = async (req, res) => {
 		}
 	};
 
+	for(let i in sales) {
+		if(sales[i].status == "Ag. embalo" || sales[i].status == "Ag. nota fiscal" || sales[i].status == "Ag. envio" || sales[i].status == "Enviado"){
+			
+		} else {
+			sales.splice(i, 1);
+			i--;
+		}
+	};
+
 	for(let i in Rank) {
 		if(parseFloat(saleStatistics.totalValue) >= Rank[i].min_value && parseFloat(saleStatistics.totalValue) < Rank[i].max_value) {
 			customer.rank = Rank[i];
