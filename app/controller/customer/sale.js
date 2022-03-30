@@ -10,7 +10,9 @@ saleController.index = async (req, res) => {
 };
 
 saleController.filter = async (req, res) => {
-	if(!req.user) { res.send({ unauthorized: "Você não tem permissão para realizar esta ação." }); }
+	if(!req.user) { return res.send({ unauthorized: "Você não tem permissão para realizar esta ação." }); }
+
+	console.log(req.user);
 
 	const period = { key: "sale_date", start: req.body.periodStart, end: req.body.periodEnd };
 	const strict_params = { keys: [], values: [] }
@@ -30,7 +32,7 @@ saleController.filter = async (req, res) => {
 };
 
 saleController.findById = async (req, res) => {
-	if(!req.user) { res.send({ unauthorized: "Você não tem permissão para realizar esta ação." }); }
+	if(!req.user) { return res.send({ unauthorized: "Você não tem permissão para realizar esta ação." }); }
 
 	const strict_params = { keys: [], values: [] }
 	lib.Query.fillParam("sale.id", req.params.id, strict_params);

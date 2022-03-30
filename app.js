@@ -32,20 +32,20 @@ app.use(passport.session());
 
 app.use('/', require('./app/routes/index'));
 
-// app.use(function(req, res, next){
-//   res.status(404);
+app.use(function(req, res, next){
+  res.status(404);
 
-//   res.format({
-//     html: function () {
-//       res.render('404', { url: req.url })
-//     },
-//     json: function () {
-//       res.json({ error: 'Not found' })
-//     },
-//     default: function () {
-//       res.type('txt').send('Not found')
-//     }
-//   })
-// });
+  res.format({
+    html: function () {
+      res.render('customer/login', { message: req.flash('loginMessage') })
+    },
+    json: function () {
+      res.json({ error: 'Not found' })
+    },
+    default: function () {
+      res.type('txt').send('Not found')
+    }
+  })
+});
 
 module.exports = app;
