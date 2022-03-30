@@ -30,7 +30,7 @@ customerController.home = async (req, res) => {
 
 	const strict_params = { keys: [], values: [] }
 	lib.Query.fillParam("sale.customer_id", req.user.id, strict_params);
-	const order_params = [ ["id","DESC"] ];
+	const order_params = [ ["id", "DESC"] ];
 	let sales = await Sale.filter([], [], period, [], strict_params, order_params, 0);
 
 	const saleStatistics = {
@@ -47,14 +47,11 @@ customerController.home = async (req, res) => {
 			saleStatistics.shipmentValue += parseFloat(sales[i].shipment_value);
 			saleStatistics.discountValue += parseFloat(sales[i].discount_value);
 			saleStatistics.totalValue += parseFloat(sales[i].value);
-		} else {
-			sales.splice(i, 1);
-			i--;
-		};
+		}
 	};
 
 	for(let i in Rank) {
-		if(saleStatistics.totalValue >= Rank[i].min_value && saleStatistics.totalValue < Rank[i].max_value) {
+		if(parseFloat(saleStatistics.totalValue) >= Rank[i].min_value && parseFloat(saleStatistics.totalValue) < Rank[i].max_value) {
 			customer.rank = Rank[i];
 		};
 	};

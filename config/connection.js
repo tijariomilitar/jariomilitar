@@ -27,3 +27,7 @@ const db = async (query) => {
 };
 
 module.exports = db;
+// 123123
+// $2a$10$0YS2Tf4F1cbsMFWjX5X9/.Eo/UcfMiMHMUF0XLi6.WILoMRFMNcIu
+
+// $2a$10$kWkzCcgXG/U29wLTJYBfP.yxS9EzQ6Da1MRjHjruA7iFWZK940EuO
