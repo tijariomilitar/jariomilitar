@@ -35,3 +35,7 @@ Sale.controller.show = async (sale_id) => {
 
 	Sale.view.show(sale);
 };
+
+Sale.controller.close = async () => {
+	Sale.controller.filter.submit.click();
+};

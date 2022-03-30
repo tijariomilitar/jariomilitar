@@ -74,15 +74,15 @@ Sale.view.statistics = (sales) => {
 };
 
 Sale.view.show = (sale) => {
-	let sale_box = document.getElementById("sale-show-box");
+	let sale_box = document.getElementById("sale-show-div");
 	sale_box.innerHTML = "";
 
 	sale_box.appendChild(lib.element.create("div", { class: "box b1 lucida-grande bold underline margin-top-10 center" }, "Pedido: "+sale.id));
-	sale_box.appendChild(lib.element.create("div", { 
-		class: "lucida-grande em15 bold icon pointer", 
-		style: "position:absolute;top:0px;right:15px;",
-		onclick: "Sale.controller.filter.submit.click()"
-	}, "x"));
+	// sale_box.appendChild(lib.element.create("div", { 
+	// 	class: "lucida-grande em15 bold icon pointer", 
+	// 	style: "position:absolute;top:0px;right:15px;",
+	// 	onclick: "Sale.controller.filter.submit.click()"
+	// }, "x"));
 
 	let sale_info_div = lib.element.create("div", { class: "box b2 container padding-5 margin-top-5" });
 	sale_info_div.appendChild(lib.element.create("div", { class: "box b1 lucida-grande bold underline center" }, "Informações da venda"));
