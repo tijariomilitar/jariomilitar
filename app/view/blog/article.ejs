@@ -1,35 +1,35 @@
 <html>
-	<head>
-		<title>Portal do lojista</title>
-        <% include ./../partials/head %>
-        <link rel="icon" href="https://spaces.jariomilitar.com/PortaldoLojista/favicon.ico" type="image/x-icon">
-        <meta name="description" content="JA Rio Militar, melhor custo benefício em equipamentos militares. Conheça os produtos da marca que mais cresce no Brasil. Produção 100% nacional.">
-	</head>
-	<body>
-        <% include ./components/header %>
+<head>
+	<title>Portal do lojista</title>
+	<% include ./../partials/head %>
+	<link rel="icon" href="https://spaces.jariomilitar.com/PortaldoLojista/favicon.ico" type="image/x-icon">
+	<meta name="description" content="JA Rio Militar, melhor custo benefício em equipamentos militares. Conheça os produtos da marca que mais cresce no Brasil. Produção 100% nacional.">
+</head>
+<body>
+	<% include ./components/header %>
 
-		<section class="container min-height-400 h-center">
-			<div class="box b3-4 container ground padding-10 radius-10 border margin-top-20">
-				<div class="box b1 container center">
-					<input type="hidden" id="article-id" value="<%= article.id %>">
-					<h1 class="box b1 lucida-grande center margin-top-40"><%= article.title %></h1>
-					<img src="<%= article.image %>" class="image-prop width-500 center margin-top-20 radius-5">
-					<p class="box b1 lucida-grande center margin-top-20"><%= article.subtitle %></p>
-				</div>
-
-				<div id="article-content-div" class="box a1 container padding-15 margin-top-20"></div>
+	<section class="container min-height-400 h-center">
+		<div class="box b3-4 container ground padding-10 radius-10 border margin-top-20">
+			<div class="box b1 container center">
+				<input type="hidden" id="article-id" value="<%= article.id %>">
+				<h1 class="box b1 lucida-grande center margin-top-40"><%= article.title %></h1>
+				<img src="<%= article.image %>" class="image-prop width-500 center margin-top-20 radius-5">
+				<p class="box b1 lucida-grande center margin-top-20"><%= article.subtitle %></p>
 			</div>
-		</section>
 
-        <% include ./components/footer %>
-        <% include ./../partials/loader %>
-	</body>
-	<footer>
-        <% include ./../partials/footer %>
-        <% include ./partial %>
-        <% include ./article/partial %>
-        <script>
-        	Blog.article.content.controller.list(document.getElementById("article-id").value);
-        </script>
-	</footer>
+			<div id="article-content-div" class="box a1 container padding-15 margin-top-20"></div>
+		</div>
+	</section>
+
+	<% include ./components/footer %>
+	<% include ./../partials/loader %>
+</body>
+<footer>
+	<% include ./../partials/footer %>
+	<% include ./partial %>
+	<% include ./article/partial %>
+	<script>
+		Blog.article.content.controller.list(document.getElementById("article-id").value);
+	</script>
+</footer>
 </html>

@@ -17,6 +17,7 @@ router.use("/portal-do-lojista", require("./blog"));
 router.get("/blackout", lib.route.toHttps, landingPageController.blackout);
 router.get("/lancamento-da-semana", lib.route.toHttps, landingPageController.lancamento_da_semana);
 
+router.use("/lead", require("./lead"));
 router.use("/landing-page", require("./landing_page"));
 router.use("/catalogo", require("./catalog"));
 
