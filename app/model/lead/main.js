@@ -10,7 +10,7 @@ const Lead = function() {
 	this.phone = "";
 
 	this.save = () => {
-		let query = `INSERT INTO cms_wt_erp.lead (datetime, name, email, phone) VALUES (
+		let query = `INSERT INTO cms_wt_erp.lead_lp (datetime, name, email, phone) VALUES (
 			'${this.datetime}', 
 			'${this.name}', 
 			'${this.email}', 
