@@ -85,7 +85,7 @@ const general = {
 		{ description: "Compra parcelada no cartão de crédito sem taxa" },
 		{ description: "Desconto de 4% nas compras à vista" },
 		{ description: "Produção de produtos na marca do comprador (sem taxa)" },
-		{ description: "Compra parcelada no boleto sem taxa" },
+		{ description: "Compra parcelada no boleto sem taxa (mediante critérios)" },
 		{ description: "Kit de material publicitário J.A Rio Militar®" }
 	]
 };
