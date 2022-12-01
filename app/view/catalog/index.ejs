@@ -1,38 +1,44 @@
 <html>
-	<head>
-        <% include ./../partials/head %>
-        <meta name="description" content="JA Rio Militar, melhor custo benefício em equipamentos militares. Conheça os produtos da marca que mais cresce no Brasil. Produção 100% nacional.">
-        <style type="text/css">
-			.shadow-st-hover:hover { box-shadow:5px 5px 10px var(--solid); }
-        </style>
-	</head>
-	<body>
-    	<% include ./../catalog/components/header %>
-    	<% include ./../catalog/components/nav %>
-		<section>
-			<div class="container h-center padding-10">
-        		<% include ./../catalog/components/catalog-filter-form %>
-    			<% include ./../catalog/components/catalog-filter-box %>
-			</div>
-			
-    		<% include ./../catalog/components/footer %>
-		</section>
-        <% include ./../partials/loader %>
-	</body>
-	<footer>
-        <% include ./../partials/footer %>
-        <% include ./partial %>
 
-		<script src="/javascripts/scripts/catalog/model/product.js"></script>
-		<script src="/javascripts/scripts/catalog/controller/product.js"></script>
-		<script src="/javascripts/scripts/catalog/view/product.js"></script>
+<head>
+	<%- include('./../partials/head.ejs') %>
+	<meta name="description"
+		content="JA Rio Militar, melhor custo benefício em equipamentos militares. Conheça os produtos da marca que mais cresce no Brasil. Produção 100% nacional.">
+	<style type="text/css">
+		.shadow-st-hover:hover {
+			box-shadow: 5px 5px 10px var(--solid);
+		}
+	</style>
+</head>
 
-		<script src="/javascripts/scripts/catalog/model/package.js"></script>
-		<script src="/javascripts/scripts/catalog/controller/package.js"></script>
-		<script src="/javascripts/scripts/catalog/view/package.js"></script>
+<body>
+	<%- include('./../catalog/components/header.ejs') %>
+	<%- include('./../catalog/components/nav.ejs') %>
+	<section>
+		<div class="container h-center padding-10">
+			<%- include('./../catalog/components/catalog-filter-form.ejs') %>
+			<%- include('./../catalog/components/catalog-filter-box.ejs') %>
+		</div>
 
-		<script type="text/javascript">
-			Catalog.controller.filter.submit.click();
-		</script>
-	</footer>
+		<%- include('./../catalog/components/footer.ejs') %>
+	</section>
+	<%- include('./../partials/loader.ejs') %>
+</body>
+<footer>
+	<%- include('./../partials/footer.ejs') %>
+	<%- include('./partial.ejs') %>
+
+	<script src="/javascripts/scripts/catalog/model/product.js"></script>
+	<script src="/javascripts/scripts/catalog/controller/product.js"></script>
+	<script src="/javascripts/scripts/catalog/view/product.js"></script>
+
+	<script src="/javascripts/scripts/catalog/model/package.js"></script>
+	<script src="/javascripts/scripts/catalog/controller/package.js"></script>
+	<script src="/javascripts/scripts/catalog/view/package.js"></script>
+
+	<script type="text/javascript">
+		Catalog.controller.filter.submit.click();
+	</script>
+</footer>
+
 </html>

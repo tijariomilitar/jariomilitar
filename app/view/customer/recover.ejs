@@ -1,24 +1,32 @@
 <html>
-    <head>
-        <% include ./../partials/head %>
-    </head>
-    <body>
-        <header class="container h-center" style="background-color:#000;">
-            <img class="image-prop width-100 opacity-out-08 pointer" onclick="window.location.href='/lojista'" src="/images/favicon/favicon-white.png">
-        </header>
-        <section class="container h-center margin-top-100 lucida-grande">
-            <form id="customer-recover-form" class="box b3 container ground border margin-top-15 padding-10 radius-10">
-                <div class="box b1 underline georgia margin-top-10 center noselect">Informe seus dados de acesso</div>
-                
-                <input type="text" name="access" class="box b1 em11 georgia border-bottom padding-10 margin-top-5" maxlength="60" autocomplete="off" placeholder="CNPJ ou CPF" required>
-                <input type="submit" name="submit" class="box b1 em12 lucida-grande bold border-lg-st shadow-hover padding-10 margin-top-5 radius-5 noselect pointer" value="Recuperar senha">
-            </form>
-        </section>
-        <section id="customer-recover-response" class="container h-center lucida-grande margin-top-10" style="display:none;"></section>
-        <% include ./../partials/loader %>
-    </body>
-    <footer>
-        <% include ./../partials/footer %>
-        <% include ./partial %>
-    </footer>
+
+<head>
+    <%- include('./../partials/head.ejs') %>
+</head>
+
+<body>
+    <header class="container h-center" style="background-color:#000;">
+        <img class="image-prop width-100 opacity-out-08 pointer" onclick="window.location.href='/lojista'"
+            src="/images/favicon/favicon-white.png">
+    </header>
+    <section class="container h-center margin-top-100 lucida-grande">
+        <form id="customer-recover-form" class="box b3 container ground border margin-top-15 padding-10 radius-10">
+            <div class="box b1 underline georgia margin-top-10 center noselect">Informe seus dados de acesso</div>
+
+            <input type="text" name="access" class="box b1 em11 georgia border-bottom padding-10 margin-top-5"
+                maxlength="60" autocomplete="off" placeholder="CNPJ ou CPF" required>
+            <input type="submit" name="submit"
+                class="box b1 em12 lucida-grande bold border-lg-st shadow-hover padding-10 margin-top-5 radius-5 noselect pointer"
+                value="Recuperar senha">
+        </form>
+    </section>
+    <section id="customer-recover-response" class="container h-center lucida-grande margin-top-10"
+        style="display:none;"></section>
+    <%- include('./../partials/loader.ejs') %>
+</body>
+<footer>
+    <%- include('./../partials/footer.ejs') %>
+    <%- include('./partial.ejs') %>
+</footer>
+
 </html>

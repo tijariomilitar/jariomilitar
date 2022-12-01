@@ -1,35 +1,39 @@
 <h3 class="mobile-box b2-3 lucida-grande padding-left-50 center noselect">Compras - 90 dias</h3>
-<div onclick="window.location.href='/lojista/meus-pedidos'" class="mobile-box b3 em09 right bold lucida-grande padding-10 border-lg-st radius-5 pointer noselect center" style="background-color:#060;color:#fff;">Ver todos os pedidos</div>
+<div onclick="window.location.href='/lojista/meus-pedidos'"
+    class="mobile-box b3 em09 right bold lucida-grande padding-10 border-lg-st radius-5 pointer noselect center"
+    style="background-color:#060;color:#fff;">Ver todos os pedidos</div>
 <div class="box a1 container padding-10">
     <% for(let i in sales){ %>
-        <div class="box b1 container padding-5 margin-top-5 border-lg-st radius-5 noselect pointer" onclick="Sale.controller.show('<%= sales[i].id %>')">
-            <div class="mobile-box b12 lucida-grande bold center" onclick="Sale.controller.show('<%= sales[i].id%>')"><%= sales[i].id %></div>
-            <div class="mobile-box b4 padding-5">
-                <div class="box a1 em07 bold">Status</div>
-                <div class="box a1 em08"><%= sales[i].status %></div>
-            </div>
-            <div class="mobile-box b6 padding-5">
-                <div class="box b1 em07 bold">Compra</div>
-                <div class="box a1 em08">R$<%= (sales[i].product_value + sales[i].package_value).toFixed(2) %></div>
-            </div>
-            <div class="mobile-box b6 padding-5">
-                <div class="box b1 em07 bold">Frete</div>
-                <div class="box a1 em08">R$<%= sales[i].shipment_value.toFixed(2) %></div>
-            </div>
-            <div class="mobile-box b6 padding-5">
-                <div class="box b1 em07 bold">Descontos</div>
-                <div class="box a1 em08">R$<%= sales[i].discount_value.toFixed(2) %></div>
-            </div>
-            <div class="mobile-box b6 padding-5">
-                <div class="box b1 em07 bold">Valor total</div>
-                <div class="box a1 em08">R$<%= sales[i].value %></div>
-            </div>
+    <div class="box b1 container padding-5 margin-top-5 border-lg-st radius-5 noselect pointer"
+        onclick="Sale.controller.show('<%= sales[i].id %>')">
+        <div class="mobile-box b12 lucida-grande bold center" onclick="Sale.controller.show('<%= sales[i].id%>')">
+            <%= sales[i].id %></div>
+        <div class="mobile-box b4 padding-5">
+            <div class="box a1 em07 bold">Status</div>
+            <div class="box a1 em08"><%= sales[i].status %></div>
         </div>
+        <div class="mobile-box b6 padding-5">
+            <div class="box b1 em07 bold">Compra</div>
+            <div class="box a1 em08">R$<%= (sales[i].product_value + sales[i].package_value).toFixed(2) %></div>
+        </div>
+        <div class="mobile-box b6 padding-5">
+            <div class="box b1 em07 bold">Frete</div>
+            <div class="box a1 em08">R$<%= sales[i].shipment_value.toFixed(2) %></div>
+        </div>
+        <div class="mobile-box b6 padding-5">
+            <div class="box b1 em07 bold">Descontos</div>
+            <div class="box a1 em08">R$<%= sales[i].discount_value.toFixed(2) %></div>
+        </div>
+        <div class="mobile-box b6 padding-5">
+            <div class="box b1 em07 bold">Valor total</div>
+            <div class="box a1 em08">R$<%= sales[i].value %></div>
+        </div>
+    </div>
     <% } %>
 
     <% if(!sales.length) { %>
-        <div class="box b1 container padding-5 margin-top-5 border-lg-st radius-5 center noselect">
-            <div class="box b1 lucida-grande bold center">Você não realizou compras nos últimos 90 dias</div>
-        </div>
+    <div class="box b1 container padding-5 margin-top-5 border-lg-st radius-5 center noselect">
+        <div class="box b1 lucida-grande bold center">Você não realizou compras nos últimos 90 dias</div>
+    </div>
     <% } %>
 </div>

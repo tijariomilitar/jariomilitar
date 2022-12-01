@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<% include ./../partials/head %>
+	<%- include('./../partials/head.ejs') %>
+
 	<style type="text/css">
-		.b5-b3 { width: 19%; margin-left: 0.5%; margin-right: 0.5%; }
-		@media (max-width: 800px) {
-			.b5-b3 { width: 32.33%; margin-left: 0.5%; margin-right: 0.5%; }
+		.b5-b3 {
+			width: 19%;
+			margin-left: 0.5%;
+			margin-right: 0.5%;
 		}
-	    .font-green	{ color:green; }
+
+		@media (max-width: 800px) {
+			.b5-b3 {
+				width: 32.33%;
+				margin-left: 0.5%;
+				margin-right: 0.5%;
+			}
+		}
+
+		.font-green {
+			color: green;
+		}
 	</style>
 </head>
+
 <body>
 	<section class="box a1 container" style="position:relative; background-color:#000">
 		<div class="container padding-20 center">
@@ -17,65 +32,97 @@
 		</div>
 	</section>
 
-	<section class="box a1 container padding-5 noselect" style="color:#f3f4f4;background-color:#212322;background-image: url(https://spaces.jariomilitar.com/PortaldoLojista/ativo.png)">
+	<section class="box a1 container padding-5 noselect"
+		style="color:#f3f4f4;background-color:#212322;background-image: url(https://spaces.jariomilitar.com/PortaldoLojista/ativo.png)">
 		<div class="box a1 padding-10">
 			<h1 class="center lucida-grande">Conheça mais da história da J.A Rio Militar®</h1>
 		</div>
 
-		<div class="mobile-box b12 container center"><img id="flow-prev" style="display:none;" onclick="Story.flow.prev()" src="https://spaces.jariomilitar.com/erp-images/icon/previous-icon-white.png" class="size-30 icon center pointer"></div>
+		<div class="mobile-box b12 container center"><img id="flow-prev" style="display:none;" onclick="Story.flow.prev()"
+				src="https://spaces.jariomilitar.com/erp-images/icon/previous-icon-white.png"
+				class="size-30 icon center pointer"></div>
 		<div class="mobile-box a5-6 container margin-top-15 h-center">
 			<div id="story-1" class="box b5-6 container">
 				<img class="box a2 size-300 center" src="https://spaces.jariomilitar.com/PortaldoLojista/historia1.png">
-				<p class="box a2 lucida-grande padding-5 bold center">Em 1998 diante da necessidade de encontrar produtos táticos de qualidade para compor o próprio uniforme, o idealizador da J.A Rio Militar, que já tinha experiência familiar em costura e capotaria, viu ali uma oportunidade de unir sua profissão que exerceu desde a infância ao orgulho do momento que era ser formado no curso Para-quedista.</p>
+				<p class="box a2 lucida-grande padding-5 bold center">Em 1998 diante da necessidade de encontrar produtos
+					táticos de qualidade para compor o próprio uniforme, o idealizador da J.A Rio Militar, que já tinha
+					experiência familiar em costura e capotaria, viu ali uma oportunidade de unir sua profissão que exerceu desde
+					a infância ao orgulho do momento que era ser formado no curso Para-quedista.</p>
 			</div>
 
 			<div id="story-2" class="box b5-6 container" style="display:none;">
 				<img class="box a2 size-300 center" src="https://spaces.jariomilitar.com/PortaldoLojista/historia3.png">
-				<p class="box a2 lucida-grande padding-5 bold center">Como sempre foi detalhista em todos os projetos que trabalhou neste não seria diferente.
-				Devido a grande habilidade com costura que adquiriu desde a infância trabalhando junto com seu pai, conseguia reproduzir e até aprimorar muitos dos modelos de colete e demais acessórios disponíveis na época, o que logo chamou a atenção dos companheiros.</p>
+				<p class="box a2 lucida-grande padding-5 bold center">Como sempre foi detalhista em todos os projetos que
+					trabalhou neste não seria diferente.
+					Devido a grande habilidade com costura que adquiriu desde a infância trabalhando junto com seu pai, conseguia
+					reproduzir e até aprimorar muitos dos modelos de colete e demais acessórios disponíveis na época, o que logo
+					chamou a atenção dos companheiros.</p>
 			</div>
 
 			<div id="story-3" class="box b5-6 container" style="display:none;">
 				<img class="box a2 size-300 center" src="https://spaces.jariomilitar.com/PortaldoLojista/historia2.png">
-				<p class="box a2 lucida-grande padding-5 bold center">Então, a partir dos pedidos de todos, surgiu a J.A Rio Militar (ainda não nomeada nessa época) que começou a ser a primeira opção de muitos combatentes que procuravam produtos táticos de qualidade. Como o equipamento era projetado e confeccionado pelo próprio combatente supria exatamente a necessidade para as missões, além das melhorias constantes feitas devido a própria busca de aprimorar os equipamentos que utilizava.</p>
+				<p class="box a2 lucida-grande padding-5 bold center">Então, a partir dos pedidos de todos, surgiu a J.A Rio
+					Militar (ainda não nomeada nessa época) que começou a ser a primeira opção de muitos combatentes que
+					procuravam produtos táticos de qualidade. Como o equipamento era projetado e confeccionado pelo próprio
+					combatente supria exatamente a necessidade para as missões, além das melhorias constantes feitas devido a
+					própria busca de aprimorar os equipamentos que utilizava.</p>
 			</div>
 
 			<div id="story-4" class="box b5-6 container padding-20 radius-15" style="color:#f3f4f4;display:none;">
 				<h1 class="center lucida-grande">E hoje, quem é a JA Rio Militar?</h1>
-				<p class="em09 lucida-grande bold padding-5 center">Após 21 anos de evolução e especialização na área, hoje a JA tem vários produtos que já são referência no Brasil. Utilizando das técnicas e máquinas mais avançadas para projeção dos produtos e seu potencial de produção em massa, entrega o custo benefício de produtos importados e tem como principal objetivo se estabelecer entre uma das principais fornecedoras de artigos militares do País. <br><br>
+				<p class="em09 lucida-grande bold padding-5 center">Após 21 anos de evolução e especialização na área, hoje a JA
+					tem vários produtos que já são referência no Brasil. Utilizando das técnicas e máquinas mais avançadas para
+					projeção dos produtos e seu potencial de produção em massa, entrega o custo benefício de produtos importados e
+					tem como principal objetivo se estabelecer entre uma das principais fornecedoras de artigos militares do País.
+					<br><br>
 
-				Sabemos que o mercado militar é lucrativo mas acreditamos que além dos produtos comercializados precisamos também evoluir como um todo, nos estruturando para o mundo digital e globalizado.
-				Tudo nos indica que o Brasil tem potêncial para se tornar um grande polo mundial de mercado e indústria, por essa razão nossa missão é unir as empresas parceiras de diferentes lugares do país focando em fortalecer o relacionamento e o compartilhamento de estratégias através de nossa comunidade para a evolução do comércio nacional.
+					Sabemos que o mercado militar é lucrativo mas acreditamos que além dos produtos comercializados precisamos
+					também evoluir como um todo, nos estruturando para o mundo digital e globalizado.
+					Tudo nos indica que o Brasil tem potêncial para se tornar um grande polo mundial de mercado e indústria, por
+					essa razão nossa missão é unir as empresas parceiras de diferentes lugares do país focando em fortalecer o
+					relacionamento e o compartilhamento de estratégias através de nossa comunidade para a evolução do comércio
+					nacional.
 				</p>
 			</div>
 		</div>
-		<div class="mobile-box b12 container center"><img id="flow-next" onclick="Story.flow.next()" src="https://spaces.jariomilitar.com/erp-images/icon/next-icon-white.png" class="size-30 icon center pointer"></div>
+		<div class="mobile-box b12 container center"><img id="flow-next" onclick="Story.flow.next()"
+				src="https://spaces.jariomilitar.com/erp-images/icon/next-icon-white.png" class="size-30 icon center pointer">
+		</div>
 	</section>
 
 	<div class="box a1 container h-center">
 		<div class="box b3-4 container">
 			<div class="box b1 container padding-20">
 				<h1 class="box a1 lucida-grande">Sistema de benefícios por patente de revenda</h1>
-				<p class="em09">Ao iniciar um cadastro na nossa plataforma, o lojista conquista a patente "soldado", tendo acesso a alguns benefícios de revenda e suporte. Após a primeira compra, haverá a contagem da <b>média de compra</b>, desse modo a patente é atualizada. A <b>média de compra</b> é a soma dos pedidos feitos nos últimos 3 meses. Com o avanço nas patentes, o lojista tem direito a diversos benefícios.</p>
+				<p class="em09">Ao iniciar um cadastro na nossa plataforma, o lojista conquista a patente "soldado", tendo
+					acesso a alguns benefícios de revenda e suporte. Após a primeira compra, haverá a contagem da <b>média de
+						compra</b>, desse modo a patente é atualizada. A <b>média de compra</b> é a soma dos pedidos feitos nos
+					últimos 3 meses. Com o avanço nas patentes, o lojista tem direito a diversos benefícios.</p>
 			</div>
 
 			<div class="box b1 hide-in-mobile container border radius-15 margin-bottom-20" style="background-color:#cfcfc4">
 				<div class="mobile-box a5 center">
-					<img class="padding-10 max-height-80 image-prop noselect" src="https://spaces.jariomilitar.com/ja-images/ranks/soldier1.png">
+					<img class="padding-10 max-height-80 image-prop noselect"
+						src="https://spaces.jariomilitar.com/ja-images/ranks/soldier1.png">
 				</div>
 				<div class="mobile-box a4-5 padding-10">
 					<h3 class="lucida-grande">Soldado</h3>
-					<p>A patente de soldado é disponibilizada para cliente que tem o cadastro com a J.A Rio Militar® e não tem compras no histório (ou tem compras de até R$500,00). Essa patente tem acesso à <b>tabela com menores preços dos produtos J.A®</b>, além do acesso ao <b>Portal do lojista</b>, que contém dicas, tutoriais e suporte aos micro e pequenos empresários do ramo militar e esportivo.</p>
+					<p>A patente de soldado é disponibilizada para cliente que tem o cadastro com a J.A Rio Militar® e não tem
+						compras no histório (ou tem compras de até R$500,00). Essa patente tem acesso à <b>tabela com menores preços
+							dos produtos J.A®</b>, além do acesso ao <b>Portal do lojista</b>, que contém dicas, tutoriais e suporte
+						aos micro e pequenos empresários do ramo militar e esportivo.</p>
 				</div>
 			</div>
 
 			<div class="box b5-b3 container hide-in-web border margin-top-10 radius-15" style="background-color:#cfcfc4">
 				<div class="box a1 center margin-top-10">
-					<img class="max-height-80 image-prop noselect" src="https://spaces.jariomilitar.com/ja-images/ranks/soldier1.png">
+					<img class="max-height-80 image-prop noselect"
+						src="https://spaces.jariomilitar.com/ja-images/ranks/soldier1.png">
 					<h3 class="em13 lucida-grande">Soldado</h3>
 					<p class="box a1 bold lucida-grande margin-top-10 center">Iniciante</p>
 				</div>
-				<p class="box a1 underline center padding-10 em09 bold font-green">Acesso aos melhores preços da J.A Rio Militar®</p>
+				<p class="box a1 underline center padding-10 em09 bold font-green">Acesso aos melhores preços da J.A Rio
+					Militar®</p>
 				<p class="box a1 underline center padding-10 em09 bold font-green">Suporte personalizado dos consultores</p>
 				<p class="box a1 underline center padding-10 em09 bold font-green">Acesso ao Portal do Lojista</p>
 			</div>
@@ -83,94 +130,117 @@
 			<div class="box b5-b3 container border margin-top-10 radius-15" style="background-color:#cfcfc4">
 				<div class="box a1">
 					<div class="box a1 center margin-top-10">
-						<img class="max-height-80 image-prop noselect" src="https://spaces.jariomilitar.com/ja-images/ranks/sargento2.png">
+						<img class="max-height-80 image-prop noselect"
+							src="https://spaces.jariomilitar.com/ja-images/ranks/sargento2.png">
 						<h3 class="em13 lucida-grande">Sargento</h3>
 						<p class="box a1 bold lucida-grande margin-top-10 center">Média de<br>R$500,00</p>
 					</div>
-					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso aos melhores preços da J.A Rio Militar®</p>
+					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso aos melhores preços da J.A Rio
+						Militar®</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Suporte personalizado dos consultores</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso ao Portal do Lojista</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso à promoções recorrentes</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso antecipado aos lançamentos</p>
-					<p class="box a1 underline center padding-10 em09 bold font-green">Produção de produtos na marca do comprador (mediante taxa)</p>
+					<p class="box a1 underline center padding-10 em09 bold font-green">Produção de produtos na marca do comprador
+						(mediante taxa)</p>
 				</div>
 			</div>
 
 			<div class="box b5-b3 container border margin-top-10 radius-15" style="background-color:#cfcfc4">
 				<div class="box a1">
 					<div class="box a1 center margin-top-10">
-						<img class="max-height-80 image-prop noselect" src="https://spaces.jariomilitar.com/ja-images/ranks/capitao.png">
+						<img class="max-height-80 image-prop noselect"
+							src="https://spaces.jariomilitar.com/ja-images/ranks/capitao.png">
 						<h3 class="em13 lucida-grande">Capitão</h3>
 						<p class="box a1 bold lucida-grande margin-top-10 center">Média de<br>R$1.000,00</p>
 					</div>
-					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso aos melhores preços da J.A Rio Militar®</p>
+					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso aos melhores preços da J.A Rio
+						Militar®</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Suporte personalizado dos consultores</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso ao Portal do Lojista</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso à promoções recorrentes</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso antecipado aos lançamentos</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Desconto de 1% nas compras à vista</p>
-					<p class="box a1 underline center padding-10 em09 bold font-green">Produção de produtos na marca do comprador (mediante taxa)</p>
-					<p class="box a1 underline center padding-10 em09 bold font-green">Opção de comprar parcelado no boleto (mediante critérios e taxas)</p>
+					<p class="box a1 underline center padding-10 em09 bold font-green">Produção de produtos na marca do comprador
+						(mediante taxa)</p>
+					<p class="box a1 underline center padding-10 em09 bold font-green">Opção de comprar parcelado no boleto
+						(mediante critérios e taxas)</p>
 				</div>
 			</div>
 
 			<div class="box b5-b3 container border margin-top-10 radius-15" style="background-color:#cfcfc4">
 				<div class="box a1">
 					<div class="box a1 center margin-top-10">
-						<img class="max-height-80 image-prop noselect" src="https://spaces.jariomilitar.com/ja-images/ranks/Coronel.png">
+						<img class="max-height-80 image-prop noselect"
+							src="https://spaces.jariomilitar.com/ja-images/ranks/Coronel.png">
 						<h3 class="em13 lucida-grande">Coronel</h3>
 						<p class="box a1 bold lucida-grande margin-top-10 center">Média de<br>R$2.500,00</p>
 					</div>
-					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso aos melhores preços da J.A Rio Militar®</p>
+					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso aos melhores preços da J.A Rio
+						Militar®</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Suporte personalizado dos consultores</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso ao Portal do Lojista</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso à promoções recorrentes</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso antecipado aos lançamentos</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Desconto de 2% nas compras à vista</p>
-					<p class="box a1 underline center padding-10 em09 bold font-green">Opção de comprar parcelado no boleto (mediante critérios e taxas)</p>
-					<p class="box a1 underline center padding-10 em09 bold font-green">Compras parceladas no cartão de crédito sem taxa</p>
-					<p class="box a1  center padding-10 em09 bold font-green">Produção de produtos na marca do comprador (mediante taxa)</p>
+					<p class="box a1 underline center padding-10 em09 bold font-green">Opção de comprar parcelado no boleto
+						(mediante critérios e taxas)</p>
+					<p class="box a1 underline center padding-10 em09 bold font-green">Compras parceladas no cartão de crédito sem
+						taxa</p>
+					<p class="box a1  center padding-10 em09 bold font-green">Produção de produtos na marca do comprador (mediante
+						taxa)</p>
 				</div>
 			</div>
 
 			<div class="box b5-b3 container border margin-top-10 radius-15" style="background-color:#cfcfc4">
 				<div class="box a1">
 					<div class="box a1 center margin-top-10">
-						<img class="max-height-80 image-prop noselect" src="https://spaces.jariomilitar.com/ja-images/ranks/General.png">
+						<img class="max-height-80 image-prop noselect"
+							src="https://spaces.jariomilitar.com/ja-images/ranks/General.png">
 						<h3 class="em13 lucida-grande">General</h3>
 						<p class="box a1 bold lucida-grande margin-top-10 center">Média de<br>R$5.000,00</p>
 					</div>
-					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso aos melhores preços da J.A Rio Militar®</p>
+					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso aos melhores preços da J.A Rio
+						Militar®</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Suporte personalizado dos consultores</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso ao Portal do Lojista</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso à promoções recorrentes</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso antecipado aos lançamentos</p>
-					<p class="box a1 underline center padding-10 em09 bold font-green">Compra parcelada no cartão de crédito sem taxa</p>
+					<p class="box a1 underline center padding-10 em09 bold font-green">Compra parcelada no cartão de crédito sem
+						taxa</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Desconto de 3% nas compras à vista</p>
-					<p class="box a1 underline center padding-10 em09 bold font-green">Produção de produtos na marca do comprador (sem taxa)</p>
+					<p class="box a1 underline center padding-10 em09 bold font-green">Produção de produtos na marca do comprador
+						(sem taxa)</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Compra parcelada no boleto sem taxa</p>
-					<p class="box a1 underline center padding-10 em09 bold font-green">Kit de material publicitário J.A Rio Militar®</p>
+					<p class="box a1 underline center padding-10 em09 bold font-green">Kit de material publicitário J.A Rio
+						Militar®</p>
 				</div>
 			</div>
 
 			<div class="box b5-b3 container border margin-top-10 radius-15" style="background-color:#cfcfc4">
 				<div class="box a1">
 					<div class="box a1 center margin-top-10">
-						<img class="max-height-80 image-prop noselect" src="https://spaces.jariomilitar.com/ja-images/ranks/Marechal.png">
+						<img class="max-height-80 image-prop noselect"
+							src="https://spaces.jariomilitar.com/ja-images/ranks/Marechal.png">
 						<h3 class="em13 lucida-grande">Marechal</h3>
 						<p class="box a1 bold lucida-grande margin-top-10 center">Média de<br>R$10.000,00</p>
 					</div>
-					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso aos melhores preços da J.A Rio Militar®</p>
+					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso aos melhores preços da J.A Rio
+						Militar®</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Suporte personalizado dos consultores</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso ao Portal do Lojista</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso à promoções recorrentes</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Acesso antecipado aos lançamentos</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Desconto de 5% nas compras à vista</p>
-					<p class="box a1 underline center padding-10 em09 bold font-green">Compra parcelada no cartão de crédito sem taxa</p>
+					<p class="box a1 underline center padding-10 em09 bold font-green">Compra parcelada no cartão de crédito sem
+						taxa</p>
 					<p class="box a1 underline center padding-10 em09 bold font-green">Compra parcelada no boleto sem taxa</p>
-					<p class="box a1 underline center padding-10 em09 bold font-green">Produção de produtos na marca do comprador (sem taxa)</p>
-					<p class="box a1 underline center padding-10 em09 bold font-green">Kit de material publicitário J.A Rio Militar®</p>
-					<p class="box a1 underline center padding-10 em09 bold font-green">Recebimento dos lançamentos J.A Rio Militar®</p>
+					<p class="box a1 underline center padding-10 em09 bold font-green">Produção de produtos na marca do comprador
+						(sem taxa)</p>
+					<p class="box a1 underline center padding-10 em09 bold font-green">Kit de material publicitário J.A Rio
+						Militar®</p>
+					<p class="box a1 underline center padding-10 em09 bold font-green">Recebimento dos lançamentos J.A Rio
+						Militar®</p>
 				</div>
 			</div>
 		</div>
@@ -178,16 +248,19 @@
 
 	<section class="box a1 container h-center padding-15 margin-top-30 h-center" style="background-color:#212322;">
 		<div class="box a1 center margin-top-5" style="color:#f3f4f4;">
-			<iframe class="box b2 radius-5 border-st margin-top-15 height-300" src="https://www.youtube.com/embed/tRRWCaf5AUA" title="J.A Rio Militar® | A sua missão começa quando a nossa termina" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<iframe class="box b2 radius-5 border-st margin-top-15 height-300" src="https://www.youtube.com/embed/tRRWCaf5AUA"
+				title="J.A Rio Militar® | A sua missão começa quando a nossa termina" frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+				allowfullscreen></iframe>
 		</div>
 
 		<div class="box b4-5 container margin-top-30">
-			<% include ./components/instagram-posts %>
+			<%- include('./components/instagram-posts.ejs') %>
 		</div>
 	</section>
 
 	<section class="box a1 container">
-		<% include ./../blog/components/footer %>
+		<%- include('./../blog/components/footer.ejs') %>
 	</section>
 </body>
 <footer>
@@ -197,21 +270,21 @@
 	const Story = {};
 	Story.flow = { status: "story-1" };
 
-	Story.flow.next  = () => {
-		if(Story.flow.status == "story-1") {
+	Story.flow.next = () => {
+		if (Story.flow.status == "story-1") {
 			lib.display("story-1", "none");
 			lib.display("story-2", "");
 			lib.display("flow-prev", "");
 			return Story.flow.status = "story-2";
 		};
 
-		if(Story.flow.status == "story-2") {
+		if (Story.flow.status == "story-2") {
 			lib.display("story-2", "none");
 			lib.display("story-3", "");
 			return Story.flow.status = "story-3";
 		};
 
-		if(Story.flow.status == "story-3") {
+		if (Story.flow.status == "story-3") {
 			lib.display("story-3", "none");
 			lib.display("story-4", "");
 			lib.display("flow-next", "none");
@@ -220,20 +293,20 @@
 	};
 
 	Story.flow.prev = () => {
-		if(Story.flow.status == "story-2") {
+		if (Story.flow.status == "story-2") {
 			lib.display("story-2", "none");
 			lib.display("story-1", "");
 			lib.display("flow-prev", "none");
 			return Story.flow.status = "story-1";
 		};
 
-		if(Story.flow.status == "story-3") {
+		if (Story.flow.status == "story-3") {
 			lib.display("story-3", "none");
 			lib.display("story-2", "");
 			return Story.flow.status = "story-2";
 		};
 
-		if(Story.flow.status == "story-4") {
+		if (Story.flow.status == "story-4") {
 			lib.display("story-4", "none");
 			lib.display("story-3", "");
 			lib.display("flow-next", "");
@@ -241,4 +314,5 @@
 		};
 	};
 </script>
+
 </html>

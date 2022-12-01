@@ -1,96 +1,117 @@
 <html>
-	<head>
-        <% include ./../../partials/head %>
-        <meta name="description" content="JA Rio Militar, melhor custo benefício em equipamentos militares. Conheça os produtos da marca que mais cresce no Brasil. Produção 100% nacional.">
-		<style type="text/css">
-			.image-card { object-fit: contain; width: 100%; }
-			.shadow-st-hover:hover { box-shadow:5px 5px 5px var(--solid); }
-		</style>
-	</head>
-	<body>
-    	<% include ./../../catalog/components/header %>
-    	<% include ./../../catalog/components/zoom-img %>
-		<section class="container h-center min-height-500 padding-15">
-			<div class="box b1 container ground border padding-10 radius-5">
-				<div class="box b2 container">
-					<% if(!product.images.length){ %>
-					<div data-js="product-carousel" class="box b1 ground center display-none display-block">
-		                <img class="image-card max-height-600" src="/images/product/no-product.png">
-		            </div>
-					<% } else { %>
-					<div data-js="product-carousel" class="box b1 ground center display-none display-block">
-		                <img class="image-card max-height-600 zoom-in" src="<%= product.images[0].url %>" onclick="lib.image.zoom('<%= product.images[0].url %>')">
-		            </div>
-					<% for(i in product.images){ %>
-						<% if(i > 0){ %>
-						<div data-js="product-carousel" class="box b1 ground center display-none">
-		                    <img class="image-card max-height-600 zoom-in" src="<%= product.images[i].url %>" onclick="lib.image.zoom('<%= product.images[i].url %>')">
-		                </div>
-						<% } %>
-					<% } %>
-		            <div name="carousel-navigation" class="box b1 container h-center padding-10">
-						<img data-js="product-carousel-prev"  class="mobile-box b5 size-50 icon transition-04-04 noselect nofocus" src="/images/icon/previous-icon.png">
-					    <span data-js="product-carousel-page" class="mobile-box b2 lucida-grande bold nowrap center noselect"></span>
-						<img data-js="product-carousel-next"  class="mobile-box b5 size-50 icon transition-04-04 noselect nofocus" src="/images/icon/next-icon.png">
-					</div>
-					<% } %>
+
+<head>
+	<%- include('./../../partials/head.ejs') %>
+	<meta name="description"
+		content="JA Rio Militar, melhor custo benefício em equipamentos militares. Conheça os produtos da marca que mais cresce no Brasil. Produção 100% nacional.">
+	<style type="text/css">
+		.image-card {
+			object-fit: contain;
+			width: 100%;
+		}
+
+		.shadow-st-hover:hover {
+			box-shadow: 5px 5px 5px var(--solid);
+		}
+	</style>
+</head>
+
+<body>
+	<%- include('./../../catalog/components/header.ejs') %>
+	<%- include('./../../catalog/components/zoom-img.ejs') %>
+	<section class="container h-center min-height-500 padding-15">
+		<div class="box b1 container ground border padding-10 radius-5">
+			<div class="box b2 container">
+				<% if(!product.images.length){ %>
+				<div data-js="product-carousel" class="box b1 ground center display-none display-block">
+					<img class="image-card max-height-600" src="/images/product/no-product.png">
 				</div>
-				<div class="box b2 container margin-top-10">
-					<div class="box b1 em15 lucida-grande bold center padding-5"><%= product.name %></div>
-					<div class="box b1 em11 lucida-grande bold center padding-5"><%= product.color %></div>
-					<% if(product.price) { %>
-						<div class="box b1 em14 lucida-grande bold center padding-5">R$<%= product.price %></div>
-					<% } %>
+				<% } else { %>
+				<div data-js="product-carousel" class="box b1 ground center display-none display-block">
+					<img class="image-card max-height-600 zoom-in" src="<%= product.images[0].url %>"
+						onclick="lib.image.zoom('<%= product.images[0].url %>')">
+				</div>
+				<% for(i in product.images){ %>
+				<% if(i > 0){ %>
+				<div data-js="product-carousel" class="box b1 ground center display-none">
+					<img class="image-card max-height-600 zoom-in" src="<%= product.images[i].url %>"
+						onclick="lib.image.zoom('<%= product.images[i].url %>')">
+				</div>
+				<% } %>
+				<% } %>
+				<div name="carousel-navigation" class="box b1 container h-center padding-10">
+					<img data-js="product-carousel-prev" class="mobile-box b5 size-50 icon transition-04-04 noselect nofocus"
+						src="/images/icon/previous-icon.png">
+					<span data-js="product-carousel-page" class="mobile-box b2 lucida-grande bold nowrap center noselect"></span>
+					<img data-js="product-carousel-next" class="mobile-box b5 size-50 icon transition-04-04 noselect nofocus"
+						src="/images/icon/next-icon.png">
+				</div>
+				<% } %>
+			</div>
+			<div class="box b2 container margin-top-10">
+				<div class="box b1 em15 lucida-grande bold center padding-5"><%= product.name %></div>
+				<div class="box b1 em11 lucida-grande bold center padding-5"><%= product.color %></div>
+				<% if(product.price) { %>
+				<div class="box b1 em14 lucida-grande bold center padding-5">R$<%= product.price %></div>
+				<% } %>
 
-					<% if(similarProducts.length > 1){ %>
-						<div class="box b1 em09 lucida-grande bold margin-top-20">Disponível também nas cores:</div>
-					<% } %>
-					<% for(let i in similarProducts){ %>
-						<% if(similarProducts[i].color != product.color){ %>
-						<div class="mobile-box b3 container border shadow-st-hover transition-02-03 padding-5 margin-top-5 radius-5 pointer" onclick="Catalog.product.controller.show(<%= similarProducts[i].id %>, <%= catalog.id %>)">
-							<img class="mobile-box b1 image-card max-height-100 center" src="<%= similarProducts[i].image || '/images/product/no-product.png' %>">
-							<div class="box b1 em08 lucida-grande bold center"><%= similarProducts[i].color %></div>
-						</div>
-						<% } %>
-					<% } %>
+				<% if(similarProducts.length > 1){ %>
+				<div class="box b1 em09 lucida-grande bold margin-top-20">Disponível também nas cores:</div>
+				<% } %>
+				<% for(let i in similarProducts){ %>
+				<% if(similarProducts[i].color != product.color){ %>
+				<div
+					class="mobile-box b3 container border shadow-st-hover transition-02-03 padding-5 margin-top-5 radius-5 pointer"
+					onclick="Catalog.product.controller.show(<%= similarProducts[i].id %>, <%= catalog.id %>)">
+					<img class="mobile-box b1 image-card max-height-100 center"
+						src="<%= similarProducts[i].image || '/images/product/no-product.png' %>">
+					<div class="box b1 em08 lucida-grande bold center"><%= similarProducts[i].color %></div>
+				</div>
+				<% } %>
+				<% } %>
 
-					<% if(similarPackages.length){ %>
-						<div class="box b1 em09 lucida-grande bold padding-5 margin-top-20">E nos pacotes:</div>
-					<% } %>
-					<% for(let i in similarPackages){ %>
-						<% if(similarPackages[i].color == product.color){ %>
-						<div class="mobile-box b3 container border shadow-st-hover transition-02-03 padding-5 margin-top-5 radius-5 pointer" onclick="Catalog.package.controller.show(<%= similarPackages[i].id %>, <%= catalog.id %>)">
-							<img class="mobile-box b1 image-card max-height-100 center" src="<%= similarPackages[i].image || '/images/product/no-product.png' %>">
-							<div class="box b1 em08 lucida-grande bold center"><%= similarPackages[i].color %></div>
-						</div>
-						<% } %>
-					<% } %>
+				<% if(similarPackages.length){ %>
+				<div class="box b1 em09 lucida-grande bold padding-5 margin-top-20">E nos pacotes:</div>
+				<% } %>
+				<% for(let i in similarPackages){ %>
+				<% if(similarPackages[i].color == product.color){ %>
+				<div
+					class="mobile-box b3 container border shadow-st-hover transition-02-03 padding-5 margin-top-5 radius-5 pointer"
+					onclick="Catalog.package.controller.show(<%= similarPackages[i].id %>, <%= catalog.id %>)">
+					<img class="mobile-box b1 image-card max-height-100 center"
+						src="<%= similarPackages[i].image || '/images/product/no-product.png' %>">
+					<div class="box b1 em08 lucida-grande bold center"><%= similarPackages[i].color %></div>
+				</div>
+				<% } %>
+				<% } %>
 
-					<div class="box b1 em09 lucida-grande padding-10 margin-top-15 radius-5 pre-wrap"><%= product.description %></div>
+				<div class="box b1 em09 lucida-grande padding-10 margin-top-15 radius-5 pre-wrap"><%= product.description %>
 				</div>
 			</div>
-		</section>
-		<% include ./../../catalog/components/footer %>
-        <% include ./../../partials/loader %>
-	</body>
-	<footer>
-        <% include ./../../partials/footer %>
-        <% include ./../partial %>
+		</div>
+	</section>
+	<%- include('./../../catalog/components/footer.ejs') %>
+	<%- include('./../../partials/loader.ejs') %>
+</body>
+<footer>
+	<%- include('./../../partials/footer.ejs') %>
+	<%- include('./../partial.ejs') %>
 
-        <script src="/javascripts/scripts/catalog/model/product.js"></script>
-		<script src="/javascripts/scripts/catalog/controller/product.js"></script>
-		<script src="/javascripts/scripts/catalog/view/product.js"></script>
+	<script src="/javascripts/scripts/catalog/model/product.js"></script>
+	<script src="/javascripts/scripts/catalog/controller/product.js"></script>
+	<script src="/javascripts/scripts/catalog/view/product.js"></script>
 
-        <script src="/javascripts/scripts/catalog/model/package.js"></script>
-		<script src="/javascripts/scripts/catalog/controller/package.js"></script>
-		<script src="/javascripts/scripts/catalog/view/package.js"></script>
+	<script src="/javascripts/scripts/catalog/model/package.js"></script>
+	<script src="/javascripts/scripts/catalog/controller/package.js"></script>
+	<script src="/javascripts/scripts/catalog/view/package.js"></script>
 
-        <script type="text/javascript">
-        	lib.carousel.render("product-carousel");
-        	lib.image.zoom = (path) => {
-        		document.getElementById("zoom-img").src = path;
-        		lib.display("zoom-img-box", "");
-        	};
-        </script>
-	</footer>
+	<script type="text/javascript">
+		lib.carousel.render("product-carousel");
+		lib.image.zoom = (path) => {
+			document.getElementById("zoom-img").src = path;
+			lib.display("zoom-img-box", "");
+		};
+	</script>
+</footer>
+
 </html>

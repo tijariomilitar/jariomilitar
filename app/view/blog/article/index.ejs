@@ -1,33 +1,73 @@
 <html>
-	<head>
-        <% include ./../../partials/head %>
-        <meta name="description" content="JA Rio Militar, melhor custo benefício em equipamentos militares. Conheça os produtos da marca que mais cresce no Brasil. Produção 100% nacional.">
-        <style type="text/css">
-			.box-article { width: 350px; height: 335px; margin-left: 0.5%; margin-right: 0.5%;}
-			.box-category { width: 19%; margin-left: 0.5%; margin-right: 0.5%; }
-			.b4-b2 { width: 24%; margin-left: 0.5%; margin-right: 0.5%;}
-			.category-article { position: absolute; top: 182.5px; left: 10px; }
 
-			@media (max-width: 800px) {
-				.box-article { width: 350px; height: 335px; margin-left: 0.5%; margin-right: 0.5%; }
-				.box-category {width: 49%; margin-left: 0.5%; margin-right: 0.5%;}
-				.b4-b2 { width: 49%; margin-left: 0.5%; margin-right: 0.5%; }
+<head>
+	<%- include('./../../partials/head.ejs') %>
+	<meta name="description"
+		content="JA Rio Militar, melhor custo benefício em equipamentos militares. Conheça os produtos da marca que mais cresce no Brasil. Produção 100% nacional.">
+	<style type="text/css">
+		.box-article {
+			width: 350px;
+			height: 335px;
+			margin-left: 0.5%;
+			margin-right: 0.5%;
+		}
+
+		.box-category {
+			width: 19%;
+			margin-left: 0.5%;
+			margin-right: 0.5%;
+		}
+
+		.b4-b2 {
+			width: 24%;
+			margin-left: 0.5%;
+			margin-right: 0.5%;
+		}
+
+		.category-article {
+			position: absolute;
+			top: 182.5px;
+			left: 10px;
+		}
+
+		@media (max-width: 800px) {
+			.box-article {
+				width: 350px;
+				height: 335px;
+				margin-left: 0.5%;
+				margin-right: 0.5%;
 			}
-		</style>
-	</head>
-	<body>
-	    <% include ./components/header %>
-	    <% include ./components/nav %>
-	    <section class="container h-center">
-	    	<div id="article-preview-div" class="box b2-3 container h-center" style="display:none;"></div>
-			<% include ./components/article-create-form %>
-	    	<div id="article-content-div" class="box b2-3 container ground border padding-15 margin-top-10 radius-5" style="display:none;"></div>
-			<% include ./components/article-content-form %>
-		</section>
-        <% include ./../../partials/loader %>
-	</body>
-	<footer>
-        <% include ./../../partials/footer %>
-        <% include ./partial %>
-	</footer>
+
+			.box-category {
+				width: 49%;
+				margin-left: 0.5%;
+				margin-right: 0.5%;
+			}
+
+			.b4-b2 {
+				width: 49%;
+				margin-left: 0.5%;
+				margin-right: 0.5%;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<%- include('./components/header.ejs') %>
+	<%- include('./components/nav.ejs') %>
+	<section class="container h-center">
+		<div id="article-preview-div" class="box b2-3 container h-center" style="display:none;"></div>
+		<%- include('./components/article-create-form.ejs') %>
+		<div id="article-content-div" class="box b2-3 container ground border padding-15 margin-top-10 radius-5"
+			style="display:none;"></div>
+		<%- include('./components/article-content-form.ejs') %>
+	</section>
+	<%- include('./../../partials/loader.ejs') %>
+</body>
+<footer>
+	<%- include('./../../partials/footer.ejs') %>
+	<%- include('./partial.ejs') %>
+</footer>
+
 </html>

@@ -1,46 +1,85 @@
 <html>
-	<head>
-		<title>Portal do lojista</title>
-        <% include ./../partials/head %>
-        <link rel="icon" href="https://spaces.jariomilitar.com/PortaldoLojista/favicon.ico" type="image/x-icon">
-        <meta name="description" content="JA Rio Militar, melhor custo benefício em equipamentos militares. Conheça os produtos da marca que mais cresce no Brasil. Produção 100% nacional.">
-		
-		<style type="text/css">
-			.box-article { width: 350px; height: 335px; margin-left: 0.5%; margin-right: 0.5%;}
-			.box-category { width: 19%; margin-left: 0.5%; margin-right: 0.5%; }
-			.b4-b2 { width: 24%; margin-left: 0.5%; margin-right: 0.5%;}
-			.category-article { position: absolute; top: 182.5px; left: 10px; }
 
-			@media (max-width: 800px) {
-				.box-article { width: 350px; height: 335px; margin-left: 0.5%; margin-right: 0.5%; }
-				.box-category {width: 49%; margin-left: 0.5%; margin-right: 0.5%;}
-				.b4-b2 { width: 49%; margin-left: 0.5%; margin-right: 0.5%; }
+<head>
+	<title>Portal do lojista</title>
+	<%- include('./../partials/head.ejs') %>
+	<link rel="icon" href="https://spaces.jariomilitar.com/PortaldoLojista/favicon.ico" type="image/x-icon">
+	<meta name="description"
+		content="JA Rio Militar, melhor custo benefício em equipamentos militares. Conheça os produtos da marca que mais cresce no Brasil. Produção 100% nacional.">
+
+	<style type="text/css">
+		.box-article {
+			width: 350px;
+			height: 335px;
+			margin-left: 0.5%;
+			margin-right: 0.5%;
+		}
+
+		.box-category {
+			width: 19%;
+			margin-left: 0.5%;
+			margin-right: 0.5%;
+		}
+
+		.b4-b2 {
+			width: 24%;
+			margin-left: 0.5%;
+			margin-right: 0.5%;
+		}
+
+		.category-article {
+			position: absolute;
+			top: 182.5px;
+			left: 10px;
+		}
+
+		@media (max-width: 800px) {
+			.box-article {
+				width: 350px;
+				height: 335px;
+				margin-left: 0.5%;
+				margin-right: 0.5%;
 			}
-		</style>
-	</head>
-	<body>
-    	<% include ./components/header %>
 
-	    <div class="box a1 container padding-10 h-center" style="background-color:#212322">
-	    	<% include ./components/article-filter-form %>
-	    </div>
-	    <% include ./components/nav %>
-		<section class="box a1 container min-height-400 margin-top-10 h-center">
-			<div id="article-filter-box" class="box b11-12 container center" style="display:none">
-				<div id="article-filter-div" class="box b1 container h-center"></div>
-			    <% include ./../partials/carousel %>
-			</div>
-		</section>
+			.box-category {
+				width: 49%;
+				margin-left: 0.5%;
+				margin-right: 0.5%;
+			}
 
-    <% include ./components/footer %>
-    <% include ./../partials/loader %>
-	</body>
-	<footer>
-    <% include ./../partials/footer %>
+			.b4-b2 {
+				width: 49%;
+				margin-left: 0.5%;
+				margin-right: 0.5%;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<%- include('./components/header.ejs') %>
+
+	<div class="box a1 container padding-10 h-center" style="background-color:#212322">
+		<%- include('./components/article-filter-form.ejs') %>
+	</div>
+	<%- include('./components/nav.ejs') %>
+	<section class="box a1 container min-height-400 margin-top-10 h-center">
+		<div id="article-filter-box" class="box b11-12 container center" style="display:none">
+			<div id="article-filter-div" class="box b1 container h-center"></div>
+			<%- include('./../partials/carousel.ejs') %>
+		</div>
+	</section>
+
+	<%- include('./components/footer.ejs') %>
+	<%- include('./../partials/loader.ejs') %>
+</body>
+<footer>
+	<%- include('./../partials/footer.ejs') %>
 	<script src="/javascripts/scripts/blog/model/article.js"></script>
-    <% include ./partial %>
-    <script>
+	<%- include('./partial.ejs') %>
+	<script>
 		Blog.article.controller.filter.submit.click();
-    </script>
-	</footer>
+	</script>
+</footer>
+
 </html>
