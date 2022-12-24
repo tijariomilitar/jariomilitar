@@ -7,4 +7,6 @@ router.get("/plate-carrier", landingPageController.plateCarrier);
 router.get("/blackout", landingPageController.plateCarrier);
 router.get("/semana-do-consumidor", landingPageController.semanaDoConsumidor);
 
+router.get("/colete-bahia", landingPageController.coleteBahia);
+
 module.exports = router;
