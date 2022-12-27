@@ -5,7 +5,7 @@ const landingPageController = {
 	number_1: async (req, res) => { return res.render('landing_page/number-1', { user: req.user, products }); },
 	myProduct: async (req, res) => { return res.render('landing_page/meu-produto'); },
 	semanaDoConsumidor: async (req, res) => { return res.render('landing_page/semana-do-consumidor'); },
-	coleteBahia: async (req, res) => { return res.render('landing_page/colete-bahia'); },
+	coleteBahia: async (req, res) => { return res.render('landing_page/colete-bahia/index'); },
 };
 
 module.exports = landingPageController;

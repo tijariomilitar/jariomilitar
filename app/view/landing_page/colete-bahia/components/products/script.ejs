@@ -1,0 +1,56 @@
+<script>
+  let stores = [
+  {id: 1, name: "Colete Tático Modular", image: "https://http2.mlstatic.com/D_NQ_NP_2X_657604-MLB46510015519_062021-F.webpg", phone: "Modelo: JA3 (para placas nível IIIA)", link: "'https://api.whatsapp.com/send?phone=5521964211738&text=Ol%C3%A1.%20Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20colete%20JA3%20na%20cor%20padr%C3%A3o%20BAHIA.'", city: "Cor: Padrão Bahia TAN", storage: true },
+  {id: 2, name: "Colete Tático Modular + 9 Peças", image: "https://http2.mlstatic.com/D_NQ_NP_2X_636645-MLB47429167019_092021-F.webp", phone: "Modelo: JA3 (para placas nível IIIA)", link: "'https://api.whatsapp.com/send?phone=5521964211738&text=Ol%C3%A1.%20Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20colete%20JA3%20+%209%20pe%C3%A7as%20na%20cor%20padr%C3%A3o%20BAHIA.'", city: "Cor: Padrão Bahia TAN", storage: true },
+  ]
+
+  let store_box = document.getElementById("products");
+  store_box.innerHTML = "";
+
+  stores.forEach(store => {
+    let store_div = lib.element.create("div", { 
+      class: "box b3 container padding-10 margin-top-10 h-center radius-10",
+      style: "background-color:white;" 
+    });
+
+    store_div.append(lib.element.create("img", { 
+      src: store.image, 
+      class: "image-prop height-250 radius-5"
+    }))
+
+    let storage_div = lib.element.create("div", { class: "box b1 container h-center margin-top-10" });
+    store.storage && storage_div.append(lib.element.create("img", { 
+      src: "https://cdn-icons-png.flaticon.com/128/8866/8866816.png",
+      class: "max-height-25" 
+    }));
+
+    store.storage && storage_div.append(lib.element.create("div", { 
+      class: "padding-5 margin-left-5 em08",
+      style: "color:green" 
+    }, "Compre mais barato acima de 5 unidades"));
+    store_div.append(storage_div);
+
+    !store.storage && storage_div.append(lib.element.create("img", { 
+      src: "https://spaces.jariomilitar.com/BlackFridayOUT/alt%20off.png",
+      class: "max-height-20" 
+    }));
+
+    !store.storage && storage_div.append(lib.element.create("div", { 
+      class: "padding-5 margin-left-5 em08",
+      style: "color:red" 
+    }, "Não Possui produtos J.A® em estoque"));
+    store_div.append(storage_div);
+
+    store_div.append(lib.element.create("div", { class: "box b1 center bold margin-top-10 em12" }, store.name));
+    store_div.append(lib.element.create("div", { class: "box b1 center margin-top-5" }, store.phone));
+    store_div.append(lib.element.create("div", { class: "box b1 center margin-top-5" }, store.city));
+
+    store_div.append(lib.element.create("button", { 
+      class: "mobile-box b2-3 center padding-5 margin-top-15 radius-5 center pointer",
+      style: "background-color:green;color:white",
+      onclick: `lib.openExternalLink(${store.link})`
+    }, "Compre agora pelo WhatsApp"));
+
+    store_box.append(store_div);
+  });
+</script>
