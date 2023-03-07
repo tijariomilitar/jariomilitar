@@ -27,7 +27,7 @@ const catalogController = {
 		product.brand = req.body.product.brand;
 		product.price_category_id = req.body.product.price_category_id;
 
-		let product_props = ["product.id","product.code","product.name","product.color","product.size","product.image"];
+		let product_props = ["product.id", "product.code", "product.name", "product.color", "product.size", "product.image"];
 		let product_inners = [];
 
 		let product_params = { keys: [], values: [] };
@@ -38,28 +38,28 @@ const catalogController = {
 		lib.Query.fillParam("product.brand", product.brand, product_params);
 		lib.Query.fillParam("product.status", "Disponível", product_strict_params);
 
-		let package_props = ["package.id","package.code","package.name","package.color","package.image"];
+		let package_props = ["package.id", "package.code", "package.name", "package.color", "package.image"];
 		let package_inners = [];
 
 		let package_params = { keys: [], values: [] };
 		let package_strict_params = { keys: [], values: [] };
-		
+
 		lib.Query.fillParam("package.name", product.name, package_params);
 		lib.Query.fillParam("package.color", product.color, package_strict_params);
 		lib.Query.fillParam("package.brand", product.brand, package_params);
 		lib.Query.fillParam("package.status", "Disponível", package_strict_params);
-		
-		if(product.price_category_id && product.price_category_id > 0){
-			product_props.push("product_price.price","product_price.category_id");
-			product_inners.push(["cms_wt_erp.product_price product_price","product_price.product_id","product.id"]);
+
+		if (product.price_category_id && product.price_category_id > 0) {
+			product_props.push("product_price.price", "product_price.category_id");
+			product_inners.push(["cms_wt_erp.product_price product_price", "product_price.product_id", "product.id"]);
 			lib.Query.fillParam("product_price.category_id", product.price_category_id, product_strict_params);
-			
-			package_props.push("package_price.price","package_price.category_id");
-			package_inners.push(["cms_wt_erp.product_package_price package_price","package_price.package_id","package.id"]);
+
+			package_props.push("package_price.price", "package_price.category_id");
+			package_inners.push(["cms_wt_erp.product_package_price package_price", "package_price.package_id", "package.id"]);
 			lib.Query.fillParam("package_price.category_id", product.price_category_id, package_strict_params);
 		}
 
-		let order_params = [ ["code","ASC"] ];
+		let order_params = [["code", "ASC"]];
 
 		try {
 			let products = await Product.filter(product_props, product_inners, product_params, product_strict_params, order_params);
@@ -85,16 +85,16 @@ catalogController.product = {
 
 		lib.Query.fillParam("product.id", product.id, strict_params);
 
-		if(product.price_category_id && product.price_category_id > 0){
+		if (product.price_category_id && product.price_category_id > 0) {
 			props.push("product_price.price");
-			inners.push(["cms_wt_erp.product_price product_price","product_price.product_id","product.id"]);
+			inners.push(["cms_wt_erp.product_price product_price", "product_price.product_id", "product.id"]);
 			lib.Query.fillParam("product_price.category_id", product.price_category_id, strict_params);
 		}
-		
-		try{
+
+		try {
 			product = await Product.filter(props, inners, [], strict_params, []);
 			product = { ...product[0] };
-	
+
 			product.images = await Product.image.list(product.id);
 
 			//get other colors Similar Products
@@ -137,29 +137,29 @@ catalogController.package = {
 		let inners = [];
 
 		let strict_params = { keys: [], values: [] };
-		
+
 		lib.Query.fillParam("package.id", package.id, strict_params);
 
-		if(package.price_category_id && package.price_category_id > 0){
+		if (package.price_category_id && package.price_category_id > 0) {
 			props.push("package_price.price");
-			inners.push(["cms_wt_erp.product_package_price package_price","package_price.package_id","package.id"]);
+			inners.push(["cms_wt_erp.product_package_price package_price", "package_price.package_id", "package.id"]);
 			lib.Query.fillParam("package_price.category_id", package.price_category_id, strict_params);
 		}
 
-		try{
+		try {
 			package = await Product.package.filter(props, inners, [], strict_params, []);
 			package = { ...package[0] };
-	
+
 			package.images = await Product.package.image.list(package.id);
 
-			let package_product_props = ["product.id","product.code","product.name","product.color","product.image","product_package_product.amount"];
-			let package_product_inners = [ ["cms_wt_erp.product product","product_package_product.product_id","product.id"] ];
+			let package_product_props = ["product.id", "product.code", "product.name", "product.color", "product.image", "product_package_product.amount"];
+			let package_product_inners = [["cms_wt_erp.product product", "product_package_product.product_id", "product.id"]];
 
 			let package_product_strict_params = { keys: [], values: [] };
 
 			lib.Query.fillParam("product_package_product.package_id", package.id, package_product_strict_params);
 
-			let order_params = [ ["product.code","ASC"] ];
+			let order_params = [["product.code", "ASC"]];
 
 			package.products = await Product.package.product.filter(package_product_props, package_product_inners, [], package_product_strict_params, order_params);
 
