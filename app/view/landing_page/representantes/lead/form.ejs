@@ -7,13 +7,13 @@
   </div>
   <div class="container box b2 margin-top-10">
     <span class="box b1 lucida-grande em09 bold c-fff">Nome da empresa</span>
-    <input type="email" name="trademark" class="box b1 lucida-grande padding-10 noborder radius-5"
+    <input type="text" name="trademark" class="box b1 lucida-grande padding-10 noborder radius-5"
       placeholder="Razão social ou nome fantasia">
   </div>
   <div class="container box b2 margin-top-10">
     <span class="box b1 lucida-grande em09 bold c-fff">CNPJ</span>
-    <input type="text" name="cnpj" class="box b1 lucida-grande padding-10 noborder radius-5"
-      placeholder="Apenas números">
+    <input type="text" name="cnpj" oninput="lib.mask.cnpj(this)"
+      class="box b1 lucida-grande padding-10 noborder radius-5" placeholder="Apenas números" maxlength="18">
   </div>
   <div class="container box b2 margin-top-10">
     <span class="box b1 lucida-grande em09 bold c-fff">E-mail*</span>
