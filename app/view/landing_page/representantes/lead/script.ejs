@@ -1,0 +1,23 @@
+<script>
+  document.getElementById("lead-create-form").addEventListener("submit", async e => {
+    e.preventDefault();
+
+    if (!lib.verifyEmail(e.target.email.value)) { return lib.message("Email inválido"); }
+
+    let lead = {
+      origin: e.target.origin.value,
+      name: e.target.name.value,
+      trademark: e.target.trademark.value,
+      cnpj: e.target.cnpj.value,
+      email: e.target.email.value,
+      phone: e.target.phone.value
+    };
+
+    let response = await API.response(Lead.save, lead);
+    if (!response) { return false; }
+
+    lib.message(response.done, () => {
+      window.location.href = '/catalogo'
+    });
+  });
+</script>

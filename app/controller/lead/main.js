@@ -11,21 +11,20 @@ leadController.index = async (req, res) => {
 leadController.save = async (req, res) => {
 	let lead = new Lead();
 	lead.datetime = new Date().getTime();
+	lead.origin = req.body.origin;
 	lead.name = req.body.name;
 	lead.email = req.body.email;
 	lead.phone = req.body.phone;
 
-	if (!lead.datetime) { return res.send({ msg: "Ocorreu um erro ao realizar seu cadastro por favor atualize a página." }); }
-	if (!lead.name) { return res.send({ msg: "Por favor preencha seu nome para que possamos te conhecer." }); }
-	if (!lead.email) { return res.send({ msg: "É necessário preencher seu email para que possamos lhe enviar nosso catálogo" }); }
-	if (!lead.phone) { return res.send({ msg: "Por favor preencha seu telefone para que possamos entrar em contato." }); }
-
 	try {
-		await lead.save();
-		res.send({ done: "Muito obrigado, em breve um de nossos consultores entrará em contato." });
+		let response = await lead.save();
+		if (response.err) { return res.send({ msg: response.err }); }
+
+		res.send({ done: "Muito obrigado, em breve um de nossos consultores entrará em contato. <br><br> Caso prefira entre em contato conosco pelo <br> Whatsapp: (21) 96421-1738." });
 	} catch (err) {
 		console.log(err);
-		return res.send({ msg: "Ocorreu um erro ao realizar o seu cadastro." });
+		if (err.code == "ER_DUP_ENTRY") { return res.send({ done: "Muito obrigado, em breve um de nossos consultores entrará em contato <br><br> Caso prefira entre em contato conosco pelo <br> Whatsapp: (21) 96421-1738." }); }
+		return res.send({ msg: "Ocorreu um erro, por favor atualize a página e tente novamente <br><br> Caso o erro persista entre em contato conosco pelo <br> Whatsapp: (21) 96421-1738." });
 	};
 };
 

@@ -9,4 +9,6 @@ router.get("/semana-do-consumidor", landingPageController.semanaDoConsumidor);
 
 router.get("/colete-bahia", landingPageController.coleteBahia);
 
+router.get("/representantes", landingPageController.representantes);
+
 module.exports = router;

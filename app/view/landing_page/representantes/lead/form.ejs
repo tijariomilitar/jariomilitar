@@ -1,0 +1,39 @@
+<form id="lead-create-form" class="container box form-color a2 padding-15 radius-5">
+  <input type="hidden" name="origin" value="representantes">
+  <div class="container box b2 margin-top-10">
+    <span class="box b1 lucida-grande em09 bold c-fff">Seu nome*</span>
+    <input type="text" name="name" class="box b1 lucida-grande padding-10 noborder radius-5" placeholder="Nome completo"
+      required>
+  </div>
+  <div class="container box b2 margin-top-10">
+    <span class="box b1 lucida-grande em09 bold c-fff">Nome da empresa</span>
+    <input type="email" name="trademark" class="box b1 lucida-grande padding-10 noborder radius-5"
+      placeholder="Razão social ou nome fantasia">
+  </div>
+  <div class="container box b2 margin-top-10">
+    <span class="box b1 lucida-grande em09 bold c-fff">CNPJ</span>
+    <input type="text" name="cnpj" class="box b1 lucida-grande padding-10 noborder radius-5"
+      placeholder="Apenas números">
+  </div>
+  <div class="container box b2 margin-top-10">
+    <span class="box b1 lucida-grande em09 bold c-fff">E-mail*</span>
+    <input type="email" name="email" class="box b1 lucida-grande padding-10 noborder radius-5" placeholder="E-mail"
+      required>
+  </div>
+  <div class="container box b2 margin-top-10">
+    <span class="box b1 lucida-grande em09 bold c-fff">WhatsApp*</span>
+    <input type="text" name="phone" oninput="lib.mask.phone(this)"
+      class="box b1 lucida-grande padding-10 noborder radius-5" placeholder="(00) 00000-0000" maxlength="15" required>
+  </div>
+  <div class="box b1 container margin-top-20 h-center">
+    <button name="submit"
+      class="box b2-3 container btn-confirm padding-5 lucida-grande bold padding-5 noborder radius-5 h-center pointer">
+      <div class="container">
+        <div class="mobile-box lucida-grande em12 bold center c-fff padding-5">Acessar
+          catálogo</div><img
+          src="https://wt-images-cdn.sfo3.cdn.digitaloceanspaces.com/erp-images/icon/sendmail-white.png"
+          class="image-prop size-25 v-center padding-5">
+      </div>
+    </button>
+  </div>
+</form>

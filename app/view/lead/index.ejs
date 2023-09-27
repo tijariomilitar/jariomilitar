@@ -54,6 +54,7 @@
 		<form id="lead-form" class="box b2 container h-center padding-10 margin-top-20">
 			<div class="box b1 lucida-grande bold center">Preencha as informações para receber o catálogo com todos os
 				produtos</div>
+			<input type="hidden" name="origin" value="lead">
 			<input type="text" required name="name"
 				class="box b3-4 lucida-grande bold em11 border radius-5 padding-10 margin-top-5 center nofocus"
 				placeholder="Nome ou Nome da empresa" autocomplete="off">
@@ -126,6 +127,7 @@
 </body>
 
 <%- include('./../partials/footer.ejs') %>
+<script src="/javascripts/scripts/lead/main.js"></script>
 
 <script>
 	let lead_form = document.getElementById("lead-form");
@@ -133,22 +135,18 @@
 		e.preventDefault();
 
 		let lead = {
+			origin: e.target.elements.namedItem("origin").value,
 			name: e.target.elements.namedItem("name").value,
 			email: e.target.elements.namedItem("email").value,
 			phone: e.target.elements.namedItem("phone").value
 		};
 
-		let response = await fetch("/lead/save", {
-			method: "POST",
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(lead)
+		let response = await API.response(Lead.save, lead);
+		if (!response) { return false; }
+
+		lib.message(response.done, () => {
+			window.location.href = '/catalogo'
 		});
-		response = await response.json();
-
-		if (API.verifyResponse(response)) { return false };
-		alert(response.done);
-
-		window.location.href = '/catalogo'
 	});
 </script>
 

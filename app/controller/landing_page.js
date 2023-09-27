@@ -6,6 +6,7 @@ const landingPageController = {
 	myProduct: async (req, res) => { return res.render('landing_page/meu-produto'); },
 	semanaDoConsumidor: async (req, res) => { return res.render('landing_page/semana-do-consumidor'); },
 	coleteBahia: async (req, res) => { return res.render('landing_page/colete-bahia/index'); },
+	representantes: async (req, res) => { res.render('landing_page/representantes/index'); }
 };
 
 module.exports = landingPageController;
