@@ -4,26 +4,26 @@ Article.view.preview = (article) => {
 	let preview_div = document.getElementById("article-preview-div");
 	preview_div.innerHTML = "";
 
-	let article_box = preview_div.appendChild(lib.element.create("div", { class: "box box-article ground margin-top-10 border relative radius-10 pointer shadow-hover" } ));
+	let article_box = preview_div.appendChild(lib.element.create("div", { class: "box box-article ground margin-top-10 border relative radius-10 pointer shadow-hover" }));
 	let image_div = lib.element.create("div", { class: "box a1 container height-200" });
 	image_div.appendChild(lib.element.create("img", { class: "image-fit radius-10", src: article.image }));
 
-	if(article.category == "Vendas") { article.categoryColor = "#7fc355" };
-	if(article.category == "Lançamento") { article.categoryColor = "gold" };
-	if(article.category == "Revenda JA®") { article.categoryColor = "#808080" };
-	if(article.category == "Tendências") { article.categoryColor = "orange" };
-	if(article.category == "Promoção") { article.categoryColor = "995599" };
-	let category_div = lib.element.create("div", { class: "container category-article height-30 width-150 radius-15 center", style: "background-color:"+article.categoryColor+";" });
+	if (article.category == "Vendas") { article.categoryColor = "#7fc355" };
+	if (article.category == "Lançamento") { article.categoryColor = "gold" };
+	if (article.category == "Revenda JA®") { article.categoryColor = "#808080" };
+	if (article.category == "Tendências") { article.categoryColor = "orange" };
+	if (article.category == "Promoção") { article.categoryColor = "995599" };
+	let category_div = lib.element.create("div", { class: "container category-article height-30 width-150 radius-15 center", style: "background-color:" + article.categoryColor + ";" });
 	category_div.appendChild(lib.element.create("p", { class: "center em08 lucida-grande bold" }, article.category))
 
 	let text_div = lib.element.create("div", { class: "box a1 container height-110 padding-15" });
 
 	let title_div = lib.element.create("div", { class: "container a1 container height-50" });
-	title_div.appendChild(lib.element.create("div", { class: "lucida-grande bold" }, article.title ));
+	title_div.appendChild(lib.element.create("div", { class: "lucida-grande bold" }, article.title));
 	text_div.appendChild(title_div);
 
 	let subtitle_div = lib.element.create("div", { class: "box a1 height-60 padding-5" });
-	subtitle_div.appendChild(lib.element.create("div", { class: "em08 lucida-grande ellipsis" }, article.subtitle));	
+	subtitle_div.appendChild(lib.element.create("div", { class: "em08 lucida-grande ellipsis" }, article.subtitle));
 	text_div.appendChild(subtitle_div);
 
 	article_box.appendChild(image_div);
@@ -38,28 +38,28 @@ Article.view.filter = (articles, pagination) => {
 	let filter_div = document.getElementById("article-filter-div");
 	filter_div.innerHTML = "";
 
-	if(articles.length){
-		for (let i = pagination.page * pagination.pageSize; i < articles.length && i < (pagination.page + 1) * pagination.pageSize; i++){
-			let article_box = lib.element.create("div", { class: "box b3 ground margin-top-10 padding-5 border relative radius-10 pointer shadow-hover" } );
+	if (articles.length) {
+		for (let i = pagination.page * pagination.pageSize; i < articles.length && i < (pagination.page + 1) * pagination.pageSize; i++) {
+			let article_box = lib.element.create("div", { class: "box b3 ground margin-top-10 padding-5 border relative radius-10 pointer shadow-hover" });
 			let image_div = lib.element.create("div", { class: "box a1 container height-200" });
 			image_div.appendChild(lib.element.create("img", { class: "image-fit radius-10", src: articles[i].image }));
 
-			if(articles[i].category == "Vendas") { articles[i].categoryColor = "#7fc355" };
-			if(articles[i].category == "Lançamento") { articles[i].categoryColor = "gold" };
-			if(articles[i].category == "Revenda JA®") { articles[i].categoryColor = "#808080" };
-			if(articles[i].category == "Tendências") { articles[i].categoryColor = "orange" };
-			if(articles[i].category == "Promoção") { articles[i].categoryColor = "995599" };
-			let category_div = lib.element.create("div", { class: "container category-article height-30 width-150 radius-15 center", style: "background-color:"+articles[i].categoryColor+";" });
+			if (articles[i].category == "Vendas") { articles[i].categoryColor = "#7fc355" };
+			if (articles[i].category == "Lançamento") { articles[i].categoryColor = "gold" };
+			if (articles[i].category == "Revenda JA®") { articles[i].categoryColor = "#808080" };
+			if (articles[i].category == "Tendências") { articles[i].categoryColor = "orange" };
+			if (articles[i].category == "Promoção") { articles[i].categoryColor = "995599" };
+			let category_div = lib.element.create("div", { class: "container category-article height-30 width-150 radius-15 center", style: "background-color:" + articles[i].categoryColor + ";" });
 			category_div.appendChild(lib.element.create("p", { class: "center em08 lucida-grande bold" }, articles[i].category))
 
 			let text_div = lib.element.create("div", { class: "box a1 container height-110 padding-15" });
 
 			let title_div = lib.element.create("div", { class: "container a1 container height-50" });
-			title_div.appendChild(lib.element.create("div", { class: "lucida-grande bold" }, articles[i].title ));
+			title_div.appendChild(lib.element.create("div", { class: "lucida-grande bold" }, articles[i].title));
 			text_div.appendChild(title_div);
 
 			let subtitle_div = lib.element.create("div", { class: "box a1 height-60 padding-5" });
-			subtitle_div.appendChild(lib.element.create("div", { class: "em08 lucida-grande ellipsis" }, articles[i].subtitle));	
+			subtitle_div.appendChild(lib.element.create("div", { class: "em08 lucida-grande ellipsis" }, articles[i].subtitle));
 			text_div.appendChild(subtitle_div);
 
 			article_box.appendChild(image_div);
@@ -67,14 +67,14 @@ Article.view.filter = (articles, pagination) => {
 			article_box.appendChild(text_div);
 
 			let menu_div = lib.element.create("div", { class: "box b1 container margin-bottom-10" });
-			
-			if(articles[i].status == 'up') {
-				menu_div.appendChild(lib.element.icon('b3', 30, "https://spaces.jariomilitar.com/erp-images/icon/archive.png", "Article.controller.archive("+articles[i].id+", this)"));
+
+			if (articles[i].status == 'up') {
+				menu_div.appendChild(lib.element.icon('b3', 30, "https://wt-images-cdn.sfo3.cdn.digitaloceanspaces.com/erp-images/icon/archive.png", "Article.controller.archive(" + articles[i].id + ", this)"));
 			} else {
-				menu_div.appendChild(lib.element.icon('b3', 30, "https://spaces.jariomilitar.com/erp-images/icon/unarchive.png", "Article.controller.unarchive("+articles[i].id+", this)"));
+				menu_div.appendChild(lib.element.icon('b3', 30, "https://wt-images-cdn.sfo3.cdn.digitaloceanspaces.com/erp-images/icon/unarchive.png", "Article.controller.unarchive(" + articles[i].id + ", this)"));
 			};
-			menu_div.appendChild(lib.element.icon('b3', 30, "https://spaces.jariomilitar.com/erp-images/icon/edit.png", "Article.controller.edit('"+articles[i].id+"')"));
-			menu_div.appendChild(lib.element.icon('b3', 30, "https://spaces.jariomilitar.com/erp-images/icon/trash.png", "Article.controller.delete("+articles[i].id+")"));
+			menu_div.appendChild(lib.element.icon('b3', 30, "https://wt-images-cdn.sfo3.cdn.digitaloceanspaces.com/erp-images/icon/edit.png", "Article.controller.edit('" + articles[i].id + "')"));
+			menu_div.appendChild(lib.element.icon('b3', 30, "https://wt-images-cdn.sfo3.cdn.digitaloceanspaces.com/erp-images/icon/trash.png", "Article.controller.delete(" + articles[i].id + ")"));
 
 			article_box.appendChild(menu_div);
 
@@ -102,13 +102,13 @@ Article.content.view.list = (contents) => {
 
 	let content_element;
 
-	for(let i in contents) {
-		if(contents[i].tag_name == "img") {
-			content_element = lib.element.create(contents[i].tag_name, { id: 'content-id-'+contents[i].id, src: contents[i].content , class: contents[i].tag_style + " box-hover pointer", onclick: "Article.content.controller.edit("+contents[i].id+")" });
+	for (let i in contents) {
+		if (contents[i].tag_name == "img") {
+			content_element = lib.element.create(contents[i].tag_name, { id: 'content-id-' + contents[i].id, src: contents[i].content, class: contents[i].tag_style + " box-hover pointer", onclick: "Article.content.controller.edit(" + contents[i].id + ")" });
 		} else {
-			content_element = lib.element.create(contents[i].tag_name, { id: 'content-id-'+contents[i].id, class: contents[i].tag_style + " shadow-hover pointer relative" }, contents[i].content);
-			content_element.appendChild(lib.element.create("img", { src: "https://spaces.jariomilitar.com/erp-images/icon/edit.png", class: "size-15 icon", style: "position: absolute;top:1%;right:20px;", onclick: "Article.content.controller.edit("+contents[i].id+")" }));
-			content_element.appendChild(lib.element.create("img", { src: "https://spaces.jariomilitar.com/erp-images/icon/trash.png", class: "size-15 icon", style: "position: absolute;top:1%;right:1px;", onclick: "Article.content.controller.delete("+contents[i].id+")" }));
+			content_element = lib.element.create(contents[i].tag_name, { id: 'content-id-' + contents[i].id, class: contents[i].tag_style + " shadow-hover pointer relative" }, contents[i].content);
+			content_element.appendChild(lib.element.create("img", { src: "https://wt-images-cdn.sfo3.cdn.digitaloceanspaces.com/erp-images/icon/edit.png", class: "size-15 icon", style: "position: absolute;top:1%;right:20px;", onclick: "Article.content.controller.edit(" + contents[i].id + ")" }));
+			content_element.appendChild(lib.element.create("img", { src: "https://wt-images-cdn.sfo3.cdn.digitaloceanspaces.com/erp-images/icon/trash.png", class: "size-15 icon", style: "position: absolute;top:1%;right:1px;", onclick: "Article.content.controller.delete(" + contents[i].id + ")" }));
 		}
 		content_div.appendChild(content_element);
 	};

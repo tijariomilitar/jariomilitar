@@ -85,7 +85,7 @@ Sale.view.show = (sale) => {
 	!sale.nf && sale_info_div.appendChild(lib.element.info("b4-7 em09", "Status", `${sale.status}`));
 	sale.nf && sale.nf.length < 20 && sale_info_div.appendChild(lib.element.info("b4-7 em09", "Status", `${sale.status}`));
 	sale.nf && sale.nf.length > 20 && sale_info_div.appendChild(lib.element.info("b3-7 em09", "Status", `${sale.status}`));
-	sale.nf && sale.nf.length > 20 && sale_info_div.appendChild(lib.element.icon('b7', 30, "https://spaces.jariomilitar.com/erp-images/icon/nf-e.png", `lib.openExternalLink('${sale.nf}')`));
+	sale.nf && sale.nf.length > 20 && sale_info_div.appendChild(lib.element.icon('b7', 30, "https://wt-images-cdn.sfo3.cdn.digitaloceanspaces.com/erp-images/icon/nf-e.png", `lib.openExternalLink('${sale.nf}')`));
 	!sale.billet_url && sale_info_div.appendChild(lib.element.info("b4-7 em09", "Método de pagamento", `${sale.payment_method || ''}`));
 	sale_info_div.appendChild(lib.element.info("b3-7 em09", "Método de pagamento", `${sale.payment_method || ''}`));
 	sale_info_div.appendChild(lib.element.info("b3-7 em09", "Prazo de pagamento", `${sale.payment_period || ''}`));
@@ -143,9 +143,9 @@ Sale.view.show = (sale) => {
 		let package_div = lib.element.create("div", { class: "box b1 container ground border-explicit padding-10 margin-top-5" });
 		let package_info = lib.element.create("div", { class: "box b1 container" });
 		package_info.appendChild(lib.element.create("img", {
-			src: "https://spaces.jariomilitar.com/erp-images/icon/down-arrow.png",
+			src: "https://wt-images-cdn.sfo3.cdn.digitaloceanspaces.com/erp-images/icon/down-arrow.png",
 			class: "mobile-box b8 size-25 icon center pointer",
-			onclick: "lib.displayDiv('package-" + sale.packages[i].package_id + "', this, 'https://spaces.jariomilitar.com/erp-images/icon/down-arrow.png', 'https://spaces.jariomilitar.com/erp-images/icon/up-arrow.png')"
+			onclick: "lib.displayDiv('package-" + sale.packages[i].package_id + "', this, 'https://wt-images-cdn.sfo3.cdn.digitaloceanspaces.com/erp-images/icon/down-arrow.png', 'https://wt-images-cdn.sfo3.cdn.digitaloceanspaces.com/erp-images/icon/up-arrow.png')"
 		}, `P${sale.packages[i].package_id}`));
 
 		package_info.appendChild(lib.element.create("div", { class: "mobile-box b2 em09 center v-center" }, sale.packages[i].info));

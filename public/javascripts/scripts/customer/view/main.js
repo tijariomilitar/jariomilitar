@@ -22,9 +22,9 @@ Customer.view.updatedPassword = (message) => {
 	let message_div = lib.element.create("div", { class: "box b3 container ground border padding-10" });
 
 	message_div.appendChild(lib.element.create("div", { class: "box b1 em09 padding-10" }, message));
-	message_div.appendChild(lib.element.create("div", { 
-		class: "em09 margin-top-10 underline-link pointer", 
-		onclick: "window.location.href='/lojista/login'" 
+	message_div.appendChild(lib.element.create("div", {
+		class: "em09 margin-top-10 underline-link pointer",
+		onclick: "window.location.href='/lojista/login'"
 	}, "Realizar login"));
 
 	message_box.appendChild(message_div);
