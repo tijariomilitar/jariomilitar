@@ -40,10 +40,18 @@ const Article = function () {
 	};
 };
 
-Article.filter = async (props, inners, params, strict_params, order_params) => {
-	let query = new lib.Query().select().props(props).table("cms_wt_erp.blog_article article")
-		.inners(inners).params(params).strictParams(strict_params).order(order_params).build().query;
-	return db(query);
+Article.filter = async ({ props, inners, params, strict_params, order_params }) => {
+	let { query, values } = new lib.Query().select()
+		.props(props)
+		.table("cms_wt_erp.blog_article article")
+		.inners(inners)
+		.params(params)
+		.strictParams(strict_params)
+		.order(order_params)
+		.build();
+
+	console.log(query, values);
+	return db(query, values);
 };
 
 Article.findById = (article_id) => {
