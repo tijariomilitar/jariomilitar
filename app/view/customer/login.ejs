@@ -13,22 +13,25 @@
 
         <form action="/lojista/login" method="post"
             class="box b3 container ground border margin-top-15 padding-10 radius-10">
-            <% if (message.length > 0) { %>
-            <div class="box b1 center margin-top-10 padding-5 radius-5" style="background-color: #F08080; color:#fff;">
-                <%= message %></div>
-            <% } %>
+            <% if (message.length> 0) { %>
+                <div class="box b1 center margin-top-10 padding-5 radius-5"
+                    style="background-color: #F08080; color:#fff;">
+                    <%= message %>
+                </div>
+                <% } %>
 
-            <div class="box b1 underline georgia margin-top-10 center noselect">Central do Lojista!</div>
+                    <div class="box b1 underline georgia margin-top-10 center noselect">Central do Lojista!</div>
 
-            <input type="text" name="access" class="box b1 em11 georgia border-bottom padding-10 margin-top-5"
-                maxlength="60" autocomplete="off" placeholder="CNPJ ou CPF">
-            <input type="password" name="password" class="box b1 em11 georgia border-bottom padding-10 margin-top-5"
-                maxlength="45" autocomplete="off" placeholder="Senha">
-            <input type="submit"
-                class="box b1 em12 lucida-grande bold border-lg-st shadow-hover padding-10 margin-top-5 radius-5 noselect pointer"
-                value="Acessar">
-            <div class="em09 right underline-link pointer margin-top-10"
-                onclick="window.location.href='/lojista/recuperar-senha'">Esqueci minha senha</div>
+                    <input type="text" name="access" class="box b1 em11 georgia border-bottom padding-10 margin-top-5"
+                        maxlength="60" autocomplete="off" placeholder="CNPJ ou CPF">
+                    <input type="password" name="password"
+                        class="box b1 em11 georgia border-bottom padding-10 margin-top-5" maxlength="45"
+                        autocomplete="off" placeholder="Senha">
+                    <input type="submit"
+                        class="box b1 em12 lucida-grande bold border-lg-st shadow-hover padding-10 margin-top-5 radius-5 noselect pointer"
+                        value="Acessar">
+                    <div class="em09 right underline-link pointer margin-top-10"
+                        onclick="window.location.href='/lojista/recuperar-senha'">Esqueci minha senha</div>
         </form>
     </section>
 </body>

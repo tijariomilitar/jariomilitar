@@ -60,8 +60,6 @@ articleController.filter = async (req, res) => {
   lib.Query.fillParam("article.category", article.category, article_options.strict_params);
   lib.Query.fillParam("article.status", article.status, article_options.strict_params);
 
-  console.log(article);
-
   try {
     let articles = await Article.filter(article_options);
     res.send(articles);

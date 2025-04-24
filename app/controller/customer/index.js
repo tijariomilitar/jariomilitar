@@ -31,7 +31,7 @@ customerController.home = async (req, res) => {
   const strict_params = { keys: [], values: [] }
   lib.Query.fillParam("sale.customer_id", req.user.id, strict_params);
   const order_params = [["id", "DESC"]];
-  let sales = await Sale.filter([], [], period, [], strict_params, order_params, 0);
+  let sales = await Sale.filter({ period, strict_params, order_params });
 
   const saleStatistics = {
     saleValue: 0,
@@ -41,7 +41,18 @@ customerController.home = async (req, res) => {
   };
 
   for (let i in sales) {
-    if (sales[i].status == "Ag. embalo" || sales[i].status == "Ag. nota fiscal" || sales[i].status == "Ag. envio" || sales[i].status == "Enviado") {
+    if (sales[i].status == "Ag. pagamento 2/2"
+      || sales[i].status == "Ag. boletos"
+      || sales[i].status == "Ag. cartão de crédito"
+      || sales[i].status == "Ag. embalo"
+      || sales[i].status == "Ag. nota fiscal"
+      || sales[i].status == "Ag. envio"
+      || sales[i].status == "Enviado"
+      || sales[i].status == "Ag. envio p/ retirada"
+      || sales[i].status == "Ag. transporte p/ P.R."
+      || sales[i].status == "A caminho do P.R."
+      || sales[i].status == "Disponível para retirada"
+      || sales[i].status == "Entregue") {
       saleStatistics.saleValue += parseFloat(sales[i].product_value);
       saleStatistics.saleValue += parseFloat(sales[i].package_value);
       saleStatistics.shipmentValue += parseFloat(sales[i].shipment_value);
@@ -51,8 +62,18 @@ customerController.home = async (req, res) => {
   };
 
   for (let i in sales) {
-    if (sales[i].status == "Ag. embalo" || sales[i].status == "Ag. nota fiscal" || sales[i].status == "Ag. envio" || sales[i].status == "Enviado") {
-
+    if (sales[i].status == "Ag. pagamento 2/2"
+      || sales[i].status == "Ag. boletos"
+      || sales[i].status == "Ag. cartão de crédito"
+      || sales[i].status == "Ag. embalo"
+      || sales[i].status == "Ag. nota fiscal"
+      || sales[i].status == "Ag. envio"
+      || sales[i].status == "Enviado"
+      || sales[i].status == "Ag. envio p/ retirada"
+      || sales[i].status == "Ag. transporte p/ P.R."
+      || sales[i].status == "A caminho do P.R."
+      || sales[i].status == "Disponível para retirada"
+      || sales[i].status == "Entregue") {
     } else {
       sales.splice(i, 1);
       i--;
@@ -62,7 +83,7 @@ customerController.home = async (req, res) => {
   for (let i in Rank) {
     if (parseFloat(saleStatistics.totalValue) >= Rank[i].min_value && parseFloat(saleStatistics.totalValue) < Rank[i].max_value) {
       customer.rank = Rank[i];
-    };
+    }
   };
 
   res.render('customer/home', { customer, sales, saleStatistics, Rank });
@@ -90,8 +111,9 @@ customerController.successfulSignup = (req, res) => {
 };
 
 customerController.logout = (req, res) => {
-  req.logout();
-  res.redirect('/lojista');
+  req.logout(function (err) {
+    res.redirect('/user/login');
+  });
 };
 
 customerController.recover = {};
@@ -143,7 +165,7 @@ customerController.recover.sendMail = async (req, res) => {
 
     await Mailer.sendMail(option, (err, info) => {
       if (err) {
-        console.log('erro:', err);
+        console.log(err);
         return res.send({ msg: "Ocorreu um erro ao enviar o email, por favor recarregue a página e tente novamente." })
       } else {
         return res.send({ done: "Link de recuperação enviado para o E-mail: <b>" + customer.email + "</b> Caso este não seja seu e-mail atual por favor contate um consultor e solicite a alteração." });
