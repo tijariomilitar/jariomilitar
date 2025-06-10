@@ -8,8 +8,6 @@ const Lead = function () {
   this.name = "";
   this.email = "";
   this.phone = "";
-  this.status = "";
-  this.user_id = "";
 
   this.save = () => {
     if (!this.datetime) { return { err: "É necessário a data de criação" } };
@@ -18,9 +16,9 @@ const Lead = function () {
     if (!this.phone) { return { err: "Informe seu telefone para contato." } };
 
     let obj = lib.convertTo.object(this);
-    let query = lib.Query.save(obj, 'cms_wt_erp.customer_lead');
+    let { query, values } = lib.Query.save(obj, 'cms_wt_erp.customer_lead');
 
-    return db(query);
+    return db(query, values);
   };
 };
 
