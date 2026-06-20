@@ -43,24 +43,20 @@ passport.use(
         if(!password) { return done(null, false, req.flash('loginMessage', 'É necessário preencher o Password.')); }
 
         try {
-            let customer = await Customer.findBy.cnpj(access);
+            let customer = await Customer.findByAccess(access);
 
-            if(!customer.length) {
-                customer = await Customer.findBy.cpf(access);
-            };
-
-            if (!customer.length){
+            if (!customer) {
                 return done(null, false, req.flash('loginMessage', 'Usuário não encontrado.'));
-            };
+            }
 
-            if(customer.length){
-                if (!bcrypt.compareSync(password, customer[0].password)){
-                    return done(null, false, req.flash('loginMessage', 'Senha inválida.'));
-                };
-                return done(null, { id: customer[0].id, access: customer[0].access });
-            };
+            if (!bcrypt.compareSync(password, customer.password)) {
+                return done(null, false, req.flash('loginMessage', 'Senha inválida.'));
+            }
+
+            return done(null, { id: customer.id, access: customer.access });
         } catch (err) {
             console.log(err);
+            return done(null, false, req.flash('loginMessage', 'Ocorreu um erro favor contatar o suporte!'));
         }
     })
 );

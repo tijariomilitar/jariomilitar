@@ -10,6 +10,11 @@
       src="/images/favicon/favicon-white.png">
   </header>
   <section class="container h-center margin-top-100 lucida-grande">
+    <% if (message) { %>
+    <div class="box b3 container ground border margin-top-15 padding-10 radius-10 center" style="background-color:#F08080;color:#fff;">
+      <%= message %>
+    </div>
+    <% } %>
     <form id="customer-recover-form" class="box b3 container ground border margin-top-15 padding-10 radius-10">
       <div class="box b1 underline georgia margin-top-10 center noselect">Informe seus dados de acesso</div>
 

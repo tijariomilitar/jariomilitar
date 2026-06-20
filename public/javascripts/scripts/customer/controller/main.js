@@ -10,13 +10,11 @@ if(Customer.controller.recover) {
 		};
 
 		let response = await API.response(Customer.findByAccess, customer.access);
-		if(!response) { return false };
+		if (!response) { return false; }
 
 		lib.display("customer-recover-response", "");
-
 		Customer.controller.recover.remove();
-
-		Customer.view.recover(response.done);
+		Customer.view.recover(response.done || response.msg);
 	});
 };
 

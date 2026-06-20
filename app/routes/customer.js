@@ -16,6 +16,7 @@ router.post("/sale/filter", lib.route.toHttps, saleController.filter);
 router.get("/sale/findById/:id", lib.route.toHttps, saleController.findById);
 
 router.get("/recuperar-senha", lib.route.toHttps, customerController.recover.index);
+router.post("/recover", lib.route.toHttps, customerController.recover.request);
 router.get("/recover/:access", lib.route.toHttps, customerController.recover.sendMail);
 router.get("/alterar-senha/:token", lib.route.toHttps, customerController.recover.password);
 router.post("/recover/update", lib.route.toHttps, customerController.recover.update);

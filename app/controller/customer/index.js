@@ -10,8 +10,82 @@ const Mailer = require('../../../config/mailer');
 const bcrypt = require('bcrypt-nodejs');
 const ejs = require("ejs");
 const path = require('path');
+const fs = require("fs");
 
 const customerController = {};
+
+function getAppBaseUrl(req) {
+  if (process.env.APP_URL) return process.env.APP_URL.replace(/\/$/, "");
+  return `${req.protocol}://${req.get("host")}`;
+}
+
+async function sendRecoverMail(req, res, access) {
+  try {
+    const customer = await Customer.findByAccess(access);
+
+    if (!customer) {
+      return res.send({ msg: "Não foi encontrado nenhum usuário, por favor verifique os dados e tente novamente" });
+    }
+
+    if (!customer.email) {
+      return res.send({ done: "Você ainda não cadastrou um email para sua conta, por favor entre em contato com um consultor comercial." });
+    }
+
+    const JWTData = {
+      iss: 'jariomilitar-api',
+      data: {
+        customer_id: customer.id,
+        access: customer.access
+      }
+    };
+
+    const token = await Token.generate(JWTData);
+
+    if (!token) {
+      return res.send({ msg: "Ocorreu um erro ao gerar o link de recuperação, por favor tente novamente." });
+    }
+
+    await Customer.setToken(token, customer.id);
+
+    const baseUrl = getAppBaseUrl(req);
+    const resetUrl = `${baseUrl}/lojista/alterar-senha/${encodeURIComponent(token)}`;
+
+    const data = await ejs.renderFile(
+      path.join(__dirname, "../../../app/view/customer/mail-template/recover.ejs"),
+      { customer, resetUrl }
+    );
+
+    const option = {
+      from: "JA Rio Militar <comercial@jariomilitar.com.br>",
+      to: `${customer.name} <${customer.email}>`,
+      subject: "Recuperação de senha",
+      html: data
+    };
+
+    const faviconPath = path.join(__dirname, "../../../public/images/favicon/favicon-white.png");
+    if (fs.existsSync(faviconPath)) {
+      option.attachments = [{
+        filename: 'favicon.png',
+        path: faviconPath,
+        cid: 'favicon'
+      }];
+    }
+
+    await new Promise((resolve, reject) => {
+      Mailer.sendMail(option, (err, info) => {
+        if (err) reject(err);
+        else resolve(info);
+      });
+    });
+
+    return res.send({
+      done: "Link de recuperação enviado para o E-mail: <b>" + customer.email + "</b> Caso este não seja seu e-mail atual por favor contate um consultor e solicite a alteração."
+    });
+  } catch (err) {
+    console.log(err);
+    return res.send({ msg: "Ocorreu um erro ao tentar recuperar sua senha, por favor entre em contato com um consultor comercial!" });
+  }
+}
 
 customerController.index = async (req, res) => {
   res.redirect('/portal-do-lojista');
@@ -28,8 +102,10 @@ customerController.home = async (req, res) => {
     end: new Date().getTime()
   };
 
-  const strict_params = { keys: [], values: [] }
-  lib.Query.fillParam("sale.customer_id", req.user.id, strict_params);
+  const strict_params = {
+    keys: ["sale.customer_id"],
+    values: [req.user.id]
+  };
   const order_params = [["id", "DESC"]];
   let sales = await Sale.filter({ period, strict_params, order_params });
 
@@ -119,81 +195,41 @@ customerController.logout = (req, res) => {
 customerController.recover = {};
 
 customerController.recover.index = async (req, res) => {
-  res.render('customer/recover');
+  res.render('customer/recover', { message: req.query.message || null });
+};
+
+customerController.recover.request = async (req, res) => {
+  return sendRecoverMail(req, res, req.body.access);
 };
 
 customerController.recover.sendMail = async (req, res) => {
-  try {
-    let customer = (await Customer.findBy.cnpj(req.params.access))[0];
-    if (!customer) { customer = (await Customer.findBy.cpf(req.params.access))[0]; };
-
-    if (!customer) {
-      return res.send({ msg: "Não foi encontrado nenhum usuário, por favor verifique os dados e tente novamente" })
-    };
-
-    if (!customer.email) {
-      return res.send({ done: "Você ainda não cadastrou um email para sua conta, por favor entre em contato com um consultor comercial." })
-    }
-
-    const JWTData = {
-      iss: 'jariomilitar-api',
-      data: {
-        customer_id: customer.id,
-        access: customer.access
-      }
-    };
-
-    const token = await Token.generate(JWTData);
-
-    await Customer.setToken(token, customer.id);
-
-    const data = await ejs.renderFile(path.join(__dirname, "../../../app/view/customer/mail-template/recover.ejs"), { customer, token });
-
-    const option = {
-      from: "JA Rio Militar <comercial@jariomilitar.com.br>",
-      to: `${customer.name} <${customer.email}>`,
-      subject: "Recuperação de senha",
-      html: data,
-      attachments: [
-        {
-          filename: 'favicon.png',
-          path: path.join(__dirname, "../../../app/view/customer/mail-template/images/favicon.png"),
-          cid: 'favicon'
-        }
-      ]
-    };
-
-    await Mailer.sendMail(option, (err, info) => {
-      if (err) {
-        console.log(err);
-        return res.send({ msg: "Ocorreu um erro ao enviar o email, por favor recarregue a página e tente novamente." })
-      } else {
-        return res.send({ done: "Link de recuperação enviado para o E-mail: <b>" + customer.email + "</b> Caso este não seja seu e-mail atual por favor contate um consultor e solicite a alteração." });
-      }
-    });
-
-  } catch (err) {
-    console.log(err);
-    return res.send("Ocorreu um erro ao tentar recuperar sua senha, por favor entre em contato com um consultor comercial!");
-  };
+  return sendRecoverMail(req, res, decodeURIComponent(req.params.access || ""));
 };
 
 customerController.recover.password = async (req, res) => {
-  JWT.verify(req.params.token, process.env.SECRET_KEY, async (err, authData) => {
-    if (err) {
-      return res.send({ msg: "O código é inválido, tente novamente ou solicite um novo código" });
-    } else {
-      let customer = (await Customer.findBy.token(req.params.token))[0];
-      if (!customer) {
-        return res.send({ msg: "O código é inválido, tente novamente ou solicite um novo código" });
-      }
+  const token = decodeURIComponent(req.params.token || "");
 
-      if (authData.data.customer_id == customer.id) {
-        return res.render('customer/update-password', { token: req.params.token });
-      } else {
-        return res.send({ msg: "O código é inválido, tente novamente ou solicite um novo código" });
-      }
+  JWT.verify(token, process.env.SECRET_KEY, async (err, authData) => {
+    if (err) {
+      return res.render('customer/recover', {
+        message: "O link é inválido ou expirou. Solicite uma nova recuperação de senha."
+      });
     }
+
+    let customer = (await Customer.findBy.token(token))[0];
+    if (!customer) {
+      return res.render('customer/recover', {
+        message: "O link é inválido ou expirou. Solicite uma nova recuperação de senha."
+      });
+    }
+
+    if (authData.data.customer_id == customer.id) {
+      return res.render('customer/update-password', { token });
+    }
+
+    return res.render('customer/recover', {
+      message: "O link é inválido ou expirou. Solicite uma nova recuperação de senha."
+    });
   });
 };
 
@@ -201,27 +237,30 @@ customerController.recover.update = async (req, res) => {
   JWT.verify(req.body.token, process.env.SECRET_KEY, async (err, authData) => {
     if (err) {
       return res.send({ msg: "O código é inválido, tente novamente ou solicite um novo código" });
-    } else {
-      let customer = (await Customer.findBy.token(req.body.token))[0];
-      if (!customer) {
-        return res.send({ msg: "O código é inválido, tente novamente ou solicite um novo código" });
-      }
-
-      if (authData.data.customer_id == customer.id) {
-        if (!req.body.password || req.body.password.length < 4) { return res.send({ msg: 'Senha inválida.' }); };
-        if (req.body.password !== req.body.password_confirm) { return res.send({ msg: 'As senhas não correspondem.' }); }
-
-        customer.password = bcrypt.hashSync(req.body.password, null, null);
-        customer.password_confirm = bcrypt.hashSync(req.body.password_confirm, null, null);
-
-        await Customer.updatePassword(customer);
-        await Customer.destroyToken(req.body.token);
-
-        return res.send({ done: "Sua senha foi atualizada com sucesso!" });
-      } else {
-        return res.send({ msg: "O código é inválido, tente novamente ou solicite um novo código" });
-      }
     }
+
+    let customer = (await Customer.findBy.token(req.body.token))[0];
+    if (!customer) {
+      return res.send({ msg: "O código é inválido, tente novamente ou solicite um novo código" });
+    }
+
+    if (authData.data.customer_id != customer.id) {
+      return res.send({ msg: "O código é inválido, tente novamente ou solicite um novo código" });
+    }
+
+    if (!req.body.password || req.body.password.length < 4) {
+      return res.send({ msg: 'Senha inválida.' });
+    }
+
+    if (req.body.password !== req.body.password_confirm) {
+      return res.send({ msg: 'As senhas não correspondem.' });
+    }
+
+    customer.password = bcrypt.hashSync(req.body.password, null, null);
+    await Customer.updatePassword(customer);
+    await Customer.destroyToken(req.body.token);
+
+    return res.send({ done: "Sua senha foi atualizada com sucesso!" });
   });
 };
 

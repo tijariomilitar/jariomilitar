@@ -1,12 +1,22 @@
 const Customer = {};
 
 Customer.findByAccess = async (customer_access) => {
-	let response = await fetch("/lojista/recover/"+customer_access);
-	response = await response.json();
-	
-	if(API.verifyResponse(response)){ return false };
+	let response = await fetch("/lojista/recover", {
+		method: "POST",
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ access: customer_access })
+	});
 
-	return response;
+	let data = null;
+	try {
+		data = await response.json();
+	} catch (err) {
+		return false;
+	}
+
+	if (API.verifyResponse(data)) { return false; }
+
+	return data;
 };
 
 Customer.updatePassword = async (customer) => {
