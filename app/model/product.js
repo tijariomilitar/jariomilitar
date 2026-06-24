@@ -20,9 +20,9 @@ Product.findById = async (id) => {
 };
 
 Product.filter = async (props, inners, params, strict_params, order_params) => {
-	let query = new lib.Query().select().props(props).table("cms_wt_erp.product product")
-		.inners(inners).params(params).strictParams(strict_params).order(order_params).build().query;
-	return db(query);
+	let { query, values } = new lib.Query().select().props(props).table("cms_wt_erp.product product")
+		.inners(inners).params(params).strictParams(strict_params).order(order_params).build();
+	return db(query, values);
 };
 
 Product.image = {
@@ -45,9 +45,9 @@ Product.package = function(){
 };
 
 Product.package.filter = (props, inners, params, strict_params, order_params) => {
-	let query = new lib.Query().select().props(props).table("cms_wt_erp.product_package package")
-		.inners(inners).params(params).strictParams(strict_params).order(order_params).build().query;
-	return db(query);
+	let { query, values } = new lib.Query().select().props(props).table("cms_wt_erp.product_package package")
+		.inners(inners).params(params).strictParams(strict_params).order(order_params).build();
+	return db(query, values);
 };
 
 Product.package.product = function(){
@@ -65,9 +65,9 @@ Product.package.image = {
 };
 
 Product.package.product.filter = (props, inners, params, strict_params, order_params) => {
-	let query = new lib.Query().select().props(props).table("cms_wt_erp.product_package_product product_package_product")
-		.inners(inners).params(params).strictParams(strict_params).order(order_params).build().query;
-	return db(query);
+	let { query, values } = new lib.Query().select().props(props).table("cms_wt_erp.product_package_product product_package_product")
+		.inners(inners).params(params).strictParams(strict_params).order(order_params).build();
+	return db(query, values);
 };
 
 Product.colorList = async () => {

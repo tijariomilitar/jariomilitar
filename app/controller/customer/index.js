@@ -10,7 +10,6 @@ const Mailer = require('../../../config/mailer');
 const bcrypt = require('bcrypt-nodejs');
 const ejs = require("ejs");
 const path = require('path');
-const fs = require("fs");
 
 const customerController = {};
 
@@ -55,27 +54,10 @@ async function sendRecoverMail(req, res, access) {
       { customer, resetUrl }
     );
 
-    const option = {
-      from: "JA Rio Militar <comercial@jariomilitar.com.br>",
+    await Mailer.sendMail({
       to: `${customer.name} <${customer.email}>`,
       subject: "Recuperação de senha",
       html: data
-    };
-
-    const faviconPath = path.join(__dirname, "../../../public/images/favicon/favicon-white.png");
-    if (fs.existsSync(faviconPath)) {
-      option.attachments = [{
-        filename: 'favicon.png',
-        path: faviconPath,
-        cid: 'favicon'
-      }];
-    }
-
-    await new Promise((resolve, reject) => {
-      Mailer.sendMail(option, (err, info) => {
-        if (err) reject(err);
-        else resolve(info);
-      });
     });
 
     return res.send({

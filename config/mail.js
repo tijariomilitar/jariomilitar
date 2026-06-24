@@ -1,8 +1,5 @@
 module.exports = {
-	host: process.env.MAIL_HOST,
-	port: process.env.MAIL_PORT,
-	auth: {
-		user: process.env.MAIL_USER,
-		pass: process.env.MAIL_PASS
-	}
+	apiKey: process.env.RESEND_API_KEY,
+	from: process.env.MAIL_FROM || "JA Rio Militar <comercial@jariomilitar.com>",
+	replyTo: process.env.MAIL_REPLY_TO || "comercial@jariomilitar.com"
 };
